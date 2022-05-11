@@ -35,11 +35,9 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  --font-family-sans-serif: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 *,
 ::after,
@@ -47,7 +45,7 @@
   box-sizing: border-box;
 }
 html {
-  font-family: sans-serif;
+  font-family: Poppins;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -66,9 +64,8 @@ section {
 }
 body {
   margin: 0;
-  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -175,8 +172,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 1em;
 }
 pre {
@@ -517,7 +513,7 @@ pre code {
   .container-lg,
   .container-md,
   .container-sm {
-    max-width: 960px;
+    max-width: 1160px;
   }
 }
 @media (min-width: 1200px) {
@@ -1952,8 +1948,7 @@ textarea.form-control {
 .was-validated textarea.form-control:valid,
 textarea.form-control.is-valid {
   padding-right: calc(1.5em + 0.75rem);
-  background-position: top calc(0.375em + 0.1875rem) right
-    calc(0.375em + 0.1875rem);
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 .custom-select.is-valid,
 .was-validated .custom-select:valid {
@@ -1963,8 +1958,7 @@ textarea.form-control.is-valid {
       right 0.75rem center/8px 10px no-repeat,
     #fff
       url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%231cc88a' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e")
-      center right 1.75rem / calc(0.75em + 0.375rem) calc(0.75em + 0.375rem)
-      no-repeat;
+      center right 1.75rem / calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 .custom-select.is-valid:focus,
 .was-validated .custom-select:valid:focus {
@@ -1990,23 +1984,16 @@ textarea.form-control.is-valid {
   border-color: #1cc88a;
 }
 .custom-control-input.is-valid:checked ~ .custom-control-label::before,
-.was-validated
-  .custom-control-input:valid:checked
-  ~ .custom-control-label::before {
+.was-validated .custom-control-input:valid:checked ~ .custom-control-label::before {
   border-color: #34e3a4;
   background-color: #34e3a4;
 }
 .custom-control-input.is-valid:focus ~ .custom-control-label::before,
-.was-validated
-  .custom-control-input:valid:focus
-  ~ .custom-control-label::before {
+.was-validated .custom-control-input:valid:focus ~ .custom-control-label::before {
   box-shadow: 0 0 0 0.2rem rgba(28, 200, 138, 0.25);
 }
-.custom-control-input.is-valid:focus:not(:checked)
-  ~ .custom-control-label::before,
-.was-validated
-  .custom-control-input:valid:focus:not(:checked)
-  ~ .custom-control-label::before {
+.custom-control-input.is-valid:focus:not(:checked) ~ .custom-control-label::before,
+.was-validated .custom-control-input:valid:focus:not(:checked) ~ .custom-control-label::before {
   border-color: #1cc88a;
 }
 .custom-file-input.is-valid ~ .custom-file-label,
@@ -2067,8 +2054,7 @@ textarea.form-control.is-valid {
 .was-validated textarea.form-control:invalid,
 textarea.form-control.is-invalid {
   padding-right: calc(1.5em + 0.75rem);
-  background-position: top calc(0.375em + 0.1875rem) right
-    calc(0.375em + 0.1875rem);
+  background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem);
 }
 .custom-select.is-invalid,
 .was-validated .custom-select:invalid {
@@ -2078,8 +2064,7 @@ textarea.form-control.is-invalid {
       right 0.75rem center/8px 10px no-repeat,
     #fff
       url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23e74a3b' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23e74a3b' stroke='none'/%3e%3c/svg%3e")
-      center right 1.75rem / calc(0.75em + 0.375rem) calc(0.75em + 0.375rem)
-      no-repeat;
+      center right 1.75rem / calc(0.75em + 0.375rem) calc(0.75em + 0.375rem) no-repeat;
 }
 .custom-select.is-invalid:focus,
 .was-validated .custom-select:invalid:focus {
@@ -2105,23 +2090,16 @@ textarea.form-control.is-invalid {
   border-color: #e74a3b;
 }
 .custom-control-input.is-invalid:checked ~ .custom-control-label::before,
-.was-validated
-  .custom-control-input:invalid:checked
-  ~ .custom-control-label::before {
+.was-validated .custom-control-input:invalid:checked ~ .custom-control-label::before {
   border-color: #ed7468;
   background-color: #ed7468;
 }
 .custom-control-input.is-invalid:focus ~ .custom-control-label::before,
-.was-validated
-  .custom-control-input:invalid:focus
-  ~ .custom-control-label::before {
+.was-validated .custom-control-input:invalid:focus ~ .custom-control-label::before {
   box-shadow: 0 0 0 0.2rem rgba(231, 74, 59, 0.25);
 }
-.custom-control-input.is-invalid:focus:not(:checked)
-  ~ .custom-control-label::before,
-.was-validated
-  .custom-control-input:invalid:focus:not(:checked)
-  ~ .custom-control-label::before {
+.custom-control-input.is-invalid:focus:not(:checked) ~ .custom-control-label::before,
+.was-validated .custom-control-input:invalid:focus:not(:checked) ~ .custom-control-label::before {
   border-color: #e74a3b;
 }
 .custom-file-input.is-invalid ~ .custom-file-label,
@@ -2205,8 +2183,8 @@ textarea.form-control.is-invalid {
   font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.35rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .btn {
@@ -3198,17 +3176,13 @@ input[type="submit"].btn-block {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
-.input-group:not(.has-validation)
-  > .custom-file:not(:last-child)
-  .custom-file-label::after,
+.input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label::after,
 .input-group:not(.has-validation) > .custom-select:not(:last-child),
 .input-group:not(.has-validation) > .form-control:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.input-group.has-validation
-  > .custom-file:nth-last-child(n + 3)
-  .custom-file-label::after,
+.input-group.has-validation > .custom-file:nth-last-child(n + 3) .custom-file-label::after,
 .input-group.has-validation > .custom-select:nth-last-child(n + 3),
 .input-group.has-validation > .form-control:nth-last-child(n + 3) {
   border-top-right-radius: 0;
@@ -3297,19 +3271,11 @@ input[type="submit"].btn-block {
   padding-right: 1.75rem;
 }
 .input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .btn,
-.input-group.has-validation
-  > .input-group-append:nth-last-child(n + 3)
-  > .input-group-text,
+.input-group.has-validation > .input-group-append:nth-last-child(n + 3) > .input-group-text,
 .input-group:not(.has-validation) > .input-group-append:not(:last-child) > .btn,
-.input-group:not(.has-validation)
-  > .input-group-append:not(:last-child)
-  > .input-group-text,
-.input-group
-  > .input-group-append:last-child
-  > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group
-  > .input-group-append:last-child
-  > .input-group-text:not(:last-child),
+.input-group:not(.has-validation) > .input-group-append:not(:last-child) > .input-group-text,
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child),
 .input-group > .input-group-prepend > .btn,
 .input-group > .input-group-prepend > .input-group-text {
   border-top-right-radius: 0;
@@ -3318,9 +3284,7 @@ input[type="submit"].btn-block {
 .input-group > .input-group-append > .btn,
 .input-group > .input-group-append > .input-group-text,
 .input-group > .input-group-prepend:first-child > .btn:not(:first-child),
-.input-group
-  > .input-group-prepend:first-child
-  > .input-group-text:not(:first-child),
+.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child),
 .input-group > .input-group-prepend:not(:first-child) > .btn,
 .input-group > .input-group-prepend:not(:first-child) > .input-group-text {
   border-top-left-radius: 0;
@@ -3404,25 +3368,17 @@ input[type="submit"].btn-block {
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26l2.974 2.99L8 2.193z'/%3e%3c/svg%3e");
 }
-.custom-checkbox
-  .custom-control-input:indeterminate
-  ~ .custom-control-label::before {
+.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
   border-color: #4e73df;
   background-color: #4e73df;
 }
-.custom-checkbox
-  .custom-control-input:indeterminate
-  ~ .custom-control-label::after {
+.custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3e%3cpath stroke='%23fff' d='M0 2h4'/%3e%3c/svg%3e");
 }
-.custom-checkbox
-  .custom-control-input:disabled:checked
-  ~ .custom-control-label::before {
+.custom-checkbox .custom-control-input:disabled:checked ~ .custom-control-label::before {
   background-color: rgba(78, 115, 223, 0.5);
 }
-.custom-checkbox
-  .custom-control-input:disabled:indeterminate
-  ~ .custom-control-label::before {
+.custom-checkbox .custom-control-input:disabled:indeterminate ~ .custom-control-label::before {
   background-color: rgba(78, 115, 223, 0.5);
 }
 .custom-radio .custom-control-label::before {
@@ -3431,9 +3387,7 @@ input[type="submit"].btn-block {
 .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
 }
-.custom-radio
-  .custom-control-input:disabled:checked
-  ~ .custom-control-label::before {
+.custom-radio .custom-control-input:disabled:checked ~ .custom-control-label::before {
   background-color: rgba(78, 115, 223, 0.5);
 }
 .custom-switch {
@@ -3452,8 +3406,8 @@ input[type="submit"].btn-block {
   height: calc(1rem - 4px);
   background-color: #b7b9cc;
   border-radius: 0.5rem;
-  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .custom-switch .custom-control-label::after {
@@ -3464,9 +3418,7 @@ input[type="submit"].btn-block {
   background-color: #fff;
   transform: translateX(0.75rem);
 }
-.custom-switch
-  .custom-control-input:disabled:checked
-  ~ .custom-control-label::before {
+.custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
   background-color: rgba(78, 115, 223, 0.5);
 }
 .custom-select {
@@ -3621,10 +3573,8 @@ input[type="submit"].btn-block {
   background-color: #4e73df;
   border: 0;
   border-radius: 1rem;
-  -webkit-transition: background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -webkit-appearance: none;
   appearance: none;
 }
@@ -3652,10 +3602,8 @@ input[type="submit"].btn-block {
   background-color: #4e73df;
   border: 0;
   border-radius: 1rem;
-  -moz-transition: background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  -moz-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   -moz-appearance: none;
   appearance: none;
 }
@@ -3686,10 +3634,8 @@ input[type="submit"].btn-block {
   background-color: #4e73df;
   border: 0;
   border-radius: 1rem;
-  -ms-transition: background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  -ms-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   appearance: none;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -3737,8 +3683,7 @@ input[type="submit"].btn-block {
 .custom-control-label::before,
 .custom-file-label,
 .custom-select {
-  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .custom-control-label::before,
@@ -4516,8 +4461,8 @@ input[type="submit"].btn-block {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 0.35rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
   .badge {
@@ -5397,9 +5342,8 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5507,9 +5451,8 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Nunito, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -8731,8 +8674,7 @@ button.bg-dark:hover {
   background-color: rgba(0, 0, 0, 0);
 }
 .text-monospace {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace !important;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 .text-justify {
   text-align: justify !important;
@@ -9080,10 +9022,8 @@ a:focus {
   animation-name: growIn;
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s;
-  -webkit-animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1),
-    opacity cubic-bezier(0, 1, 0.4, 1);
-  animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1),
-    opacity cubic-bezier(0, 1, 0.4, 1);
+  -webkit-animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
+  animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
 }
 @-webkit-keyframes fadeIn {
   0% {
@@ -9676,11 +9616,8 @@ a:focus {
     animation-name: growIn;
     -webkit-animation-duration: 0.2s;
     animation-duration: 0.2s;
-    -webkit-animation-timing-function: transform
-        cubic-bezier(0.18, 1.25, 0.4, 1),
-      opacity cubic-bezier(0, 1, 0.4, 1);
-    animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1),
-      opacity cubic-bezier(0, 1, 0.4, 1);
+    -webkit-animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
+    animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
   }
   .sidebar.toggled .nav-item .collapse .collapse-inner {
     box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
@@ -9923,12 +9860,12 @@ a:focus {
   }
 }
 .bg-login-image {
-  background: url(https://source.unsplash.com/K4mSJ7kc0As/600x800);
+  background: url("/static/images/signin.png");
   background-position: center;
   background-size: cover;
 }
 .bg-register-image {
-  background: url(https://source.unsplash.com/Mv9hjnEUHR4/600x800);
+  background: url("/static/images/signup.png");
   background-position: center;
   background-size: cover;
 }

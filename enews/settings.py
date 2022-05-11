@@ -50,6 +50,10 @@ INSTALLED_APPS = [
     'accounts',
     'editors',
     'users',
+    
+    # External Imports
+    'bootstrapform',
+    
 ]
 
 MIDDLEWARE = [

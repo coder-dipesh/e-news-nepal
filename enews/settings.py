@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="unsafe-secret-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get("DEBUG")) =="1" # 1== True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 if not DEBUG:
     ALLOWED_HOSTS += [os.environ.get("ALLOWED_HOSTS")]
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     #Custom Apps
     'admins',
@@ -54,7 +55,18 @@ INSTALLED_APPS = [
     # External Imports
     'bootstrapform',
     
+    'social_django',
+    
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    
 ]
+
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -101,6 +113,19 @@ DATABASES = {
         'PORT': env("DATABASE_PORT"),
     }
 }
+
+
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    # 'allauth.account.auth_backends.AuthenticationBackend',
+    # 'account.authentication.EmailAuthBackend',
+    'social_core.backends.google.GoogleOAuth2',
+    ]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -149,7 +174,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/uploads')
 
 
 LOGIN_URL = '/signin'
-
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = 'logout'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -159,3 +185,12 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+
+
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '838663276182-90b3tn5qsg1n4nmk4k4i4tn9rm1j8i6u.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'

@@ -1,80 +1,86 @@
 <!-- Inheriting from parent -->
-{% extends 'auth_layout.html' %} {% load static %} {% load  bootstrap %} {% block title %}
+{% extends 'auth_layout.html' %} {% load static %} {% load bootstrap %} {% block title %}
 
-    <title>Login | e-News</title>
+<title>Login | e-News</title>
 
 {% endblock title %}
 
 <!-- Body content goes here -->
 {% block content %}
-    <body class="bg-gradient-primary mt-3">
-    <span class="text-white px-4 mt-0">
+<body class="bg-gradient-primary mt-3">
+  <span class="text-white px-4 mt-0">
     <a href="/">
       <i style="color: #ffffff" class="fa fa-home fa-2x"></i>
     </a>
   </span>
 
-    <div class="container">
-        {% include "message.html" %}
-        <div class="row justify-content-center">
-            <div class="col-xl-10 col-lg-12 col-md-9">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="title text-gray-900 mb-4">Sign In</h1>
-                                    </div>
-                                    <form class="user" method="post">
-                                        {% csrf_token %}
-                                        <div class="form-group">
-                                            <input
-                                                    type="text"
-                                                    class="form-control form-control-user"
-                                                    id="exampleInputEmail"
-                                                    aria-describedby="emailHelp"
-                                                    placeholder="User Name"
-                                                    name="username"
-                                                    required
-                                            />
-                                        </div>
-                                        <div class="form-group">
-                                            <input
-                                                    type="password"
-                                                    class="form-control form-control-user"
-                                                    id="exampleInputPassword"
-                                                    placeholder="Password"
-                                                    name="password"
-                                                    required
-                                            />
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="text-center">
-                                                <a class="" href="{% url 'home' %}">Forgot Password?</a>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-block text-uppercase">Sign In
-                                        </button>
-                                        <hr/>
-                                        <a href="index.html" class="btn btn-google btn-block">
-                                            <i class="fa fa-google fa-fw"></i> Sign in with Google
-                                        </a>
-                                    </form>
-                                    <hr/>
-
-                                    <div class="text-center">
-                                        Don't have an account?
-                                        <a class="" href="{% url 'sign-up' %}"> Sign Up</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  <div class="container">
+    <div style="width: 50%" class="mx-auto">{% include "message.html" %}</div>
+    <div class="row justify-content-center">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="title text-gray-900 mb-4">Sign In</h1>
+                  </div>
+                  <form class="user" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control form-control-user"
+                        id="exampleInputEmail"
+                        aria-describedby="emailHelp"
+                        placeholder="username"
+                        name="username"
+                        required
+                      />
                     </div>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        class="form-control form-control-user"
+                        id="exampleInputPassword"
+                        placeholder="********"
+                        name="password"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <div class="text-center">
+                        <a class="" href="{% url 'home' %}">Forgot Password?</a>
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block text-uppercase">Sign In</button>
+                    <hr />
+                    <form method="POST">
+                      {% csrf_token %}
+                      <a
+                        style="text-decoration: none; color: #fff"
+                        class="btn btn-danger btn-block"
+                        href='{% url "social:begin" "google-oauth2" %}'
+                      >
+                        <i class="fa fa-google fa-fw"></i> Sign in with Google
+                      </a>
+                    </form>
+                  </form>
+                  <hr />
+
+                  <div class="text-center">
+                    Don't have an account?
+                    <a class="" href="{% url 'sign-up' %}"> Sign Up</a>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    </body>
+  </div>
+</body>
 {% endblock content %}

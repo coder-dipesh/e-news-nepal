@@ -2,7 +2,7 @@ from django.urls import include, path
 from admins import views
 
 urlpatterns = [
-  # path('', views.home, name='home'),
+  path('', views.adminDashbaord, name='admins'),
   
   
   

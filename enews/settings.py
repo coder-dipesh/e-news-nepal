@@ -173,7 +173,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/uploads')
 
 
 
-LOGIN_URL = '/signin'
+LOGIN_URL = '/sign-in'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = 'logout'
 

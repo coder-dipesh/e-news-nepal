@@ -57,15 +57,9 @@ INSTALLED_APPS = [
     
     'social_django',
     
-    # allauth
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
     
 ]
 
-SITE_ID = 1
 
 
 MIDDLEWARE = [
@@ -119,10 +113,6 @@ AUTHENTICATION_BACKENDS = [
     
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    # 'allauth.account.auth_backends.AuthenticationBackend',
-    # 'account.authentication.EmailAuthBackend',
     'social_core.backends.google.GoogleOAuth2',
     ]
 
@@ -174,7 +164,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/uploads')
 
 
 LOGIN_URL = '/sign-in'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/user'
 LOGOUT_URL = 'logout'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -191,6 +181,6 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '838663276182-90b3tn5qsg1n4nmk4k4i4tn9rm1j8i6u.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'

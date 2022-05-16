@@ -8,10 +8,11 @@ from django.conf import settings
 
 from .forms import CreateUserForm
 from django.contrib import messages, auth
-
+from accounts.auth import unauthenticated_user
 
 # Create your views here.
 
+@unauthenticated_user
 def signIn(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -35,7 +36,7 @@ def signIn(request):
     context = {}
     return render(request, 'accounts/signIn.html', context)
 
-
+@unauthenticated_user
 def signUp(request):
     if request.method == 'POST':
         get_otp = request.POST.get('otp')

@@ -1,6 +1,6 @@
 {% extends 'admin_layout.html' %} {% load static%} {% load bootstrap %} {% block title %}
 
-<title>SignUp | e-News</title>
+<title>Editor Sign Up | e-News Admin</title>
 
 {% endblock title%}
 
@@ -8,214 +8,92 @@
 {% block content %}
 
 <style>
-  .card-body {
-    padding: 1.5rem;
+  .user .form-control-user {
+    border-radius: 0.35rem !important;
   }
-
-  .title {
-    margin-bottom: 3.5rem;
-    font-weight: 600;
-    font-size: 2.5rem;
+  .card {
+    width: max-content !important;
   }
-
-  .form-input {
-    position: relative;
-    padding-left: 20px;
+  .my-5 {
+    margin-top: 0 !important;
   }
-
-  .form-input input {
-    width: 100%;
-    height: 45px;
-    padding-left: 40px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    box-shadow: none;
-    border: 1px solid #00000020;
-    border-radius: 3px;
-    outline: none;
-    background: transparent;
-  }
-
-  .pass-input input {
-    height: 45px;
-    border: 1px solid #00000020;
-    box-sizing: border-box;
-    box-shadow: none;
-    border: 1px solid #00000020;
-    border-radius: 3px;
-    outline: none;
-    background: transparent;
-  }
-
-  .form-input input:valid {
-    border: 1px solid #00000020 !important;
-  }
-
-  .form-input span {
-    position: absolute;
-    top: 10px;
-    padding-left: 15px;
-    color: #007bff;
-  }
-
-  .form-input input::placeholder {
-    color: rgb(19, 18, 18);
-    padding-left: 10px;
-    opacity: 0.5;
-  }
-
-  .form-input input:valid {
-    border: 2px solid #067bf0;
-  }
-
-  .form-input input:focus::placeholder {
-    color: #454b69;
-  }
-
-  .form-box button[type="submit"] {
-    margin-top: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-    background: #007bff;
-    color: #fff;
-    font-size: 90%;
-    font-weight: bold;
-    letter-spacing: 0.1rem;
-    transition: 0.5s;
-    padding: 12px;
-    margin-left: 18.5px;
-    width: 97%;
-  }
-
-  .form-box button[type="submit"]:hover {
-    background: #0069d9;
-  }
-
-  .forget-link,
-  .register-link {
-    color: #007bff;
-    font-weight: semibold;
-  }
-
-  .forget-link:hover,
-  .register-link:hover {
-    color: #0069d9;
-    text-decoration: none;
-  }
-
-  .form-box .btn-social {
-    color: white !important;
-    border: 0;
-    font-weight: bold;
-  }
-
-  .form-box .btn-google {
-    background: #a72c1f;
-  }
-
-  .form-box .btn-google:hover {
-    background: #bf3b31;
-  }
-
-  .social-auth button {
-    background-color: #fff;
-    border: none;
-  }
-
-  .social-auth button a {
-    color: #dd4b39;
-  }
-
-  .social-auth button a i:hover {
-    transition: all 0.5s ease-in-out;
-    transform: scale(1.2);
-    text-shadow: 1px 1px 5px #dd4b39;
-  }
-  .custom-checkbox {
-    margin-left: 1.3em;
+  #role {
+    padding: 10px 0 10px 10px !important;
+    height: 50px !important;
   }
 </style>
 
-<body class="bg-gradient-primary mt-3">
-  <span class="text-white px-4 mt-0">
-    <a href="/">
-      <i style="color: #ffffff" class="fa fa-home fa-2x"></i>
-    </a>
-  </span>
-  <div class="container py-2">
-    {% if otp %}
-    <div style="width: 50%" class="mx-auto">{% include "message.html" %}</div>
-
-    <div class="card o-hidden mx-auto border-0 shadow-lg my-5" style="width: 50%">
-      <div class="card-body p-0">
-        <h3 class="text-gray-900 mb-4 m-2 text-center">Verify Your Email</h3>
-        <p class="px-4">
-          Please check your mail.<br />
-          An 6 digit code has been sent to your email address.
-        </p>
-        <form action="" method="POST" class="form form-box px-3">
-          {% csrf_token %}
-
-          <div class="input-group mb-3">
-            <input type="hidden" name="usr" value="{{usr.username}}" />
-            <span class="input-group-text" id="basic-addon1">OTP</span>
-            <input
-              type="text"
-              class="form-control"
-              id="add_otp"
-              aria-label="OTP"
-              aria-describedby="basic-addon1"
-              name="otp"
-              required
-            />
-          </div>
-
-          <div>
-            <button type="submit" class="btn btn-primary btn-block text-uppercase mx-auto mb-2">Verify</button>
-          </div>
-        </form>
-      </div>
+<div class="container-fluid py-2">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-1">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-editors'%}" class="text-primary">All Editors</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'editor-sign-up'%}" class="text-primary">Editor Sign Up</a>
+        </li>
+      </ol>
+    </nav>
+    <!-- Back To Editor Information  -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'all-editors'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-backward fa-sm text-white-100"></i>
+        &nbsp; Back
+      </a>
     </div>
+  </div>
 
-    {% else %} <div style="width: 50%" class="mx-auto">{% include "message.html" %}</div>
-    <div class="card o-hidden border-0 shadow-lg my-5">
-      <div class="card-body p-0">
-        <div class="row">
-          <div class="col-lg-6 d-none d-lg-block bg-register-image"></div>
-          <div class="col-lg-6">
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="title text-gray-900 mb-4">Register Editor</h1>
-              </div>
-              <form method="post" class="user">
-                {% csrf_token %}    <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">{{form.first_name}}</div>
-                  <div class="col-sm-6">{{form.last_name}}</div>
-                </div>
-
-                <div class="form-group row">
-                  <div class="col-sm-12 mb-3 mb-sm-0">{{form.username}}</div>
-                </div>
-                <div class="form-group">{{form.email}}</div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">{{form.password1}}</div>
-                  <div class="col-sm-6">{{form.password2}}</div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">Sign Up</button>
-              </form>
-              <hr />
-
-              <div class="text-center">
-                Already have an account?
-                <a href="{% url 'sign-in' %}"> Sign In</a>
-              </div>
-            </div>
+  <div style="width: 50%">{% include "message.html" %}</div>
+  <div class="card o-hidden border-0 shadow-lg my-5 mx-4">
+    <div class="card-body p-0">
+      <div class="col-lg-12">
+        <div class="p-5">
+          <div class="text-center">
+            <h3 class="title text-gray-900 mb-4">Editor Sign Up</h3>
           </div>
+
+          <form method="POST" class="user">
+            {% csrf_token %}
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">{{form.first_name}}</div>
+              <div class="col-sm-6">{{form.last_name}}</div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12 mb-3 mb-sm-0">{{form.username}}</div>
+            </div>
+            <div class="form-group">{{form.email}}</div>
+            <div class="form-group row">
+              <div class="col-sm-12 mb-3 mb-sm-0">{{cform.role}}</div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12 mb-3 mb-sm-0">{{cform.salary}}</div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">{{form.password1}}</div>
+              <div class="col-sm-6">{{form.password2}}</div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block text-uppercase mt-4" style="height: 50px !important">
+              Sign Up
+            </button>
+          </form>
+
+          <hr />
         </div>
       </div>
     </div>
-    {% endif %}
   </div>
-</body>
+</div>
+
 {% endblock content %}

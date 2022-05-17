@@ -7,9 +7,10 @@ from accounts.auth import admin_only
 from django.contrib.auth.models import User
 
 from accounts.auth import admin_only, unauthenticated_user
-
+from .models import CustomUser
 # Create your views here.
 from accounts.forms import CreateUserForm
+from .forms import CustomUserForm,CreateUserForm
 from enews import settings
 
 
@@ -43,46 +44,39 @@ def getUsers(request):
                 'activate_users':'active'}
     
     return render(request, 'admins/allUsers.html',context)
-    return render(request, 'admins/adminDashboard.html')
 
 
 @login_required
 @admin_only
-def admin_editor(request):
-    return render(request, 'admins/adminEditor/editorPage.html')
+def getEditor(request):
+    context = {'activate_editors':'active'}
+    return render(request, 'admins/adminEditor/editorPage.html',context)
 
 
 @login_required
-def editor_signUp(request):
+def editorSignUp(request):
     if request.method == 'POST':
-        get_otp = request.POST.get('otp')
-
-        if get_otp:
-            get_usr = request.POST.get('usr')
-            usr = User.objects.get(username=get_usr)
-
-        userdata = CreateUserForm(request.POST)
-        username = request.POST.get('username')
-        if userdata.is_valid():
-            userdata.save()
-            usr = User.objects.get(username=username)
-            usr.is_active = False
-            usr.save()
-
-            mail_message = f"Hello {usr.username}, \n You are Registered as e-News Nepal Editor \n\nThank You!\nTeam " \
-                           f"e-News. "
-
-            send_mail(
-                "Welcome to e-News Nepal",
-                mail_message,
-                settings.EMAIL_HOST_USER,
-                [usr.email],
-                fail_silently=False
-            )
-            return render(request, 'admins/adminEditor/registerEditor.html', {'usr': usr})
+        cform = CustomUserForm(request.POST)
+        form = CreateUserForm(request.POST)
+        role = request.POST.get('role')
+        salary = request.POST.get('salary')
+        if form.is_valid():
+            user= form.save()
+            user.save()
+            # Getting user and altering its value 
+            username = request.POST.get('username')
+            usr = User.objects.get(username = username)
+            usr.is_staff = True
+            usr.save() # Save user
+            
+            
+            if cform.is_valid():
+                CustomUser.objects.create(user=user,role=role,salary=salary)
+            messages.add_message(request, messages.SUCCESS, 'Editor registered successfully!!')
         else:
-            messages.add_message(request, messages.ERROR, 'Failed to register user!!')
-
-    context = {'form': CreateUserForm}
+            messages.add_message(request, messages.ERROR, 'Unable to register editor!!')
+        
+    context = {'form': CreateUserForm,
+                'cform':CustomUserForm,}
 
     return render(request, 'admins/adminEditor/registerEditor.html', context)

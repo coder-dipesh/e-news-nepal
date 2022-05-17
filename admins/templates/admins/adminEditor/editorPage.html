@@ -1,141 +1,145 @@
 {% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
 
-    <title>Dashboard | e-News Admin</title>
+<title>Dashboard | e-News Admin</title>
 
 {% endblock title %} {% block content %}
 
-    <div class="container-fluid">
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Editor's Details</h1>
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-editors'%}" class="text-primary">All Editors</a>
+        </li>
+      </ol>
+    </nav>
 
-            <!-- Register Editor Information -->
-            <div class=" no-arrow d-none d-sm-inline-block">
-                <a
-                        class="btn btn-sm bg-enews text-white"
-                        href="/admins/editor_signUp"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                >
-
-                    &nbsp; Register Editor
-                </a>
-
-            </div>
-        </div>
-
-
-        <!-- Editor Information Table -->
-        <div class="container-fluid">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Editors Information</h6>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Profile</th>
-                                <th>Name</th>
-                                <th>User Name</th>
-                                <th>Email</th>
-                                <th>Position</th>
-                                <th>Salary</th>
-                                <th>Registered Date</th>
-                                <th colspan="3" class="text-center">Operations</th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <img
-                                            class="img-profile rounded-circle"
-                                            height="40"
-                                            width="40"
-                                            src="{% static 'images/avatars/user-01.jpg' %}"
-                                    />
-                                </td>
-                                <td>Aayush Raj Joshi</td>
-                                <td>Joshi</td>
-                                <td>abc@gmail.com</td>
-
-                                <td>Senior Editor</td>
-                                <td>Rs.1000000</td>
-                                <td>2022/05/17</td>
-                                <td>
-                                    <button class="btn btn-danger">Resigned</button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary">SendMail</button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-warning">Update</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <img
-                                            class="img-profile rounded-circle"
-                                            height="40"
-                                            width="40"
-                                            src="{% static 'images/avatars/user-01.jpg' %}"
-                                    />
-                                </td>
-                                <td>Aayush Raj Joshi</td>
-                                <td>Joshi</td>
-                                <td>abc@gmail.com</td>
-                                <td>Intern</td>
-                                <td>Rs.10000</td>
-                                <td>2022/05/17</td>
-                                <td>
-                                    <button class="btn btn-danger">Resigned</button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary">SendMail</button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-warning">Update</button>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>
-                                    <img
-                                            class="img-profile rounded-circle"
-                                            height="40"
-                                            width="40"
-                                            src="{% static 'images/avatars/user-01.jpg' %}"
-                                    />
-                                </td>
-                                <td>Aayush Raj Joshi</td>
-                                <td>Joshi</td>
-                                <td>abc@gmail.com</td>
-                                <td>Junior Editor</td>
-                                <td>Rs.100000</td>
-                                <td>2022/05/17</td>
-                                <td>
-                                    <button class="btn btn-danger">Resigned</button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary">SendMail</button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-warning">Update</button>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Register Editor Information -->
+    <div class="no-arrow  d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'editor-sign-up'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-user-plus fa-sm text-white-100"></i>
+        &nbsp; Register Editor
+      </a>
     </div>
+  </div>
+
+  <!-- Editor Information Table -->
+  <div class="container-fluid">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Editors Information</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Profile</th>
+                <th>Name</th>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Registered Date</th>
+                <th colspan="3" class="text-center">Operations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>
+                  <img
+                    class="img-profile rounded-circle"
+                    height="40"
+                    width="40"
+                    src="{% static 'images/avatars/user-01.jpg' %}"
+                  />
+                </td>
+                <td>Aayush Raj Joshi</td>
+                <td>Joshi</td>
+                <td>abc@gmail.com</td>
+
+                <td>Senior Editor</td>
+                <td>Rs.1000000</td>
+                <td>2022/05/17</td>
+                <td>
+                  <button class="btn btn-danger">Resigned</button>
+                </td>
+                <td>
+                  <button class="btn btn-primary">SendMail</button>
+                </td>
+                <td>
+                  <button class="btn btn-warning">Update</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>
+                  <img
+                    class="img-profile rounded-circle"
+                    height="40"
+                    width="40"
+                    src="{% static 'images/avatars/user-01.jpg' %}"
+                  />
+                </td>
+                <td>Aayush Raj Joshi</td>
+                <td>Joshi</td>
+                <td>abc@gmail.com</td>
+                <td>Intern</td>
+                <td>Rs.10000</td>
+                <td>2022/05/17</td>
+                <td>
+                  <button class="btn btn-danger">Resigned</button>
+                </td>
+                <td>
+                  <button class="btn btn-primary">SendMail</button>
+                </td>
+                <td>
+                  <button class="btn btn-warning">Update</button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>
+                  <img
+                    class="img-profile rounded-circle"
+                    height="40"
+                    width="40"
+                    src="{% static 'images/avatars/user-01.jpg' %}"
+                  />
+                </td>
+                <td>Aayush Raj Joshi</td>
+                <td>Joshi</td>
+                <td>abc@gmail.com</td>
+                <td>Junior Editor</td>
+                <td>Rs.100000</td>
+                <td>2022/05/17</td>
+                <td>
+                  <button class="btn btn-danger">Resigned</button>
+                </td>
+                <td>
+                  <button class="btn btn-primary">SendMail</button>
+                </td>
+                <td>
+                  <button class="btn btn-warning">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}

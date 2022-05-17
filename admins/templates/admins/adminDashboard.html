@@ -37,7 +37,7 @@
   <div class="row">
     <!-- Editor Count Card -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <a href="/admins/editors" style="text-decoration: none">
+      <a href="{% url 'all-editors' %}" style="text-decoration: none">
         <div class="card shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
@@ -161,14 +161,8 @@
                 />
               </td>
               <td>
-                {% if user.is_staff == True %} 
-                  {% if user.is_superuser == False %} 
-                  Editor 
-                  {% endif %} 
-                {% else %} 
-                User 
+                {% if user.is_staff == True %} {% if user.is_superuser == False %} Editor {% endif %} {% else %} User 
                 {% endif %}
-
               </td>
 
               <td>{{ user.date_joined }}</td>

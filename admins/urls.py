@@ -10,4 +10,9 @@ urlpatterns = [
   
   
   
+  path('admin_editor', views.admin_editor, name='admin_editor'),
+  path('editor_signUp', views.editor_signUp, name='editor_signUp'),
+
+
+
 ]

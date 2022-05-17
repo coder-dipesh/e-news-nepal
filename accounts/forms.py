@@ -13,52 +13,72 @@ class CreateUserForm(UserCreationForm):
     # Overriding usercreatiion form to design signup page
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['first_name'].widget.attrs.update({
+            'required': '',
+            'name': 'first_name',
+            'id': 'first_name',
+            'type': 'text',
+            'class': 'form-control form-control-user',
+            'placeholder': 'First Name',
+            'maxlength': '16',
+            'minlength': '6',
+        })
+        self.fields['last_name'].widget.attrs.update({
+            'required': '',
+            'name': 'last_name',
+            'id': 'last_name',
+            'type': 'text',
+            'class': 'form-control form-control-user',
+            'placeholder': 'Last Name',
+            'maxlength': '16',
+            'minlength': '6',
+        })
+
         self.fields['username'].widget.attrs.update({
-            'required':'',
-            'name':'username',
-            'id':'username',
-            'type':'text',
-            'class':'form-control form-control-user',
-            'placeholder':'Username',
-            'maxlength':'16',
-            'minlength':'6',
+            'required': '',
+            'name': 'username',
+            'id': 'username',
+            'type': 'text',
+            'class': 'form-control form-control-user',
+            'placeholder': 'Username',
+            'maxlength': '16',
+            'minlength': '6',
         })
         self.fields['email'].widget.attrs.update({
-            'required':'',
-            'name':'email',
-            'id':'email',
-            'type':'email',
-            'class':'form-control form-control-user',
-            'placeholder':'you@example.com',
-            
+            'required': '',
+            'name': 'email',
+            'id': 'email',
+            'type': 'email',
+            'class': 'form-control form-control-user',
+            'placeholder': 'you@example.com',
+
         })
+
         self.fields['password1'].widget.attrs.update({
-            'required':'',
-            'name':'password1',
-            'id':'password1',
-            'type':'password',
-            'class':'form-control form-control-user',
-            'placeholder':'********',
-            'maxlength':'22',
-            'minlength':'8',
+            'required': '',
+            'name': 'password1',
+            'id': 'password1',
+            'type': 'password',
+            'class': 'form-control form-control-user',
+            'placeholder': '********',
+            'maxlength': '22',
+            'minlength': '8',
         })
         self.fields['password2'].widget.attrs.update({
-            'required':'',
-            'name':'password2',
-            'id':'password2',
-            'type':'password',
-            'class':'form-control form-control-user',
-            'placeholder':'********',
-            'maxlength':'22',
-            'minlength':'8',
+            'required': '',
+            'name': 'password2',
+            'id': 'password2',
+            'type': 'password',
+            'class': 'form-control form-control-user',
+            'placeholder': '********',
+            'maxlength': '22',
+            'minlength': '8',
         })
-    
-    
+
     class Meta:
         model = User
-        fields = ['username','email','password1','password2']
-        
-    
+        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
+
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():
@@ -73,3 +93,5 @@ class CreateUserForm(UserCreationForm):
         
         return email
 
+
+        return email

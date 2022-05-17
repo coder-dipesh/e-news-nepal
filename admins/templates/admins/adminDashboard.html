@@ -43,7 +43,7 @@
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Editors Count</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">40</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{editor_count}}</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user-tie fa-2x text-gray-300"></i>
@@ -56,13 +56,13 @@
 
     <!-- User Count Card -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <a href="/admins/users" style="text-decoration: none">
+      <a href="/admins/all-users" style="text-decoration: none">
         <div class="card shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Users Count</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">215</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ user_count }}</div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -117,7 +117,7 @@
   </div>
 </div>
 
-<!-- Editor Information Table -->
+<!--  Information Table -->
 <div class="container-fluid">
   <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -129,7 +129,7 @@
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
+              <th>Username</th>
               <th>Email</th>
               <th>Profile</th>
               <th>Role</th>
@@ -139,7 +139,7 @@
           <tfoot>
             <tr>
               <th>ID</th>
-              <th>Name</th>
+              <th>Username</th>
               <th>Email</th>
               <th>Profile</th>
               <th>Role</th>
@@ -147,10 +147,11 @@
             </tr>
           </tfoot>
           <tbody>
+            {% for user in user_info %}
             <tr>
-              <td>1</td>
-              <td>Javascript Developer</td>
-              <td>abc@gmail.com</td>
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
               <td>
                 <img
                   class="img-profile rounded-circle"
@@ -159,17 +160,20 @@
                   src="{% static 'images/avatars/user-01.jpg'%}"
                 />
               </td>
-              <td>User</td>
-              <td>2011/06/27</td>
+              <td>
+                {% if user.is_staff == True %} 
+                  {% if user.is_superuser == False %} 
+                  Editor 
+                  {% endif %} 
+                {% else %} 
+                User 
+                {% endif %}
+
+              </td>
+
+              <td>{{ user.date_joined }}</td>
             </tr>
-            <tr>
-              <td>22</td>
-              <td>Customer Support</td>
-              <td>helloworld@gmail.com</td>
-              <td>27</td>
-              <td>Editor</td>
-              <td>2011/01/25</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>

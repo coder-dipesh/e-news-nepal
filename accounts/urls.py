@@ -9,6 +9,8 @@ urlpatterns = [
   # Login Register
   path('sign-in', views.signIn, name='sign-in'),
   path('sign-up', views.signUp, name='sign-up'),
+  path('sign-out', views.signOut, name='sign-out'),
+  
   path('', views.home, name='home'),
   
   

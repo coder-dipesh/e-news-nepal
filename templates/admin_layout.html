@@ -52,7 +52,7 @@
         <div class="sidebar-heading">News Management</div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item {{activate_category}}">
           <a class="nav-link" href="#" aria-expanded="true">
             <i class="fas fa-th-large"></i>
             <span>Category</span>
@@ -60,7 +60,7 @@
         </li>
 
         <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item {{activate_all_news}">
           <a class="nav-link collapsed" href="#" aria-expanded="true">
             <i class="fas fa-newspaper"></i>
             <span>All News</span>
@@ -74,7 +74,7 @@
         <div class="sidebar-heading">User Management</div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item {{activate_editors}}">
           <a class="nav-link collapsed" href="#" aria-expanded="true">
             <i class="fas fa-user-tie"></i>
             <span>Editors</span>
@@ -82,8 +82,8 @@
         </li>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li class="nav-item {{activate_users}}">
+          <a class="nav-link" href="{% url 'all-users'%}">
             <i class="fas fa-user-alt"></i>
             <span>Users</span></a
           >
@@ -94,7 +94,7 @@
 
         <div class="sidebar-heading">Settings</div>
         <!-- Nav Item - Contact -->
-        <li class="nav-item">
+        <li class="nav-item {{activate_contact}}">
           <a class="nav-link" href="#">
             <i class="fas fa-address-card"></i>
             <span>Contact</span></a
@@ -102,7 +102,7 @@
         </li>
 
         <!-- Nav Item - Site Settings -->
-        <li class="nav-item">
+        <li class="nav-item {{activate_site_settings}}">
           <a class="nav-link" href="#">
             <i class="fas fa-cogs"></i>
             <span>Site Settings</span></a
@@ -162,14 +162,6 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                   </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
-                  </a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -223,7 +215,7 @@
           <div class="modal-body">Click "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-danger" href="login.html">Logout</a>
+            <a class="btn btn-danger" href="{% url 'sign-out' %}">Logout</a>
           </div>
         </div>
       </div>

@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.core.exceptions import ValidationError
 
+
+import re
+EMAIL_REGEX ="^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
+
 class CreateUserForm(UserCreationForm):
 
     # Overriding usercreatiion form to design signup page
@@ -56,10 +60,16 @@ class CreateUserForm(UserCreationForm):
         
     
     def clean_email(self):
-      email = self.cleaned_data['email']
-      if User.objects.filter(email=email).exists():
-        raise forms.ValidationError("Email already exists")
-      
-      return email
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("Email already exists")
+        
+        if not re.search(EMAIL_REGEX,email):
+            print("Invalid Email ")
+            raise forms.ValidationError("Invalid Email Address")
+            
+            
+            
+        
+        return email
 
-      

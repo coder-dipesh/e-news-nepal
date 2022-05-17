@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import UserOTP
@@ -56,7 +56,6 @@ def signUp(request):
                 
                 return render(request, 'accounts/signUp.html', {'otp':True, 'usr':usr})
         
-        
         userdata = CreateUserForm(request.POST)
         username = request.POST.get('username')
         if userdata.is_valid():
@@ -79,11 +78,16 @@ def signUp(request):
             )
             return render(request, 'accounts/signUp.html', {'otp':True, 'usr':usr})
         else:
-            messages.add_message(request, messages.ERROR, 'Failed to register user!!')
+            messages.add_message(request, messages.ERROR, 'Please enter a valid credentials!!')
 
     context = {'form': CreateUserForm}
 
     return render(request, 'accounts/signUp.html', context)
+
+
+def signOut(request):
+    logout(request)
+    return redirect('/sign-in')
 
 
 def home(request):

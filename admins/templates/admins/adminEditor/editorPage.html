@@ -1,0 +1,89 @@
+{% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+    <title>Dashboard | e-News Admin</title>
+
+{% endblock title %} {% block content %}
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Editor's Details</h1>
+
+            <!-- Register Editor Information -->
+            <div class=" no-arrow d-none d-sm-inline-block">
+                <a
+                        class="btn btn-sm bg-enews text-white"
+                        href="/admins/editor_signUp"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                >
+
+                    &nbsp; Register Editor
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- Editor Information Table -->
+        <div class="container-fluid">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Editors Information</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Profile</th>
+                                <th>Role</th>
+                                <th>Joined</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Profile</th>
+                                <th>Role</th>
+                                <th>Joined</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Javascript Developer</td>
+                                <td>abc@gmail.com</td>
+                                <td>
+                                    <img
+                                            class="img-profile rounded-circle"
+                                            height="40"
+                                            width="40"
+                                            src="{% static 'images/avatars/user-01.jpg' %}"
+                                    />
+                                </td>
+                                <td>User</td>
+                                <td>2011/06/27</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Customer Support</td>
+                                <td>helloworld@gmail.com</td>
+                                <td>27</td>
+                                <td>Editor</td>
+                                <td>2011/01/25</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

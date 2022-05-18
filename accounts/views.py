@@ -86,7 +86,8 @@ def signUp(request):
 
 
 def signOut(request):
-    logout(request)
+    request.session.clear()
+    print("Logged Out Successfully!!")
     return redirect('/sign-in')
 
 

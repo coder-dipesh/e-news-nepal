@@ -4,10 +4,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css" />
+    <link
+      href="{% static 'vendor/fontawesome-free/css/all.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet"
@@ -27,16 +34,25 @@
     <link href="{%static 'css/enews-admin.min.css'%}" rel="stylesheet" />
     <link href="{%static 'css/admin.css'%}" rel="stylesheet" />
 
-    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
+    <link
+      href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}"
+      rel="stylesheet"
+    />
     {% block title %} {{ section.title }} {% endblock title%}
   </head>
 
   <body id="page-top">
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul class="navbar-nav bg-enews sidebar sidebar-dark accordion" id="accordionSidebar">
+      <ul
+        class="navbar-nav bg-enews sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+      >
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admins">
+        <a
+          class="sidebar-brand d-flex align-items-center justify-content-center"
+          href="/admins"
+        >
           <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-newspaper"></i>
           </div>
@@ -60,7 +76,11 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item {{activate_category}}">
-          <a class="nav-link" href="#" aria-expanded="true">
+          <a
+            class="nav-link"
+            href="{% url 'all-category'%}"
+            aria-expanded="true"
+          >
             <i class="fas fa-th-large"></i>
             <span>Category</span>
           </a>
@@ -82,7 +102,11 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item {{activate_editors}}">
-          <a class="nav-link collapsed" href="{% url 'all-editors'%}" aria-expanded="true">
+          <a
+            class="nav-link collapsed"
+            href="{% url 'all-editors'%}"
+            aria-expanded="true"
+          >
             <i class="fas fa-user-tie"></i>
             <span>Editors</span>
           </a>
@@ -124,7 +148,10 @@
         <!-- Sidebar Message -->
         <div class="sidebar-card d-none d-lg-flex">
           <p class="text-center mb-2">
-            Logged in as <strong style="font-size: 16px !important">{{request.user.username}} </strong>
+            Logged in as
+            <strong style="font-size: 16px !important"
+              >{{request.user.username}}
+            </strong>
           </p>
         </div>
       </ul>
@@ -134,14 +161,21 @@
         <!-- Main Content -->
         <div id="content">
           <!-- Topbar -->
-          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
             <!-- Sidebar Toggle (Topbar) -->
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <button
+              id="sidebarToggleTop"
+              class="btn btn-link d-md-none rounded-circle mr-3"
+            >
               <i class="fa fa-bars"></i>
             </button>
 
             <!-- Topbar Title -->
-            <h4 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 text-enews">
+            <h4
+              class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 text-enews"
+            >
               ADMIN DASHBOARD
             </h4>
 
@@ -160,18 +194,33 @@
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ request.user.email }}</span>
-                  <img class="img-profile rounded-circle" src="{% static 'images/avatars/user-01.jpg'%}" />
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small"
+                    >{{ request.user.email }}</span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="{% static 'images/avatars/user-01.jpg'%}"
+                  />
                 </a>
                 <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <div
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="userDropdown"
+                >
                   <a class="dropdown-item" href="#">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                   </a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#logoutModal"
+                  >
+                    <i
+                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+                    ></i>
                     Logout
                   </a>
                 </div>
@@ -214,14 +263,25 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to Logout?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Are you sure you want to Logout?
+            </h5>
+            <button
+              class="close"
+              type="button"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Click "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body">
+            Click "Logout" below if you are ready to end your current session.
+          </div>
           <div class="modal-footer">
-            <button class="btn" type="button" data-dismiss="modal">Cancel</button>
+            <button class="btn" type="button" data-dismiss="modal">
+              Cancel
+            </button>
             <a class="btn btn-danger" href="{% url 'sign-out' %}">Logout</a>
           </div>
         </div>
@@ -260,6 +320,8 @@
     ></script>
 
     <!-- JQuery Imports -->
-    {% comment %} <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> {% endcomment %}
+    {% comment %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    {% endcomment %}
   </body>
 </html>

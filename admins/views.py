@@ -34,6 +34,7 @@ def adminDashbaord(request):
                }
     return render(request, 'admins/adminDashboard.html', context)
 
+
 @login_required
 @admin_only
 def getUsers(request):
@@ -62,7 +63,7 @@ def editorSignUp(request):
         if form.is_valid():
             user = form.save()
             user.save()
-            # Getting user and altering its value 
+            # Getting user and altering its value
             username = request.POST.get('username')
             usr = User.objects.get(username=username)
             usr.is_staff = True
@@ -70,11 +71,50 @@ def editorSignUp(request):
 
             if cform.is_valid():
                 CustomUser.objects.create(user=user, role=role, salary=salary)
-            messages.add_message(request, messages.SUCCESS, 'Editor registered successfully!!')
+            messages.add_message(request, messages.SUCCESS,
+                                 'Editor registered successfully!!')
         else:
-            messages.add_message(request, messages.ERROR, 'Unable to register editor!!')
+            messages.add_message(request, messages.ERROR,
+                                 'Unable to register editor!!')
 
     context = {'form': CreateUserForm,
                'cform': CustomUserForm, }
 
     return render(request, 'admins/adminEditor/registerEditor.html', context)
+
+
+@login_required
+@admin_only
+def getCategory(request):
+    context = {'activate_category': 'active'}
+    return render(request, 'admins/Category/categoryPage.html', context)
+
+
+@login_required
+def newCategory(request):
+    if request.method == 'POST':
+        cform = CustomUserForm(request.POST)
+        form = CreateUserForm(request.POST)
+        role = request.POST.get('role')
+        salary = request.POST.get('salary')
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            # Getting user and altering its value
+            username = request.POST.get('username')
+            usr = User.objects.get(username=username)
+            usr.is_staff = True
+            usr.save()  # Save user
+
+            if cform.is_valid():
+                CustomUser.objects.create(user=user, role=role, salary=salary)
+            messages.add_message(request, messages.SUCCESS,
+                                 'Editor registered successfully!!')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 'Unable to register editor!!')
+
+    context = {'form': CreateUserForm,
+               'cform': CustomUserForm, }
+
+    return render(request, 'admins/Category/newCategory.html', context)

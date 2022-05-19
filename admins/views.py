@@ -2,7 +2,7 @@ from unittest import result
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from accounts.auth import admin_only
 from django.contrib.auth.models import User
@@ -11,7 +11,7 @@ from accounts.auth import admin_only, unauthenticated_user
 from .models import CustomUser
 # Create your views here.
 from accounts.forms import CreateUserForm
-from .forms import CustomUserForm,CreateUserForm
+from .forms import CustomUserForm, CreateUserForm
 from enews import settings
 
 from django.template.loader import render_to_string
@@ -29,37 +29,48 @@ from xhtml2pdf import pisa
 import os
 from django.core.mail import EmailMultiAlternatives
 
+# ==============================================
+# ============= ADMIN DASHBOARD ================
+# ==============================================
+
 @login_required
 @admin_only
 def adminDashbaord(request):
     users = User.objects.all()
-    
+
     admin_count = users.filter(is_superuser=1).count()
-    editor_count = users.filter(is_superuser=0,is_staff=1).count()
-    user_count = users.filter(is_superuser=0,is_staff=0).count()
-    
-    user_info= users.exclude(is_superuser=1)
-    
-    
+    editor_count = users.filter(is_superuser=0, is_staff=1).count()
+    user_count = users.filter(is_superuser=0, is_staff=0).count()
+
+    user_info = users.exclude(is_superuser=1)
+
     context = {'users': users,
-                'admin_count': admin_count,
-                'editor_count': editor_count,
-                'user_count': user_count,
-                'user_info': user_info,
-                
-                }
-    return render(request, 'admins/adminDashboard.html',context)
+               'admin_count': admin_count,
+               'editor_count': editor_count,
+               'user_count': user_count,
+               'user_info': user_info,
+
+               }
+    return render(request, 'admins/adminDashboard.html', context)
+
+
+# ==========================================
+# ============= USER VIEW ================
+# ===========================================
 
 @login_required
 @admin_only
 def getUsers(request):
     users = User.objects.all()
-    user_info = users.filter(is_superuser=0,is_staff=0)
+    user_info = users.filter(is_superuser=0, is_staff=0)
     context = {'user_info': user_info,
-                'activate_users':'active'}
-    
-    return render(request, 'admins/allUsers.html',context)
+               'activate_users': 'active'}
 
+    return render(request, 'admins/allUsers.html', context)
+
+# ==========================================
+# ============= Editor CRUD ================
+# ===========================================
 
 @login_required
 @admin_only
@@ -85,18 +96,6 @@ def getEditor(request):
     return render(request, 'admins/adminEditor/editorPage.html',context)
 
 
-
-
-# ==========================================
-# ===========================================
-# ===========================================
-
-
-
-
-
-
-
 def render_to_pdf(template_src, context_dict={}):
     template = get_template(template_src)
     html  = template.render(context_dict)
@@ -107,12 +106,8 @@ def render_to_pdf(template_src, context_dict={}):
     return None
 
 
-
-
-
-
-
 @login_required
+@admin_only
 def editorSignUp(request):
     if request.method == 'POST':
         cform = CustomUserForm(request.POST)
@@ -121,7 +116,7 @@ def editorSignUp(request):
         salary = request.POST.get('salary')
         
         if form.is_valid():
-            user= form.save()
+            user = form.save()
             user.save()
             # Getting user and altering its value 
             usr = User.objects.get(username = user.username)
@@ -165,30 +160,106 @@ def editorSignUp(request):
                 email.attach_alternative(message, "text/html")
                 email.attach(filename, pdf, 'application/pdf')
                 email.send(fail_silently=False)
-                
-            # Sending mail to editor with login credentials 
-            
-                #return HttpResponse(pdf, content_type='application/pdf')
 
-                # force download
-                # if pdf:
-                #     response = HttpResponse(pdf, content_type='application/pdf')
-                #     filename = "Login_%s.pdf" %(data['username'])
-                #     content = "inline; filename='%s'" %(filename)
-                #     #download = request.GET.get("download")
-                #     #if download:
-                #     content = "attachment; filename=%s" %(filename)
-                #     response['Content-Disposition'] = content
-                #     return response
-            
-
-            
                 messages.add_message(request, messages.SUCCESS, 'Editor registered successfully!!')
         
-        else:
-            messages.add_message(request, messages.ERROR, 'Unable to register editor!!')
-        
-    context = {'form': CreateUserForm,
-                'cform':CustomUserForm,}
+            # Getting user and altering its value
+            username = request.POST.get('username')
+            usr = User.objects.get(username=username)
+            usr.is_staff = True
+            usr.save()  # Save user
 
+            if cform.is_valid():
+                CustomUser.objects.create(user=user, role=role, salary=salary)
+            messages.add_message(request, messages.SUCCESS,
+                                    'Editor registered successfully!!')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                    'Unable to register editor!!')
+    context = {'form': CreateUserForm,
+                'cform': CustomUserForm, }
     return render(request, 'admins/adminEditor/registerEditor.html', context)
+
+@login_required
+@admin_only
+def removeEditor(request, editor_id):
+    editor = User.objects.get(id=editor_id)
+    editor.delete()
+    messages.add_message(request, messages.SUCCESS, 'Editor removed successfully')
+    return redirect('/admins/all-editors')
+
+@login_required
+@admin_only
+def updateEditor(request, editor_id):
+    editor_form = User.objects.get(id=editor_id)
+    ceditor = CustomUser.objects.get(user_id=editor_id)
+    user = editor_form.username
+    email = editor_form.email
+    
+    
+    if request.method == "POST":
+        ceditor_form = CustomUserForm(request.POST,instance=ceditor)
+        if ceditor_form.is_valid():
+            ceditor_form.save()
+            messages.add_message(request, messages.SUCCESS, "Editor's Information Updated Successfully")
+                
+        else:
+            messages.add_message(request, messages.ERROR, "Unable to Update Editor's Information")
+            
+        
+    context = {
+        'cform': CustomUserForm(instance=ceditor),
+        'user':user,
+        'email':email,
+        'activate_editors': 'active',
+    }
+
+    return render(request, 'admins/adminEditor/updateEditor.html',context)
+
+# ==========================================
+# ==============CATEGORY CRUD================
+# ===========================================
+
+
+@login_required
+@admin_only
+def getCategory(request):
+    context = {'activate_category': 'active'}
+    return render(request, 'admins/Category/categoryPage.html', context)
+
+
+@login_required
+@admin_only
+def newCategory(request):
+    if request.method == 'POST':
+        cform = CustomUserForm(request.POST)
+        form = CreateUserForm(request.POST)
+        role = request.POST.get('role')
+        salary = request.POST.get('salary')
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            # Getting user and altering its value
+            username = request.POST.get('username')
+            usr = User.objects.get(username=username)
+            usr.is_staff = True
+            usr.save()  # Save user
+
+            if cform.is_valid():
+                CustomUser.objects.create(user=user, role=role, salary=salary)
+            messages.add_message(request, messages.SUCCESS,
+                                    'Editor registered successfully!!')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                    'Unable to register editor!!')
+
+    context = {'form': CreateUserForm,
+               'cform': CustomUserForm, }
+
+    return render(request, 'admins/Category/newCategory.html', context)
+
+
+
+# ==========================================
+# =============   ================
+# ===========================================

@@ -29,6 +29,7 @@
 
     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
     {% block title %} {{ section.title }} {% endblock title%}
+
   </head>
 
   <body id="page-top">
@@ -36,7 +37,7 @@
       <!-- Sidebar -->
       <ul class="navbar-nav bg-enews sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admins">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/editors">
           <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-newspaper"></i>
           </div>
@@ -48,7 +49,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-          <a class="nav-link" href="/admins">
+          <a class="nav-link" href="/editors">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a
           >
@@ -60,9 +61,9 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item {{activate_category}}">
-          <a class="nav-link" href="{% url 'all-category'%}" aria-expanded="true">
-            <i class="fas fa-th-large"></i>
-            <span>Category</span>
+          <a class="nav-link" href="#" aria-expanded="true">
+            <i class="fas fa-envelope"></i>
+            <span>News Requests</span>
           </a>
         </li>
 
@@ -70,31 +71,10 @@
         <li class="nav-item {{activate_all_news}}">
           <a class="nav-link collapsed" href="#" aria-expanded="true">
             <i class="fas fa-newspaper"></i>
-            <span>All News</span>
+            <span>Add News</span>
           </a>
         </li>
 
-        <!-- Divider -->
-        <hr class="sidebar-divider" />
-
-        <!-- Heading -->
-        <div class="sidebar-heading">User Management</div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item {{activate_editors}}">
-          <a class="nav-link collapsed" href="{% url 'all-editors'%}" aria-expanded="true">
-            <i class="fas fa-user-tie"></i>
-            <span>Editors</span>
-          </a>
-        </li>
-
-        <!-- Nav Item - Charts -->
-        <li class="nav-item {{activate_users}}">
-          <a class="nav-link" href="{% url 'all-users'%}">
-            <i class="fas fa-user-alt"></i>
-            <span>Users</span></a
-          >
-        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider" />
@@ -104,15 +84,15 @@
         <li class="nav-item {{activate_contact}}">
           <a class="nav-link" href="#">
             <i class="fas fa-address-card"></i>
-            <span>Contact</span></a
+            <span>Profile</span></a
           >
         </li>
 
-        <!-- Nav Item - Site Settings -->
+        <!-- Nav Item - Settings -->
         <li class="nav-item {{activate_site_settings}}">
           <a class="nav-link" href="#">
             <i class="fas fa-cogs"></i>
-            <span>Site Settings</span></a
+            <span>Settings</span></a
           >
         </li>
 
@@ -124,8 +104,7 @@
         <!-- Sidebar Message -->
         <div class="sidebar-card d-none d-lg-flex">
           <p class="text-center mb-2">
-            Logged in as
-            <strong style="font-size: 16px !important">{{request.user.username}} </strong>
+            Logged in as <strong style="font-size: 16px !important">{{request.user.username}} </strong>
           </p>
         </div>
       </ul>
@@ -143,7 +122,7 @@
 
             <!-- Topbar Title -->
             <h4 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 text-enews">
-              ADMIN DASHBOARD
+              Editor DASHBOARD
             </h4>
 
             <!-- Topbar Navbar -->
@@ -229,32 +208,6 @@
       </div>
     </div>
 
-    <!-- Delete Modal-->
-    <div
-      class="modal fade"
-      id="deleteModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Click "Delete" below if you want to remove editor.</div>
-          <div class="modal-footer">
-            <button class="btn" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-danger" href="{% url 'sign-out' %}">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Bootstrap core JavaScript-->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <script src=" {% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -285,10 +238,9 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
+      <script src="https://kit.fontawesome.com/e944258301.js" crossorigin="anonymous"></script>
 
     <!-- JQuery Imports -->
-    {% comment %}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    {% endcomment %}
+    {% comment %} <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> {% endcomment %}
   </body>
 </html>

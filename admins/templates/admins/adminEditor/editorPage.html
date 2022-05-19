@@ -32,6 +32,7 @@
       </a>
     </div>
   </div>
+  {% include "message.html" %}
 
   <!-- Editor Information Table -->
   <div class="container-fluid">
@@ -62,9 +63,25 @@
                 <td>{{k}}</td>
                 <td>{{i.date_joined}}</td>
                 <td class="text-center">
-                  <button class="btn btn-sm btn-danger">Resigned</button>
-                  <button class="btn btn-sm btn-primary">SendMail</button>
-                  <button class="btn btn-sm btn-warning">Update</button>
+                  <button class="btn btn-sm btn-danger" data-bs-toggle="tooltip" title="Remove Editor!">
+                    <a
+                      href="/admins/remove-editor/{{i.id}}"
+                      onclick="return confirm('Are you sure to remove this editor?')"
+                      style="color: white !important; text-decoration: none"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </button>
+                  <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="Send Mail to Editor!">
+                    <a href="mailto:{{i.email}}" style="color: white !important; text-decoration: none">
+                      <i class="fas fa-paper-plane"></i>
+                    </a>
+                  </button>
+                  <button class="btn btn-sm btn-warning" data-bs-toggle="tooltip" title="Update Editor Information!">
+                    <a href="/admins/update-editor/{{i.id}}" style="color: white !important; text-decoration: none">
+                      <i class="fas fa-user-edit"></i>
+                    </a>
+                  </button>
                 </td>
               </tr>
               {% endfor %}
@@ -86,4 +103,10 @@
     </div>
   </div>
 </div>
+
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+</script>
+
 {% endblock content %}

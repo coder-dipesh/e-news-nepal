@@ -21,3 +21,7 @@
     width: auto !important;
   }
 }
+
+.custom-tooltip-primary {
+  --bs-tooltip-bg: var(--bs-primary);
+}

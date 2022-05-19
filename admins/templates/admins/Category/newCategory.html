@@ -1,6 +1,6 @@
 {% extends 'admin_layout.html' %} {% load static%} {% load bootstrap %} {% block title %}
 
-<title>Editor Sign Up | e-News Admin</title>
+<title>New Category | e-News Admin</title>
 
 {% endblock title%}
 
@@ -32,10 +32,14 @@
           <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <a href="{% url 'all-editors'%}" class="text-primary">All Editors</a>
+          <a href="{% url 'all-category'%}" class="text-primary"
+            >All Category
+          </a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <a href="{% url 'editor-sign-up'%}" class="text-primary">Editor Sign Up</a>
+          <a href="{% url 'editor-sign-up'%}" class="text-primary"
+            >Add New Category</a
+          >
         </li>
       </ol>
     </nav>
@@ -43,7 +47,7 @@
     <div class="no-arrow d-sm-inline-block">
       <a
         class="btn btn-sm bg-enews text-white"
-        href="{% url 'all-editors'%}"
+        href="{% url 'all-category'%}"
         role="button"
         aria-haspopup="true"
         aria-expanded="false"
@@ -60,19 +64,12 @@
       <div class="col-lg-12">
         <div class="p-5">
           <div class="text-center">
-            <h3 class="title text-gray-900 mb-4">Editor Sign Up</h3>
+            <h3 class="title text-gray-900 mb-4">Add New Category</h3>
           </div>
 
           <form method="POST" class="user">
             {% csrf_token %}
-            <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">{{form.first_name}}</div>
-              <div class="col-sm-6">{{form.last_name}}</div>
-            </div>
-
-            <div class="form-group row">
-              <div class="col-sm-12 mb-3 mb-sm-0">{{form.username}}</div>
-            </div>
+            
             <div class="form-group">{{form.email}}</div>
             <div class="form-group row">
               <div class="col-sm-12 mb-3 mb-sm-0">{{cform.role}}</div>
@@ -84,13 +81,16 @@
               <div class="col-sm-6 mb-3 mb-sm-0">{{form.password1}}</div>
               <div class="col-sm-6">{{form.password2}}</div>
             </div>
-            <button type="submit" class="btn btn-primary btn-block text-uppercase mt-4" style="height: 50px !important">
+            <button
+              type="submit"
+              class="btn btn-primary btn-block text-uppercase mt-4"
+              style="height: 50px !important"
+            >
               Sign Up
             </button>
           </form>
 
           <hr />
-          <p>*After clicking the signup you will agree to terms & condition.</p>
         </div>
       </div>
     </div>

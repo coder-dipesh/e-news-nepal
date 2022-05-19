@@ -92,7 +92,6 @@ class CreateUserForm(UserCreationForm):
 
 
 class CustomUserForm(forms.ModelForm):
-    
         # Overriding usercreatiion form to design signup page
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -114,3 +113,7 @@ class CustomUserForm(forms.ModelForm):
         model = CustomUser
         fields = ['role', 'salary']
         
+        
+        
+        
+

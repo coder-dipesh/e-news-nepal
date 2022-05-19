@@ -1,0 +1,92 @@
+{% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+<title>Dashboard | e-News Admin</title>
+
+{% endblock title %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-category'%}" class="text-primary"
+            >All Category</a
+          >
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Register Editor Information -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'new-category'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-user-plus fa-sm text-white-100"></i>
+        &nbsp; Add New Category
+      </a>
+    </div>
+  </div>
+
+  <!-- Editor Information Table -->
+  <div class="container-fluid">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Categories Information
+        </h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category Name</th>
+                <th>User</th>
+                <th>Description</th>
+                <th colspan="2" class="text-center">Operations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>
+                  <img
+                  height="40"
+                  width="40"
+                  src="{% static 'images/icon.png' %}"
+                  />
+                </td>
+                <td>Sports</td>
+                <td>Sports</td>
+                <td>Joshi</td>
+                <td>This is the Sports Category</td>
+                <td>
+                  <button class="btn btn-danger">Delete</button>
+                  <button class="btn btn-warning">Update</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

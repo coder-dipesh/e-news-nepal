@@ -1,9 +1,10 @@
+from statistics import mode
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.core.exceptions import ValidationError
-from .models import CustomUser
+from .models import Category, CustomUser
 
 import re
 EMAIL_REGEX ="^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
@@ -112,6 +113,11 @@ class CustomUserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['role', 'salary']
+
+class categoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = "__all__"
         
         
         

@@ -1,157 +1,150 @@
 {% extends "editor_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
 
-    <title>Dashboard | e-News Admin</title>
+<title>Dashboard | e-News Editor</title>
 
 {% endblock title %} {% block content %}
 
-    <div class="container-fluid">
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
 
-            <!-- Download User Information -->
-            <div class="dropdown no-arrow d-none d-sm-inline-block">
-                <a
-                        class="dropdown-toggle btn btn-sm bg-enews text-white"
-                        href="#"
-                        role="button"
-                        id="dropdownMenuLink"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                >
-                    <i class="fas fa-download fa-sm text-white-50"></i>
-                    &nbsp; Download
-                </a>
-                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                     aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Download CSV</div>
-                    <a class="dropdown-item" href="#">My Data</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">News</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Total News Content Row -->
-        <div class="row">
-            <!-- Editor Count Card -->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <a href="{% url 'all-editors' %}" style="text-decoration: none">
-                    <div class="card shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total News
-                                        Count
-                                    </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalnews_count }}</div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-newspaper fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-
-            <!-- News Count Card -->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <a href="/admins/news" style="text-decoration: none">
-                    <div class="card shadow h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">My News Count
-                                    </div>
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col-auto">
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ mynewscount }}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fas fa-newspaper fa-2x text-gray-300"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-
-            <!--  Information Table -->
-            <div class="container-fluid">
-                <div class="card shadow mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">News Information</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Title</th>
-                                    <th>Image</th>
-                                    <th>Content</th>
-                                    <th>Category</th>
-                                    <th>Uploaded On</th>
-                                    <th>Action</th>
-                                </tr>
-                                </thead>
-
-                                <tbody>
-                                {% for news in news_info %}
-                                    <tr>
-                                        <td>{{ news.id }}</td>
-                                        <td>{{ news.title }}</td>
-                                        <td>{{ news.content }}</td>
-                                        <td>
-                                            <img
-                                                    class="img-profile rounded-circle"
-                                                    height="40"
-                                                    width="40"
-                                                    src="{% static 'images/avatars/user-01.jpg' %}"
-                                            />
-                                        </td>
-                                        <td>{{ news.category }}</td>
-                                        <td>{{ news.uploaddate }}</td>
-                                        <td class="text-center"><a href="#"><i class="fa-solid fa-circle-xmark text-danger "></i></a></td>
-
-                                    </tr>
-
-                                {% endfor %}
-
-
-                                <!--  Test data- can be deleted after data fetching -->
-                                <tr>
-                                    <td>2</td>
-                                    <td>Balen Shah Wins</td>
-                                    <td>
-                                        <img
-                                                class="img-profile rounded-circle"
-                                                height="40"
-                                                width="40"
-                                                src="{% static 'images/avatars/user-01.jpg' %}"
-                                        />
-                                    </td>
-                                    <td>Balen Shah became the mayor of Kathmandu</td>
-                                    <td>Political</td>
-                                    <td>2022/5/20</td>
-                                    <td  class="text-center"><a href="#"><i class="fa-solid fa-circle-xmark text-danger "></i></a></td>
-
-                                </tr>
-
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- Download User Information -->
+    <div class="dropdown no-arrow d-none d-sm-inline-block">
+      <a
+        class="dropdown-toggle btn btn-sm bg-enews text-white"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-download fa-sm text-white-50"></i>
+        &nbsp; Download
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+        <div class="dropdown-header">Download CSV</div>
+        <a class="dropdown-item" href="#">My Data</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">News</a>
+      </div>
     </div>
+  </div>
+
+  <!-- Total News Content Row -->
+  <div class="row">
+    <!-- Editor Count Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <a href="{% url 'all-editors' %}" style="text-decoration: none">
+        <div class="card shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total News Count</div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ totalnews_count }}</div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- News Count Card -->
+    <div class="col-xl-3 col-md-6 mb-4">
+      <a href="/admins/news" style="text-decoration: none">
+        <div class="card shadow h-100 py-2">
+          <div class="card-body">
+            <div class="row no-gutters align-items-center">
+              <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">My News Count</div>
+                <div class="row no-gutters align-items-center">
+                  <div class="col-auto">
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ mynewscount }}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-auto">
+                <i class="fas fa-newspaper fa-2x text-gray-300"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!--  Information Table -->
+    <div class="container-fluid">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">News Information</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Image</th>
+                  <th>Content</th>
+                  <th>Category</th>
+                  <th>Uploaded On</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for news in news_info %}
+                <tr>
+                  <td>{{ news.id }}</td>
+                  <td>{{ news.title }}</td>
+                  <td>{{ news.content }}</td>
+                  <td>
+                    <img
+                      class="img-profile rounded-circle"
+                      height="40"
+                      width="40"
+                      src="{% static 'images/avatars/user-01.jpg' %}"
+                    />
+                  </td>
+                  <td>{{ news.category }}</td>
+                  <td>{{ news.uploaddate }}</td>
+                  <td class="text-center">
+                    <a href="#"><i class="fa-solid fa-circle-xmark text-danger"></i></a>
+                  </td>
+                </tr>
+
+                {% endfor %}
+
+                <!--  Test data- can be deleted after data fetching -->
+                <tr>
+                  <td>2</td>
+                  <td>Balen Shah Wins</td>
+                  <td>
+                    <img
+                      class="img-profile rounded-circle"
+                      height="40"
+                      width="40"
+                      src="{% static 'images/avatars/user-01.jpg' %}"
+                    />
+                  </td>
+                  <td>Balen Shah became the mayor of Kathmandu</td>
+                  <td>Political</td>
+                  <td>2022/5/20</td>
+                  <td class="text-center">
+                    <a href="#"><i class="fa-solid fa-circle-xmark text-danger"></i></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}

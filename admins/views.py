@@ -130,6 +130,8 @@ def editorSignUp(request):
             usr.save() # Save user
             if cform.is_valid():
                 CustomUser.objects.create(user=user,role=role,salary=salary)
+                messages.add_message(request, messages.SUCCESS,
+                                    'Editor registered successfully!!')
                 
                 template = get_template('admins/adminEditor/mailEditor.html')
                 data = {'username': username,
@@ -161,18 +163,13 @@ def editorSignUp(request):
                 email.attach(filename, pdf, 'application/pdf')
                 email.send(fail_silently=False)
 
-                messages.add_message(request, messages.SUCCESS, 'Editor registered successfully!!')
         
             # Getting user and altering its value
             username = request.POST.get('username')
             usr = User.objects.get(username=username)
             usr.is_staff = True
             usr.save()  # Save user
-
-            if cform.is_valid():
-                CustomUser.objects.create(user=user, role=role, salary=salary)
-            messages.add_message(request, messages.SUCCESS,
-                                    'Editor registered successfully!!')
+            
         else:
             messages.add_message(request, messages.ERROR,
                                     'Unable to register editor!!')

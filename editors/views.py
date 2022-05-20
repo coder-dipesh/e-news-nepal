@@ -5,7 +5,8 @@ from django.shortcuts import render
 # Create your views here.
 from accounts.auth import editor_only
 
-
+@login_required
+@editor_only
 def editorDashboard(request):
     users = User.objects.all()
 
@@ -16,9 +17,9 @@ def editorDashboard(request):
     user_info = users.exclude(is_superuser=1)
 
     context = {'users': users,
-               'editor_count': editor_count,
-               'user_count': user_count,
-               'user_info': user_info,
+                'editor_count': editor_count,
+                'user_count': user_count,
+                'user_info': user_info,
 
-               }
+                }
     return render(request, 'editors/editorsDashboard.html', context)

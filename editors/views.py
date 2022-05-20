@@ -1,9 +1,13 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages, auth
 
 # Create your views here.
 from accounts.auth import editor_only
+from accounts.forms import ProfileForm
+from accounts.models import Profile
+
 
 @login_required
 @editor_only
@@ -17,9 +21,40 @@ def editorDashboard(request):
     user_info = users.exclude(is_superuser=1)
 
     context = {'users': users,
-                'editor_count': editor_count,
-                'user_count': user_count,
-                'user_info': user_info,
+               'editor_count': editor_count,
+               'user_count': user_count,
+               'user_info': user_info,
 
-                }
+               }
     return render(request, 'editors/editorsDashboard.html', context)
+
+
+@login_required
+@editor_only
+def editorProfile(request):
+    profile = request.user.profile  # Getting currently logged in user data
+    user = User.objects.get(username=profile)
+    print(user)
+    userdata = ProfileForm(request.POST, request.FILES, instance=profile)
+
+    if request.method == 'POST':
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        email = request.POST.get('email')
+
+        print(profile)
+        if userdata.is_valid():
+            User.objects.filter(username=profile).update(
+                first_name=firstname, last_name=lastname, email=email)
+            userdata.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 'Profile data updated successfully!')
+            return redirect('/editors/profile')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 "Something went wrong!")
+            context = {'profileForm': userdata}
+            return render(request, 'editors/editorsProfile.html', context)
+    context = {'profileForm': userdata}
+
+    return render(request, 'editors/editorsProfile.html', context)

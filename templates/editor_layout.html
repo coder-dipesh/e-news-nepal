@@ -29,7 +29,6 @@
 
     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
     {% block title %} {{ section.title }} {% endblock title%}
-
   </head>
 
   <body id="page-top">
@@ -75,14 +74,13 @@
           </a>
         </li>
 
-
         <!-- Divider -->
         <hr class="sidebar-divider" />
 
         <div class="sidebar-heading">Settings</div>
         <!-- Nav Item - Contact -->
         <li class="nav-item {{activate_contact}}">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{% url 'profile'%}">
             <i class="fas fa-address-card"></i>
             <span>Profile</span></a
           >
@@ -122,7 +120,7 @@
 
             <!-- Topbar Title -->
             <h4 class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 text-enews">
-              Editor DASHBOARD
+              EDITOR DASHBOARD
             </h4>
 
             <!-- Topbar Navbar -->
@@ -145,7 +143,7 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="{% url 'profile'%}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                   </a>
@@ -238,9 +236,11 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-      <script src="https://kit.fontawesome.com/e944258301.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e944258301.js" crossorigin="anonymous"></script>
 
     <!-- JQuery Imports -->
-    {% comment %} <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> {% endcomment %}
+    {% comment %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    {% endcomment %}
   </body>
 </html>

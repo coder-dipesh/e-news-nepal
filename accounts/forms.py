@@ -2,11 +2,14 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
+from accounts.models import Profile
+
 from django.core.exceptions import ValidationError
 
 
 import re
-EMAIL_REGEX ="^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
+EMAIL_REGEX = "^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
+
 
 class CreateUserForm(UserCreationForm):
 
@@ -77,21 +80,29 @@ class CreateUserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'username',
+                  'email', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError("Email already exists")
-        
-        if not re.search(EMAIL_REGEX,email):
+
+        if not re.search(EMAIL_REGEX, email):
             print("Invalid Email ")
             raise forms.ValidationError("Invalid Email Address")
-            
-            
-            
-        
+
+        return email
+
         return email
 
 
-        return email
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['firstname', 'lastname', 'bio',
+                  'phone', 'address', 'city', 'profile_pic']
+
+        widgets = {
+            'profile_pic': forms.FileInput(attrs={'class': 'form-control validate'}),
+        }

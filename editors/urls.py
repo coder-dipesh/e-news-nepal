@@ -4,5 +4,8 @@ from editors import views
 urlpatterns = [
     path('', views.editorDashboard, name='editor'),
 
+    path('profile', views.editorProfile, name='profile'),
+
+
 
 ]

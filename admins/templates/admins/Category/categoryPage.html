@@ -54,33 +54,38 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Image</th>
                 <th>Title</th>
                 <th>Category Name</th>
-                <th>User</th>
                 <th>Description</th>
                 <th colspan="2" class="text-center">Operations</th>
               </tr>
             </thead>
             <tbody>
+              {% for c in category %}
               <tr>
-                <td>1</td>
+                <td>{{ c.id}}</td>
+                <td>{{ c.title }}</td>
+                <td>{{ c.categoryName }}</td>
+                <td>{{ c.description }}</td>
                 <td>
-                  <img
-                  height="40"
-                  width="40"
-                  src="{% static 'images/icon.png' %}"
-                  />
-                </td>
-                <td>Sports</td>
-                <td>Sports</td>
-                <td>Joshi</td>
-                <td>This is the Sports Category</td>
-                <td>
-                  <button class="btn btn-danger">Delete</button>
-                  <button class="btn btn-warning">Update</button>
+                  <div class="btn btn-danger">
+                    <a
+                      href="{% url 'delete_category' c.id %}"
+                      style="text-decoration: none; color: beige"
+                      >Delete</a
+                    >
+                  </div>
+
+                  <div class="btn btn-warning">
+                    <a
+                      href="{% url 'update_category' c.id %}"
+                      style="text-decoration: none; color: beige"
+                      >Update</a
+                    >
+                  </div>
                 </td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>

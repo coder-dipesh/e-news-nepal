@@ -28,9 +28,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="unsafe-secret-key")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get("DEBUG")) =="1" # 1== True
+DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1== True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 if not DEBUG:
     ALLOWED_HOSTS += [os.environ.get("ALLOWED_HOSTS")]
 
@@ -45,21 +45,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    
-    #Custom Apps
+
+    # Custom Apps
     'admins',
     'accounts',
     'editors',
     'users',
-    
+
     # External Imports
     'bootstrapform',
-    
-    'social_django',
-    
-    
-]
 
+    'social_django',
+
+
+]
 
 
 MIDDLEWARE = [
@@ -110,11 +109,11 @@ DATABASES = {
 
 
 AUTHENTICATION_BACKENDS = [
-    
+
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.google.GoogleOAuth2',
-    ]
+]
 
 
 # Password validation
@@ -155,12 +154,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
 
 
-MEDIA_URL = 'images/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/uploads')
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 
 
 LOGIN_URL = '/sign-in'
@@ -180,7 +178,6 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get(
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")

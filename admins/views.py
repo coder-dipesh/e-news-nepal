@@ -45,7 +45,7 @@ def adminDashbaord(request):
     admin_count = users.filter(is_superuser=1).count()
     editor_count = users.filter(is_superuser=0, is_staff=1).count()
     user_count = users.filter(is_superuser=0, is_staff=0).count()
-
+    c = Category.objects.all().count()
     user_info = users.exclude(is_superuser=1)
 
     context = {'users': users,
@@ -53,7 +53,7 @@ def adminDashbaord(request):
                'editor_count': editor_count,
                'user_count': user_count,
                'user_info': user_info,
-
+               'category_count': c,
                }
     return render(request, 'admins/adminDashboard.html', context)
 

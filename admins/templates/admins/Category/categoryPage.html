@@ -52,12 +52,12 @@
             cellspacing="0"
           >
             <thead>
-              <tr>
-                <th>ID</th>
+              <tr class="text-center">
+                <th>id</th>
                 <th>Title</th>
                 <th>Category Name</th>
                 <th>Description</th>
-                <th colspan="2" class="text-center">Operations</th>
+                <th>Operations</th>
               </tr>
             </thead>
             <tbody>
@@ -87,6 +87,16 @@
               </tr>
               {% endfor %}
             </tbody>
+
+            <tfoot>
+              <tr class="text-center">
+                <th>id</th>
+                <th>Title</th>
+                <th>Category Name</th>
+                <th>Description</th>
+                <th>Operations</th>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </div>

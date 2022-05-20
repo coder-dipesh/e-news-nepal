@@ -23,7 +23,10 @@
         <i class="fas fa-download fa-sm text-white-50"></i>
         &nbsp; Download
       </a>
-      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+      <div
+        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+        aria-labelledby="dropdownMenuLink"
+      >
         <div class="dropdown-header">Download CSV</div>
         <a class="dropdown-item" href="#">Editor Data</a>
         <a class="dropdown-item" href="#">User Data</a>
@@ -42,8 +45,14 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Editors Count</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{editor_count}}</div>
+                <div
+                  class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                >
+                  Editors Count
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{editor_count}}
+                </div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user-tie fa-2x text-gray-300"></i>
@@ -61,8 +70,14 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Users Count</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ user_count }}</div>
+                <div
+                  class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                >
+                  Users Count
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{ user_count }}
+                </div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -80,10 +95,16 @@
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">News Count</div>
+                <div
+                  class="text-xs font-weight-bold text-info text-uppercase mb-1"
+                >
+                  News Count
+                </div>
                 <div class="row no-gutters align-items-center">
                   <div class="col-auto">
-                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">500</div>
+                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                      500
+                    </div>
                   </div>
                 </div>
               </div>
@@ -98,13 +119,19 @@
 
     <!-- Category Count Card -->
     <div class="col-xl-3 col-md-6 mb-4">
-      <a href="/admins/categories" style="text-decoration: none">
+      <a href="{% url 'all-category'%}" style="text-decoration: none">
         <div class="card shadow h-100 py-2">
           <div class="card-body">
             <div class="row no-gutters align-items-center">
               <div class="col mr-2">
-                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Categories Count</div>
-                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                <div
+                  class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                >
+                  Categories Count
+                </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                  {{category_count}}
+                </div>
               </div>
               <div class="col-auto">
                 <i class="fas fa-th-large fa-2x text-gray-300"></i>
@@ -125,7 +152,12 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
           <thead>
             <tr>
               <th>ID</th>
@@ -161,8 +193,7 @@
                 />
               </td>
               <td>
-                {% if user.is_staff == True %} {% if user.is_superuser == False %} Editor {% endif %} {% else %} User 
-                {% endif %}
+                {% if user.is_staff == True %} {% if user.is_superuser == False %} Editor {% endif %} {% else %} User {% endif %}
               </td>
 
               <td>{{ user.date_joined }}</td>

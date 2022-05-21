@@ -77,8 +77,8 @@ def getUsers(request):
 # ===========================================
 
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def getEditor(request):
     users = User.objects.all()
     editor_info = users.filter(is_superuser=0, is_staff=1)

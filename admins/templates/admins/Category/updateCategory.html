@@ -2,25 +2,111 @@
 
 <title>Dashboard | e-News Admin</title>
 
-{% endblock title %} {% block content %}
+{% endblock title %} {% block content %} {% load static %}
+<style>
+  p.help-block {
+    color: #abc;
+  }
 
-{% load static %}
-    <!-- children div -->
-    <div class="form-group ">
-        <!-- creation of form -->
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <!-- form elements -->
-            {{ form.as_p }}
+  span.help-block {
+    color: red;
+  }
+  .asteriskField {
+    color: red;
+  }
+  .myForm button a:hover {
+    color: white !important;
+  }
+</style>
 
-            <input type="submit" class="btn btn-primary btn-user btn-block" name="submit"
-                   value="Update">
-        </form>
-        {% if success %}
-            <div class="">
-                <strong>Update Successfully!</strong></div>
-        {% endif %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-1">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-category'%}" class="text-primary">All Category</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="" class="text-primary">Update Category</a>
+        </li>
+      </ol>
+    </nav>
+    <!-- Back To Editor Information  -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'all-category'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-backward fa-sm text-white-100"></i>
+        &nbsp; Back
+      </a>
     </div>
+  </div>
+  <div class="container">
+    <div class="align-items-center">
+      <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+        <div class="p-1">
+          <div class="text-center">
+            <h3 class="title text-gray-900 mb-8">Update Category</h3>
+          </div>
 
+          <hr />
+        </div>
+        <div class="row tm-edit-product-row">
+          <div class="col-xl-6 col-lg-6 col-md-12">
+            <div>
+              <div class="col-md-12">
+                <div>{% include "message.html" %}</div>
+              </div>
+              <form method="POST">
+                {% csrf_token %}
+
+                <!-- django -->
+                <div class="form-group mb-6">
+                  <label for="">Title<span class="text-danger">*</span> </label>
+
+                  {{form.title}}
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="">Category Name<span class="text-danger">*</span> </label>
+
+                  {{form.categoryName}}
+                </div>
+
+                <div class="form-group mb-3">
+                  <label for="">Category Description</label>
+
+                  {{form.description}}
+                </div>
+
+                <!-- django -->
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-block text-uppercase mt-4 mb-4"
+                  style="height: 50px !important"
+                >
+                  Update Category
+                </button>
+                <p>After clicking the "Update Category" button category will be updated.</p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+</script>
 
 {% endblock content %}

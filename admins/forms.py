@@ -1,13 +1,12 @@
-from statistics import mode
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from django.core.exceptions import ValidationError
 from .models import Category, CustomUser
 
 import re
-EMAIL_REGEX ="^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
+EMAIL_REGEX = "^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
+
 
 class CreateUserForm(UserCreationForm):
 
@@ -78,22 +77,23 @@ class CreateUserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password1', 'password2']
+        fields = ['first_name', 'last_name', 'username',
+                  'email', 'password1', 'password2']
 
     def clean_email(self):
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError("Email already exists")
-        
-        if not re.search(EMAIL_REGEX,email):
+
+        if not re.search(EMAIL_REGEX, email):
             print("Invalid Email ")
             raise forms.ValidationError("Invalid Email Address")
-            
+
         return email
 
 
 class CustomUserForm(forms.ModelForm):
-        # Overriding usercreatiion form to design signup page
+    # Overriding usercreatiion form to design signup page
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['role'].widget.attrs.update({
@@ -109,17 +109,34 @@ class CustomUserForm(forms.ModelForm):
             'class': 'form-control form-control-user',
             'placeholder': 'Rs.45,000',
         })
-    
+
     class Meta:
         model = CustomUser
         fields = ['role', 'salary']
 
-class categoryForm(forms.ModelForm):
+
+class CategoryForm(ModelForm):
     class Meta:
         model = Category
-        fields = "__all__"
-        
-        
-        
-        
+        fields = ['title', 'categoryName', 'description']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({
+            'required': '',
+            'name': 'title',
+            'id': 'title',
+            'class': 'form-control validate',
+        })
+        self.fields['categoryName'].widget.attrs.update({
+            'required': '',
+            'name': 'categoryName',
+            'id': 'categoryName',
+            'class': 'form-control validate',
+        })
+        self.fields['description'].widget.attrs.update({
+            'required': '',
+            'name': 'description',
+            'id': 'description',
+            'class': 'form-control validate',
+        })

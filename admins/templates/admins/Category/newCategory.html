@@ -32,14 +32,10 @@
           <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <a href="{% url 'all-category'%}" class="text-primary"
-            >All Category
-          </a>
+          <a href="{% url 'all-category'%}" class="text-primary">All Category </a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <a href="{% url 'new-category'%}" class="text-primary"
-            >Add New Category</a
-          >
+          <a href="{% url 'new-category'%}" class="text-primary">Add New Category</a>
         </li>
       </ol>
     </nav>
@@ -58,37 +54,25 @@
     </div>
   </div>
 
-  <div class="card o-hidden border-0 shadow-lg my-5 mx-4" style="width: 20rem">
-    <div class="card-body p-0">
-      <div class="col-lg-12"></div>
-    </div>
-  </div>
-
   <div class="container-fluid">
     <div class="container">
       <div class="align-items-center">
         <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-          <div class="p-5">
-            <div class="text-center">
-              <h3 class="title text-gray-900 mb-8">Add New Category</h3>
-            </div>
-
-            <hr />
-          </div>
           <div class="row tm-edit-product-row">
             <div class="col-xl-6 col-lg-6 col-md-12">
               <div>
                 <div class="col-md-12">
-                  <div style="width: 50%">{% include "message.html" %}</div>
+                  <h3 class="title text-gray-900 mb-8">Add New Category</h3>
+
+                  <hr />
+                  {% include "message.html" %}
                 </div>
                 <form method="POST">
                   {% csrf_token %}
 
                   <!-- django -->
                   <div class="form-group mb-6">
-                    <label for=""
-                      >Title<span class="text-danger">*</span>
-                    </label>
+                    <label for="">Title<span class="text-danger">*</span> </label>
                     <input
                       id="name"
                       name="title"
@@ -100,9 +84,7 @@
                   </div>
 
                   <div class="form-group mb-3">
-                    <label for=""
-                      >Categorie Name<span class="text-danger">*</span>
-                    </label>
+                    <label for="">Category Name<span class="text-danger">*</span> </label>
                     <input
                       id="name"
                       name="categoryName"
@@ -130,11 +112,12 @@
                   <!-- django -->
                   <button
                     type="submit"
-                    class="btn btn-primary btn-block text-uppercase mt-4"
+                    class="btn btn-primary btn-block text-uppercase mt-4 mb-4"
                     style="height: 50px !important"
                   >
-                    New Categori
+                    Add Category
                   </button>
+                  <p>After clicking the "Add Category" button category will be added.</p>
                 </form>
               </div>
             </div>

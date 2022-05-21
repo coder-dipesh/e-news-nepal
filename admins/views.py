@@ -14,7 +14,7 @@ from accounts.auth import admin_only, unauthenticated_user
 from .models import Category, CustomUser
 # Create your views here.
 from accounts.forms import CreateUserForm
-from .forms import CustomUserForm, CreateUserForm, categoryForm
+from .forms import CustomUserForm, CreateUserForm, CategoryForm
 from enews import settings
 
 from django.template.loader import render_to_string
@@ -236,30 +236,29 @@ def updateEditor(request, editor_id):
 @login_required
 @admin_only
 def getCategory(request):
-    c = Category.objects.all()
+    category = Category.objects.all()
 
-    return render(request, 'admins/Category/categoryPage.html', {"category": c})
+    return render(request, 'admins/Category/categoryPage.html', {"category": category})
 
 
 @login_required
 @admin_only
 def newCategory(request):
     if request.method == 'POST':
-        form = categoryForm(request.POST, request.FILES)
+        form = CategoryForm(request.POST, request.FILES)
         form.save()
-
+        messages.add_message(request, messages.SUCCESS,
+                             'Category Added Successfully')
     return render(request, 'admins/Category/newCategory.html')
 
-
-# ==========================================
-# =============   ================
-# ===========================================
 
 @login_required
 @admin_only
 def delete_category(request, P_id):
-    o = Category.objects.get(id=P_id)
-    o.delete()
+    category = Category.objects.get(id=P_id)
+    category.delete()
+    messages.add_message(request, messages.SUCCESS,
+                         'Category deleted successfully')
     return redirect("all-category")
 
 
@@ -272,9 +271,17 @@ def categoryupdatebutton(request):
 @login_required
 @admin_only
 def update_category(request, p_id):
-    o = Category.objects.get(id=p_id)
-    if request.method == 'POST':
-        form = categoryForm(request.POST, request.FILES, instance=update)
-        form.save()
+    category = Category.objects.get(id=p_id)
 
-    return render(request, 'admins/Category/updateCategory.html', {"form": form, "update": update, })
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, request.FILES, instance=category)
+
+        if form.is_valid():
+            form.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 'Category Updated Successfully')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 'Unable to update Category')
+
+    return render(request, 'admins/Category/updateCategory.html', {"form": CategoryForm(instance=category)})

@@ -29,8 +29,8 @@ def editorDashboard(request):
     return render(request, 'editors/editorsDashboard.html', context)
 
 
-@login_required
-@editor_only
+# @login_required
+# @editor_only
 def editorProfile(request):
     profile = request.user.profile  # Getting currently logged in user data
     user = User.objects.get(username=profile)

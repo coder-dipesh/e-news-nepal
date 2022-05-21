@@ -27,9 +27,5 @@ urlpatterns = [
     path('update_category/<str:p_id>',
          views.update_category, name='update_category'),
 
-    path('categoryupdatebutton', views.categoryupdatebutton,
-         name='categoryupdatebutton'),
-
-
 
 ]

@@ -37,8 +37,8 @@ from django.core.mail import EmailMultiAlternatives
 # ==============================================
 
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def adminDashbaord(request):
     users = User.objects.all()
 
@@ -62,8 +62,8 @@ def adminDashbaord(request):
 # ============= USER VIEW ================
 # ===========================================
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def getUsers(request):
     users = User.objects.all()
     user_info = users.filter(is_superuser=0, is_staff=0)
@@ -233,16 +233,16 @@ def updateEditor(request, editor_id):
 # ===========================================
 
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def getCategory(request):
     category = Category.objects.all()
 
     return render(request, 'admins/Category/categoryPage.html', {"category": category})
 
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def newCategory(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST, request.FILES)
@@ -262,10 +262,6 @@ def delete_category(request, P_id):
     return redirect("all-category")
 
 
-@login_required
-@admin_only
-def categoryupdatebutton(request):
-    return render(request, "admins/Category/updateCategory.html")
 
 
 @login_required

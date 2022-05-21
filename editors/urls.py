@@ -6,6 +6,4 @@ urlpatterns = [
 
     path('profile', views.editorProfile, name='profile'),
 
-
-
 ]

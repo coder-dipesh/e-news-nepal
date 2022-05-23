@@ -29,7 +29,8 @@ urlpatterns = [
 
     path('categoryupdatebutton', views.categoryupdatebutton,
          name='categoryupdatebutton'),
-
+     # THis is url for the all news 
+     path('all-news', views.getNews, name='all-news'),
 
 
 ]

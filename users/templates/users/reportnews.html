@@ -1,0 +1,96 @@
+{% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+    <title>Report News | e-News User</title>
+
+{% endblock title %} {% block content %}
+    <section id="content-wrap" class="site-page">
+        <div class="container row float-container">
+            <div class="">
+
+                <div class="col-six">
+
+                    <section class="">
+                        <div>
+                            <h2>Report Your News</h2>
+                            <form name="cForm" id="cForm" method="post" action="">
+                                <fieldset class="fieldset">
+
+                                    <div class="form-field">
+                                        <input name="cName" type="text" id="cName" class="full-width"
+                                               placeholder="Your Name" value="">
+                                    </div>
+
+                                    <div class="form-field">
+                                        <input name="cEmail" type="text" id="cEmail" class="full-width"
+                                               placeholder="Your Email" value="">
+                                    </div>
+
+                                    <div class="form-field">
+                                        <input name="cWebsite" type="text" id="cWebsite" class="full-width"
+                                               placeholder="Contact Number" value="">
+                                    </div>
+
+                                    <div class="message form-field">
+                                    <textarea name="cMessage" id="cMessage" class="full-width"
+                                              placeholder="News In Detail"></textarea>
+                                    </div>
+
+                                    <div><input type="checkbox" name="islegit" required> This news is Legit and well
+                                        researched
+                                    </div>
+
+                                    <button class="btn btn-submit full-width-on-mobile">Submit</button>
+                                </fieldset>
+                            </form> <!-- end form -->
+
+                        </div>
+
+                    </section>
+                </div>
+                <h2>Instructions on News Reporting </h2>
+                <div><p style="font-size: 12px; text-align: justify;">
+                    Reporting:
+                    One of the most fundamental differences between journalism and other forms of writing is
+                    the way journalists obtain the information they write about. Journalists obtain information through
+                    a
+                    variety of reporting techniques, which can include interviewing sources, looking through government
+                    documents, researching old articles, and observing events firsthand.
+                    Good news writing begins with good, accurate reporting. Journalists perform a public service for
+                    citizens by presenting truthful facts in honest, straight-forward articles.</p></div>
+                <div><p style="font-size: 12px;">
+                    <ul class="instruction">
+                        <li>
+                            <strong>Timeliness</strong>- Recent events have a higher news value than less recent ones.
+                        </li>
+                        <li>
+                            <strong>Proximity</strong>- Stories taking place in one’s hometown or community are more
+                            newsworthy than
+                            those taking place far away.
+                        </li>
+                        <li>
+                            <strong>Prominence</strong>- Famous people and those in the public eye have a higher news
+                            value than ordinary
+                            citizens.
+                        </li>
+                        <li><strong>Uniqueness/oddity</strong>- A story with a bizarre twist or strange occurrences.
+                            “Man bites dog”
+                            instead of “dog bites man.”
+                        </li>
+                        <li><strong>Impact</strong>- Stories that impact a large number of people may be more newsworthy
+                            than those
+                            impacting a smaller number of people.
+                        </li>
+                        <li><strong>Conflict</strong>- “If it bleeds, it leads.” Stories with strife, whether it’s
+                            actual violence or
+                            not, are more interesting.
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+{% endblock content %}

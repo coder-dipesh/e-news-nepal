@@ -6,7 +6,9 @@ from django.contrib import messages, auth
 # Create your views here.
 from accounts.auth import editor_only
 from accounts.forms import ProfileForm
-from accounts.models import Profile
+
+from editors.forms import NewsForm
+from editors.models import NewsModel
 
 
 @login_required
@@ -63,7 +65,17 @@ def editorProfile(request):
 @login_required
 @editor_only
 def addNews(request):
-    return render(request, 'editors/news/newsForm.html')
+    form = NewsForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            NewsModel.objects.update(user_id=request.user.id)
+            messages.add_message(request, messages.SUCCESS,
+                                 'News added successfully!')
+            return redirect('/editors/add-news')
+
+    context = {'form': NewsForm}
+    return render(request, 'editors/news/newsForm.html', context)
 
 
 @login_required

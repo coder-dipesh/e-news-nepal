@@ -53,8 +53,9 @@ INSTALLED_APPS = [
     'users',
 
     # External Imports
+    # 'ckeditor',
     'bootstrapform',
-
+    'froala_editor',
     'social_django',
 
 
@@ -181,3 +182,7 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get(
     "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
+
+
+# USE_FROALA_EDITOR = True
+# FROALA_JS_COOKIE = True

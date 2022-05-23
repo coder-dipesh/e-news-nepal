@@ -58,3 +58,21 @@ def editorProfile(request):
     context = {'profileForm': userdata}
 
     return render(request, 'editors/editorsProfile.html', context)
+
+
+@login_required
+@editor_only
+def addNews(request):
+    return render(request, 'editors/news/newsForm.html')
+
+
+@login_required
+@editor_only
+def updateNews(request):
+    return render(request, 'editors/news/newsUpdateForm.html')
+
+
+@login_required
+@editor_only
+def viewNews(request):
+    return render(request, 'editors/news/newsView.html')

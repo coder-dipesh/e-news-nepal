@@ -20,6 +20,7 @@ from enews import settings
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from accounts.models import Profile
+from editors.models import NewsModel
 
 # from django.utils.encoding import force_bytes, force_text
 # from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -46,6 +47,7 @@ def adminDashbaord(request):
     editor_count = users.filter(is_superuser=0, is_staff=1).count()
     user_count = users.filter(is_superuser=0, is_staff=0).count()
     category_count = Category.objects.all().count()
+    news_count = NewsModel.objects.all().count()
     user_info = users.exclude(is_superuser=1)
 
     context = {'users': users,
@@ -53,6 +55,7 @@ def adminDashbaord(request):
                'editor_count': editor_count,
                'user_count': user_count,
                'user_info': user_info,
+               'news_count': news_count,
                'category_count': category_count,
                }
     return render(request, 'admins/adminDashboard.html', context)
@@ -285,3 +288,14 @@ def update_category(request, p_id):
                                  'Unable to update Category')
 
     return render(request, 'admins/Category/updateCategory.html', {"form": CategoryForm(instance=category)})
+
+# ==============================================
+# ============= News DASHBOARD ================
+# ==============================================
+
+
+@login_required
+@admin_only
+def getNews(request):
+    news = NewsModel.objects.all()
+    return render(request, 'admins/Allnews/Allnews.html', {"news": news})

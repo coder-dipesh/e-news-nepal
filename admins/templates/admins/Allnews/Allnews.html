@@ -1,0 +1,100 @@
+{% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+<title>Dashboard | e-News Admin</title>
+
+{% endblock title %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-news'%}" class="text-primary"
+            >All News</a
+          >
+        </li>
+      </ol>
+    </nav>
+
+    
+  </div>
+
+  <!-- Editor Information Table -->
+  <div class="container-fluid">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+         All News Information
+        </h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category Name</th>
+                <th>Content</th>
+                <th>Image</th>
+                <th>Uploaded By</th>
+                <th>Uploaded Date</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in category %}
+              <tr>
+                <td>{{ c.id}}</td>
+                <td>{{ c.title }}</td>
+                <td>{{ c.categoryName }}</td>
+                <td>{{ c.description }}</td>
+                <td class="text-center">
+                  <div class="btn btn-sm btn-danger" data-bs-toggle="tooltip" title="Delete Category Information!">
+                    <a
+                      href="{% url 'delete_category' c.id %}"
+                      onclick="return confirm('Are you sure to delete this category?')"
+                      style="text-decoration: none; color: beige"
+                      <i class="fas fa-trash"></i>
+                      </a
+                    >
+                  </div>
+
+                  <div class="btn btn-sm btn-warning" data-bs-toggle="tooltip" title="Update Category Information!">
+                    <a
+                      href="{% url 'update_category' c.id %}"
+                      style="text-decoration: none; color: beige"
+                      ><i class="fas fa-edit"></i></a
+                    >
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <th>Title</th>
+                <th>Category Name</th>
+                <th>Content</th>
+                <th>Image</th>
+                <th>Uploaded By</th>
+                <th>Uploaded Date</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

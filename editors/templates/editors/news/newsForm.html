@@ -42,15 +42,14 @@
                 <form method="POST" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="form-group row">
-                    <div class="col-sm-12 mb-3 mb-sm-0">{{form.title}}</div>
+                    <div class="col-sm-12 mb-3 mb-sm-0">{{ form.title }}</div>
                   </div>
 
                   <div class="form-group row">
-                    <div class="col-sm-12 mb-3 mb-sm-0">{{form.category}}</div>
+                    <div class="col-sm-12 mb-3 mb-sm-0">{{ form.category }}</div>
                   </div>
                   <div class="form-group row">
-                    
-                    <div class="col-sm-12 mb-3 mb-sm-0">{{form.content}} {{form.media}}</div>
+                    <div class="col-sm-12 mb-3 mb-sm-0">{{ form.media }}</div>
                   </div>
 
                   <div class="form-group row">

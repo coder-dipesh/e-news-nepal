@@ -10,7 +10,7 @@ class NewsForm(forms.ModelForm):
         model = NewsModel
         fields = ['title', 'category', 'content', 'image']
 
-    #     # Overriding the form-control
+    # Overriding the form-control
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

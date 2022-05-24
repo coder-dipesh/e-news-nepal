@@ -240,7 +240,6 @@ def updateEditor(request, editor_id):
 @admin_only
 def getCategory(request):
     category = Category.objects.all()
-
     return render(request, 'admins/Category/categoryPage.html', {"category": category})
 
 

@@ -74,12 +74,19 @@
                 </li>
                 <li><a href="about.html" title="">About</a></li>
                 <li><a href="contact.html" title="">Contact</a></li>
+
                 <li>
                     <a href="/sign-in" title="">
                         <button class="btn-login full-width-on-mobile">Login</button>
                     </a>
                 </li>
-
+                <li class="">
+                    <i class="fa fa-search icon-white" aria-hidden="true"></i>
+                    <div class="search-box">
+                        <input type="" placeholder=""/>
+                        <input type="button" value="Search"/>
+                    </div>
+                </li>
             </ul>
         </nav>
 
@@ -196,12 +203,22 @@
 
 <!-- Java Script
 ================================================== -->
-<script src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="{% static 'js/plugins.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <script
         src="https://kit.fontawesome.com/bbae674f6a.js"
         crossorigin="anonymous"
 ></script>
+<script>
+    $(document).ready(function () {
+
+        $(".fa-search").click(function () {
+            $(".search-box").toggle();
+            $("input[type='text']").focus();
+        });
+
+    });
+</script>
 </body>
 </html>

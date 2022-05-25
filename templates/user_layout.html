@@ -83,12 +83,15 @@
                         <button class="btn-login full-width-on-mobile">Login</button>
                     </a>
                 </li>
-                <li style="cursor: pointer">
-                    <i class="fa fa-search icon-white" aria-hidden="true"></i>
-                    <div class="search-box">
-                        <input type="" placeholder=""/>
-                        <input type="button" value="Search"/>
-                    </div>
+                <li style="cursor: pointer" >
+                    <form method="post">
+                        {% csrf_token %}
+                        <i class="fa fa-search icon-white" autofocus aria-hidden="true"></i>
+                        <div class="search-box">
+                            <input type="" autofocus placeholder=""/>
+                            <input type="submit" value="Search"/>
+                        </div>
+                    </form>
                 </li>
             </ul>
         </nav>
@@ -223,6 +226,11 @@
         });
 
     });
+</script>
+<script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
 </script>
 </body>
 </html>

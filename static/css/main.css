@@ -1718,7 +1718,7 @@ line-height: 40px}
 .search-box{
   background: #E8E8E4;
   position: absolute;
-  top: 40px;
+  top: 50px;
   right: 28.7%;
   width: 350px;
     height: 50px;
@@ -1750,7 +1750,7 @@ line-height: 40px}
 color:#ffffff
 }
 
-.search-box input[type="button"]{
+.search-box input[type="submit"]{
   width: 80px;
   padding: 5px 0;
   background: #453F3F;
@@ -1764,7 +1764,8 @@ color:#ffffff
 /* Media Queries */
 @media screen and (max-width: 760px) {
 .icon-white{
-color:#000000
+color:#000000;
+
 }
   .search-box{
     width: 270px;
@@ -1775,7 +1776,7 @@ color:#000000
     width: 140px;
     margin-left: 15px;
   }
-  .search-box input[type="button"] {
+  .search-box input[type="submit"] {
     margin-right: 12px;
   }
 }

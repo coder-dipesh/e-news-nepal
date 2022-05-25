@@ -1698,7 +1698,7 @@ header .logo a {
     float: right;
     border: none;
     width: 8em;
-}
+line-height: 40px}
 
 .btn-login {
     background-color: #453F3F;
@@ -1708,6 +1708,7 @@ header .logo a {
     border: none;
     width: 8em;
     transition: 0.3s;
+    line-height: 40px
 }
 
 .btn-login:hover {opacity: 1;

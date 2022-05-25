@@ -17,22 +17,36 @@
 
                                     <div class="form-field">
                                         <input name="cName" type="text" id="cName" class="full-width"
-                                               placeholder="Your Name" value="">
+                                               placeholder="Your Name" value="" required>
                                     </div>
 
                                     <div class="form-field">
                                         <input name="cEmail" type="text" id="cEmail" class="full-width"
-                                               placeholder="Your Email" value="">
+                                               placeholder="Your Email" required value="">
                                     </div>
 
                                     <div class="form-field">
                                         <input name="cWebsite" type="text" id="cWebsite" class="full-width"
-                                               placeholder="Contact Number" value="">
+                                               placeholder="Contact Number" required value="">
+                                    </div>
+
+                                    <div class="form-field">
+
+                                            <input name="rcategory" list="category" type="text" id="cWebsite" class="full-width"
+                                               placeholder="Contact Number" required value="">
+                                        <datalist id="category">
+                                            <option value="Chrome">
+                                            <option value="Firefox">
+                                            <option value="Internet Explorer">
+                                            <option value="Opera">
+                                            <option value="Safari">
+                                            <option value="Microsoft Edge">
+                                        </datalist>
                                     </div>
 
                                     <div class="message form-field">
                                     <textarea name="cMessage" id="cMessage" class="full-width"
-                                              placeholder="News In Detail"></textarea>
+                                              required placeholder="News In Detail"></textarea>
                                     </div>
 
                                     <div><input type="checkbox" name="islegit" required> This news is Legit and well

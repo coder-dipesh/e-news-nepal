@@ -357,11 +357,14 @@ dl,
 form,
 .fluid-video-wrapper,
 .ss-custom-select {
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
+
 
 }
+.form-field input{
+       border-radius: 8px;
+        margin-bottom: 1.5rem;
 
+}
 /* -------------------------------------------------------------------
  * floated image - (_document-setup)
  * ------------------------------------------------------------------- */
@@ -1708,9 +1711,77 @@ header .logo a {
 }
 
 .btn-login:hover {opacity: 1;
-    background-color: #1cc88a;
+    background-color: #45464e;
 
 }
+.search-box{
+  background: #E8E8E4;
+  position: absolute;
+  top: 40px;
+  right: 28.7%;
+  width: 350px;
+    height: 50px;
+  line-height: 50px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: none;
+    border-radius: 6px;
+}
+
+.search-box:before{
+  content: "";
+  position: absolute;
+  top: -32px;
+  right: 13px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 14px solid transparent;
+
+}
+
+.search-box input{
+  width: 200px;
+  padding: 5px 10px;
+  margin-left: 23px;
+  border: 1px solid #6563FF;
+  outline: none;
+}
+.icon-white{
+color:#ffffff
+}
+
+.search-box input[type="button"]{
+  width: 80px;
+  padding: 5px 0;
+  background: #453F3F;
+  color: #fff;
+  margin-left: -6px;
+  border: 1px solid #6563FF;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media screen and (max-width: 760px) {
+.icon-white{
+color:#000000
+}
+  .search-box{
+    width: 270px;
+    float: right;
+      left:2%;
+  }
+  .search-box input{
+    width: 140px;
+    margin-left: 15px;
+  }
+  .search-box input[type="button"] {
+    margin-right: 12px;
+  }
+}
+
+
+
+
 
 #content-wrap .row.wide {
     max-width: 1300px;

@@ -1,6 +1,6 @@
 {% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
 
-<title>Dashboard | e-News Admin</title>
+<title>All Category | e-News Admin</title>
 
 {% endblock title %} {% block content %}
 
@@ -34,6 +34,7 @@
       </a>
     </div>
   </div>
+                <div>{% include "message.html" %}</div>
 
   <!-- Editor Information Table -->
   <div class="container-fluid">
@@ -57,7 +58,7 @@
                 <th>Title</th>
                 <th>Category Name</th>
                 <th>Description</th>
-                <th>Operations</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -96,7 +97,7 @@
                 <th>Title</th>
                 <th>Category Name</th>
                 <th>Description</th>
-                <th>Operations</th>
+                <th>Actions</th>
               </tr>
             </tfoot>
           </table>

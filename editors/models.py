@@ -25,3 +25,6 @@ class NewsModel(models.Model):
     def save(self, *args, **kwargs):
         self.slug = generate_slug(self.title)
         super(NewsModel, self).save(*args, **kwargs)
+
+    def get_date(self):
+        return self.modified.date()

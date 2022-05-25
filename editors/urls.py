@@ -7,9 +7,11 @@ urlpatterns = [
     path('profile', views.editorProfile, name='profile'),
 
     # NEWS CRUD
-    path('view-news', views.viewNews, name='view-news'),
+    path('my-news', views.myNews, name='my-news'),
     path('add-news', views.addNews, name='add-news'),
-    path('update-news', views.updateNews, name='update-news'),
+    path('update-news/<int:news_id>', views.updateNews, name='update-news'),
+    path('delete-news/<int:news_id>', views.deleteNews, name='delete-news'),
+
 
 
 

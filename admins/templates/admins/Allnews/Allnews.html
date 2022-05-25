@@ -1,6 +1,6 @@
 {% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
 
-<title>Dashboard | e-News Admin</title>
+<title>All News | e-News Admin</title>
 
 {% endblock title %} {% block content %}
 
@@ -19,7 +19,7 @@
     </nav>
   </div>
 
-  <!-- Editor Information Table -->
+  <!-- All News Information Table -->
   <div class="container-fluid">
     <div class="card shadow mb-4">
       <div class="card-header py-3">
@@ -27,20 +27,15 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table
-            class="table table-bordered"
-            id="dataTable"
-            width="100%"
-            cellspacing="0"
-          >
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
               <tr>
                 <th>Title</th>
                 <th>Category Name</th>
                 <th>Content</th>
                 <th>Image</th>
-                <th>User</th>
                 <th>Uploaded By</th>
+                <th>Uploaded Date</th>
               </tr>
             </thead>
             <tbody>
@@ -48,14 +43,14 @@
               <tr>
                 <td>{{ c.title}}</td>
                 <td>{{ c.category.categoryName }}</td>
-                <td>{{ c.content }}</td>
                 <td>
-                  <img
-                    class="img-profile"
-                    height="40"
-                    width="40"
-                    src="{{c.image.url}}"
-                  />
+                  <div class="post">
+                    <p class="content">{{ c.content }}</p>
+                    <button onclick="readMore(this)">View More</button>
+                  </div>
+                </td>
+                <td>
+                  <img class="img-profile" height="40" width="40" src="{{c.image.url}}" />
                 </td>
                 <td>{{ c.user.username }}</td>
                 <td>{{ c.created_at }}</td>

@@ -46,6 +46,7 @@ class CreateUserForm(UserCreationForm):
             'placeholder': 'Username',
             'maxlength': '16',
             'minlength': '6',
+            'autofocus': '',
         })
         self.fields['email'].widget.attrs.update({
             'required': '',

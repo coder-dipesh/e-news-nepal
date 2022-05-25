@@ -25,7 +25,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{%static 'css/enews-admin.min.css'%}" rel="stylesheet" />
-    <link href="{%static 'css/admin.css'%}" rel="stylesheet" />
+    <link href="{%static 'css/admin_editor.css'%}" rel="stylesheet" />
 
     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
     {% block title %} {{ section.title }} {% endblock title%}
@@ -58,19 +58,39 @@
         <hr class="sidebar-divider" />
         <div class="sidebar-heading">News Management</div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-toggle="collapse"
+            data-target="#collapseTwo"
+            aria-expanded="true"
+            aria-controls="collapseTwo"
+          >
+            <i class="fas fa-newspaper"></i>
+
+            <span>News</span>
+          </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item  {{activate_add_news}}" href="{% url 'add-news'%}">
+                <i class="fas fa-plus"></i>
+
+                Add News</a
+              >
+              <a class="collapse-item {{activate_my_news}}" href="{% url 'my-news'%}">
+                <i class="fas fa-newspaper"></i>
+
+                My News</a
+              >
+            </div>
+          </div>
+        </li>
+
+        <!-- News Section-->
         <li class="nav-item {{activate_category}}">
           <a class="nav-link" href="#" aria-expanded="true">
             <i class="fas fa-envelope"></i>
             <span>News Requests</span>
-          </a>
-        </li>
-
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item {{activate_all_news}}">
-          <a class="nav-link collapsed" href="{% url 'add-news'%}" aria-expanded="true">
-            <i class="fas fa-newspaper"></i>
-            <span>Add News</span>
           </a>
         </li>
 
@@ -79,7 +99,7 @@
 
         <div class="sidebar-heading">Settings</div>
         <!-- Nav Item - Contact -->
-        <li class="nav-item {{activate_contact}}">
+        <li class="nav-item {{activate_profile}}">
           <a class="nav-link" href="{% url 'profile'%}">
             <i class="fas fa-address-card"></i>
             <span>Profile</span></a
@@ -238,9 +258,7 @@
     ></script>
     <script src="https://kit.fontawesome.com/e944258301.js" crossorigin="anonymous"></script>
 
-    <!-- JQuery Imports -->
-    {% comment %}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    {% endcomment %}
+    <!-- Custom Scripts -->
+    <script src="{% static 'js/admin_editor.js' %}"></script>
   </body>
 </html>

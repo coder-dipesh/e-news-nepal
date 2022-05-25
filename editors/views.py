@@ -14,20 +14,15 @@ from editors.models import NewsModel
 @login_required
 @editor_only
 def editorDashboard(request):
-    users = User.objects.all()
+    allNews = NewsModel.objects.all()
+    allNewsCount = allNews.count()
+    myNewsCount = NewsModel.objects.filter(user_id=request.user.id).count()
 
-    admin_count = users.filter(is_superuser=1).count()
-    editor_count = users.filter(is_superuser=0, is_staff=1).count()
-    user_count = users.filter(is_superuser=0, is_staff=0).count()
-
-    user_info = users.exclude(is_superuser=1)
-
-    context = {'users': users,
-               'editor_count': editor_count,
-               'user_count': user_count,
-               'user_info': user_info,
-
-               }
+    context = {
+        'myNewsCount': myNewsCount,
+        'allNewsCount': allNewsCount,
+        'allNews': allNews,
+    }
     return render(request, 'editors/editorsDashboard.html', context)
 
 
@@ -57,7 +52,8 @@ def editorProfile(request):
                                  "Something went wrong!")
             context = {'profileForm': userdata}
             return render(request, 'editors/editorsProfile.html', context)
-    context = {'profileForm': userdata}
+    context = {'profileForm': userdata,
+               'activate_profile': 'active'}
 
     return render(request, 'editors/editorsProfile.html', context)
 
@@ -65,26 +61,55 @@ def editorProfile(request):
 @login_required
 @editor_only
 def addNews(request):
+    user = request.user.id
     form = NewsForm(request.POST, request.FILES)
     if request.method == 'POST':
         if form.is_valid():
-            form.save()
-            NewsModel.objects.update(user_id=request.user.id)
+            title = request.POST['title']
+            category = request.POST['category']
+            content = request.POST['content']
+            image = request.FILES['image']
+
+            NewsModel.objects.create(
+                title=title, category_id=category, content=content, image=image, user_id=user)
             messages.add_message(request, messages.SUCCESS,
                                  'News added successfully!')
             return redirect('/editors/add-news')
 
-    context = {'form': NewsForm}
+    context = {'form': NewsForm,
+               'activate_add_news': 'active'}
     return render(request, 'editors/news/newsForm.html', context)
 
 
 @login_required
 @editor_only
-def updateNews(request):
-    return render(request, 'editors/news/newsUpdateForm.html')
+def updateNews(request, news_id):
+    news = NewsModel.objects.get(id=news_id)
+    if request.method == 'POST':
+        newsForm = NewsForm(request.POST, request.FILES, instance=news)
+        if newsForm.is_valid():
+            newsForm.save()
+            messages.add_message(request, messages.SUCCESS,
+                                 'News updated successfully!')
+            return redirect('/editors/update-news/' + str(news_id))
+    context = {'form': NewsForm(instance=news),
+               'activate_add_news': 'active',
+               }
+    return render(request, 'editors/news/newsUpdateForm.html', context)
 
 
 @login_required
 @editor_only
-def viewNews(request):
-    return render(request, 'editors/news/newsView.html')
+def deleteNews(request, news_id):
+    news = NewsModel.objects.filter(id=news_id)
+    news.delete()
+    return redirect('/editors/my-news')
+
+
+@login_required
+@editor_only
+def myNews(request):
+    myNews = NewsModel.objects.filter(user_id=request.user.id)
+    context = {'myNews': myNews,
+               'activate_my_news': 'active'}
+    return render(request, 'editors/news/newsView.html', context)

@@ -25,7 +25,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{%static 'css/enews-admin.min.css'%}" rel="stylesheet" />
-    <link href="{%static 'css/admin.css'%}" rel="stylesheet" />
+    <link href="{%static 'css/admin_editor.css'%}" rel="stylesheet" />
 
     <link href="{% static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet" />
     {% block title %} {{ section.title }} {% endblock title%}
@@ -286,9 +286,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- JQuery Imports -->
-    {% comment %}
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    {% endcomment %}
+    <!-- Custom Scripts -->
+    <script src="{% static 'js/admin_editor.js' %}"></script>
   </body>
 </html>

@@ -53,9 +53,8 @@ INSTALLED_APPS = [
     'users',
 
     # External Imports
-    # 'ckeditor',
+    'ckeditor',
     'bootstrapform',
-    'froala_editor',
     'social_django',
 
 

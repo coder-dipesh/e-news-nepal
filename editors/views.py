@@ -103,6 +103,8 @@ def updateNews(request, news_id):
 def deleteNews(request, news_id):
     news = NewsModel.objects.filter(id=news_id)
     news.delete()
+    messages.add_message(request, messages.SUCCESS,
+                         'News deleted successfully!')
     return redirect('/editors/my-news')
 
 

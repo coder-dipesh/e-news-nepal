@@ -1,0 +1,86 @@
+{% extends "editor_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+    <title>Dashboard | e-News Editor</title>
+
+{% endblock title %} {% block content %}
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Requested News</h1>
+        </div>
+    </div>
+
+
+    <!--  Information Table -->
+    <div class="container-fluid">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">News Information</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Content</th>
+                            <th>Image</th>
+                            <th>Uploaded By</th>
+                            <th>Contact Details</th>
+                            <th>Uploaded On</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for news in request_news %}
+                            <tr>
+                                <td>{{ news.category.categoryName }}</td>
+                                <td>
+                                    <div class="post">
+                                        <p class="content">{{ news.content | safe }}</p>
+                                        <button onclick="readMore(this)">View More</button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="{{ news.image.url }}" target="_blank">
+                                        <img class="img-profile" height="40" width="40" src="{{ news.image.url }}"/>
+                                    </a>
+                                </td>
+                                <td>{{ news.name }}</td>
+                                <td>{{ news.email }},
+                                    {{ news.contact }}
+                                </td>
+                                <td>{{ news.created_at }}</td>
+                                 <td class="text-center">
+                  <div class="btn btn-sm btn-danger" data-bs-toggle="tooltip" title="Delete News!">
+                    <a
+                      href="{% url 'delete_request_news' news.id %}"
+                      onclick="return confirm('Are you sure to delete this news?')"
+                      style="text-decoration: none; color: beige">
+                      <i class="fas fa-trash"></i>
+                      </a>
+                  </div>
+
+                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+
+                        <tfoot>
+                        <tr>
+                            <th>Category</th>
+                            <th>Content</th>
+                            <th>Image</th>
+                            <th>Uploaded By</th>
+                            <th>Contact Details</th>
+                            <th>Uploaded On</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

@@ -9,6 +9,7 @@ from accounts.forms import ProfileForm
 
 from editors.forms import NewsForm
 from editors.models import NewsModel
+from users.models import ReportNewsModel
 
 
 @login_required
@@ -115,3 +116,24 @@ def myNews(request):
     context = {'myNews': myNews,
                'activate_my_news': 'active'}
     return render(request, 'editors/news/newsView.html', context)
+
+
+@login_required
+@editor_only
+def request_news(request):
+    # allNews = NewsModel.objects.all()
+
+    request_news = ReportNewsModel.objects.all()
+    context = {'request_news': request_news,
+               'activate_request_news': 'active'}
+    return render(request, 'editors/news/requestnews.html',context)
+
+
+@login_required
+@editor_only
+def delete_request_news(request, news_id):
+    news = ReportNewsModel.objects.get(id=news_id)
+    news.delete()
+    # messages.add_message(request, messages.SUCCESS,
+    #                      'News deleted successfully!')
+    return redirect('/editors/request_news')

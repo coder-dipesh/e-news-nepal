@@ -86,9 +86,9 @@
                 <li style="cursor: pointer">
                     <form method="post">
                         {% csrf_token %}
-                        <i class="fa fa-search icon-white" autofocus aria-hidden="true"></i>
+                        <i class="fa fa-search icon-white" autofocus></i>
                         <div class="search-box">
-                            <input type="" autofocus placeholder=""/>
+                            <input type="" placeholder="Search..."/>
                             <input type="submit" value="Search"/>
                         </div>
                     </form>
@@ -223,7 +223,7 @@
 
         $(".fa-search").click(function () {
             $(".search-box").toggle();
-            $("input[type='text']").focus();
+            $("input[type='']").focus();
         });
 
     });

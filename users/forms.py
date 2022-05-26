@@ -1,6 +1,11 @@
-from .models import ReportNewsModel
+from users.models import ReportNewsModel
 from django import forms
 
+
+# class ReportNewsForm(forms.ModelForm):
+    # class Meta:
+    #     model = ReportNewsModel
+    #     fields = "__all__"
 
 class ReportNewsForm(forms.ModelForm):
     class Meta:
@@ -11,24 +16,8 @@ class ReportNewsForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['rname'].widget.attrs.update({
-            'name': 'rname',
-            'id': 'rname',
-            'placeholder': 'Your Name',
-            'class': 'form-control form-control-user ',
-        })
-        self.fields['remail'].widget.attrs.update({
-            'name': 'remail',
-            'id': 'remail',
-            'placeholder': 'Your Email',
-            'class': 'form-control form-control-user ',
-        })
-        self.fields['rcontact'].widget.attrs.update({
-            'name': 'rcontact',
-            'id': 'rcontact',
-            'placeholder': 'Your Contact',
-            'class': 'form-control form-control-user ',
-        })
+
+
         self.fields['rcategory'].widget.attrs.update({
             'name': 'rcategory',
             'id': 'rcategory',
@@ -40,9 +29,4 @@ class ReportNewsForm(forms.ModelForm):
             'id': 'rcontent',
             'placeholder': 'Write News',
             'class': 'full-width categorycss',
-        })
-        self.fields['rimage'].widget.attrs.update({
-            'name': 'rimage',
-            'id': 'rimage',
-            'class': 'inputfile inputfile-6 ',
         })

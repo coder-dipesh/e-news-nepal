@@ -21,6 +21,23 @@
     padding: 10px 0 10px 10px !important;
     height: 50px !important;
   }
+
+  .form-group {
+    position: relative;
+  }
+
+  .form-group input {
+    padding-left: 3rem !important;
+  }
+
+  .form-group span {
+    position: absolute;
+    top: 15px;
+    padding-left: 15px;
+    color: #4e73df;
+    opacity: 0.8;
+    font-size: 12px;
+  }
 </style>
 
 <div class="container-fluid py-2">
@@ -66,23 +83,46 @@
           <form method="POST" class="user">
             {% csrf_token %}
             <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">{{form.first_name}}</div>
-              <div class="col-sm-6">{{form.last_name}}</div>
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+
+                {{form.first_name}}
+              </div>
+              <div class="col-sm-6">
+                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+
+                {{form.last_name}}
+              </div>
             </div>
 
             <div class="form-group row">
-              <div class="col-sm-12 mb-3 mb-sm-0">{{form.username}}</div>
+              <div class="col-sm-12 mb-3 mb-sm-0">
+                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                {{form.username}}
+              </div>
             </div>
-            <div class="form-group">{{form.email}}</div>
+            <div class="form-group">
+              <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              {{form.email}}
+            </div>
             <div class="form-group row">
               <div class="col-sm-12 mb-3 mb-sm-0">{{cform.role}}</div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-12 mb-3 mb-sm-0">{{cform.salary}}</div>
+              <div class="col-sm-12 mb-3 mb-sm-0">
+                <span><i class="fa fa-dollar-sign" aria-hidden="true"></i></span>
+                {{cform.salary}}
+              </div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-6 mb-3 mb-sm-0">{{form.password1}}</div>
-              <div class="col-sm-6">{{form.password2}}</div>
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                {{form.password1}}
+              </div>
+              <div class="col-sm-6">
+                <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                {{form.password2}}
+              </div>
             </div>
             <button type="submit" class="btn btn-primary btn-block text-uppercase mt-4" style="height: 50px !important">
               Sign Up

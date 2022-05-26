@@ -21,6 +21,23 @@
     padding: 10px 0 10px 10px !important;
     height: 50px !important;
   }
+
+  .form-group {
+    position: relative;
+  }
+
+  .form-group input {
+    padding-left: 3rem !important;
+  }
+
+  .form-group span {
+    position: absolute;
+    top: 15px;
+    padding-left: 15px;
+    color: #4e73df;
+    opacity: 0.8;
+    font-size: 12px;
+  }
 </style>
 
 <div class="container-fluid py-2">
@@ -68,6 +85,8 @@
 
             <div class="form-group row">
               <div class="col-sm-12 mb-3 mb-sm-0">
+                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+
                 <input
                   type="text"
                   class="form-control form-control-user"
@@ -79,6 +98,8 @@
               </div>
             </div>
             <div class="form-group">
+              <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+
               <input
                 type="text"
                 class="form-control form-control-user"
@@ -92,7 +113,10 @@
               <div class="col-sm-12 mb-3 mb-sm-0">{{cform.role}}</div>
             </div>
             <div class="form-group row">
-              <div class="col-sm-12 mb-3 mb-sm-0">{{cform.salary}}</div>
+              <div class="col-sm-12 mb-3 mb-sm-0">
+                <span><i class="fa fa-dollar-sign" aria-hidden="true"></i></span>
+                {{cform.salary}}
+              </div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-block text-uppercase mt-4" style="height: 50px !important">

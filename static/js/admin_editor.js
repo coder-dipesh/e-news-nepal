@@ -11,9 +11,25 @@ contents.forEach((content) => {
   }
 });
 
+// Refresh page with form without warning
 function readMore(btn) {
   let post = btn.parentElement;
   post.querySelector(".dots").classList.toggle("hide");
   post.querySelector(".more").classList.toggle("hide");
   btn.textContent == "View More" ? (btn.textContent = "View Less") : (btn.textContent = "View More");
+}
+
+// Password Toogle
+
+function passwordToggle() {
+  var x = document.getElementById("password1");
+  var y = document.getElementById("password2");
+
+  if (x.type === "password" && y.type == "password") {
+    x.type = "text";
+    y.type = "text";
+  } else {
+    x.type = "password";
+    y.type = "password";
+  }
 }

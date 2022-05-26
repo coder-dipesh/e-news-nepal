@@ -86,9 +86,9 @@
                 <li style="cursor: pointer">
                     <form method="post">
                         {% csrf_token %}
-                        <i class="fa fa-search icon-white" autofocus aria-hidden="true"></i>
+                        <i class="fa fa-search icon-white" autofocus></i>
                         <div class="search-box">
-                            <input type="" autofocus placeholder=""/>
+                            <input type="" placeholder="Search..."/>
                             <input type="submit" value="Search"/>
                         </div>
                     </form>
@@ -190,7 +190,7 @@
             <div class="col-twelve">
                 <div class="copyright">
                     <span>© Copyright e-News Nepal 2022</span>
-                    <span>Design & Developed by <a href="#">Team Unknown</a></span>
+                    <span>Design & Developed with ❤️ by <a href="#">Team Unknown</a></span>
                 </div>
 
                 <div id="go-top">
@@ -223,7 +223,7 @@
 
         $(".fa-search").click(function () {
             $(".search-box").toggle();
-            $("input[type='text']").focus();
+            $("input[type='']").focus();
         });
 
     });

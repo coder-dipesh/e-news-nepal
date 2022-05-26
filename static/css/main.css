@@ -216,11 +216,12 @@ pre {
     font-family: Poppins, serif
 }
 
-.instruction {
+.instruction li{
     font-size: 12px;
-    list-style-type: none;
+    list-style-type: decimal;
     justify-self: auto;
     text-align: justify;
+
 }
 
 pre {
@@ -235,7 +236,11 @@ code {
     white-space: nowrap;
     background: #eaeaea;
 }
+.categorycss{
+    margin-bottom: 15px;
 
+    border-radius: 6px;
+}
 pre > code {
     display: block;
     white-space: pre;
@@ -387,6 +392,7 @@ img.pull-left {
     .bgrid {
         padding: 0 18px;
     }
+
 }
 
 @media only screen and (max-width: 768px) {
@@ -1159,7 +1165,7 @@ header {
     width: 100%;
     background: #4e73df;
     background-size: 46px 29px;
-    height: 130px;
+    height: 100px;
     border-bottom: 1px solid #e5e5e5;
 }
 
@@ -1167,7 +1173,7 @@ header .header-content {
     height: auto;
     max-width: 1290px;
     position: absolute;
-    top: 24px;
+    top: 10px;
     left: 0;
     right: 0;
     width: 100%;
@@ -1701,7 +1707,7 @@ header .logo a {
 line-height: 40px}
 
 .btn-login {
-    background-color: #453F3F;
+    background-color: #1cc88a;
     border-radius: 6px;
     color: #FFFFFF;
     float: left;
@@ -1716,7 +1722,7 @@ line-height: 40px}
 
 }
 .search-box{
-  background: #E8E8E4;
+  background: #FFFFFF;
   position: absolute;
   top: 50px;
   right: 28.7%;
@@ -1753,12 +1759,16 @@ color:#ffffff
 .search-box input[type="submit"]{
   width: 80px;
   padding: 5px 0;
-  background: #453F3F;
+  background: #1cc88a;
   color: #fff;
   margin-left: -6px;
   border: 1px solid #6563FF;
   outline: none;
   cursor: pointer;
+}
+.search-box input[type="submit"]:hover{
+  background: #45464e;
+
 }
 
 /* Media Queries */
@@ -1771,6 +1781,7 @@ color:#000000;
     width: 270px;
     float: right;
       left:2%;
+      top:25px
   }
   .search-box input{
     width: 140px;

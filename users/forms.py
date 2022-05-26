@@ -10,7 +10,7 @@ from django import forms
 class ReportNewsForm(forms.ModelForm):
     class Meta:
         model = ReportNewsModel
-        fields = ['rname','remail','rcontact', 'rcategory', 'rcontent', 'rimage']
+        fields = ['name','email','contact', 'category', 'content', 'image']
 
     # Overriding the form-control
 
@@ -18,15 +18,15 @@ class ReportNewsForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
 
-        self.fields['rcategory'].widget.attrs.update({
-            'name': 'rcategory',
-            'id': 'rcategory',
+        self.fields['category'].widget.attrs.update({
+            'name': 'category',
+            'id': 'category',
             'placeholder': 'Choose Category',
             'class': 'full-width categorycss',
         })
-        self.fields['rcontent'].widget.attrs.update({
-            'name': 'rcontent',
-            'id': 'rcontent',
+        self.fields['content'].widget.attrs.update({
+            'name': 'content',
+            'id': 'content',
             'placeholder': 'Write News',
             'class': 'full-width categorycss',
         })

@@ -22,16 +22,19 @@ class ReportNewsModel(models.Model):
     rcreated_at = models.DateTimeField(auto_now_add=True)
     rupload_to = models.DateTimeField(auto_now=True)
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(args, kwargs)
-        self.modified = None
+    class Meta:
+        db_table = "reportnewsmodel"
 
-    def __str__(self):
-        return self.rname
-
-    def save(self, *args, **kwargs):
-        self.slug = generate_slug(self.rname)
-        super(ReportNewsModel, self).save(*args, **kwargs)
-
-    def get_date(self):
-        return self.modified.date()
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(args, kwargs)
+    #     self.modified = None
+    #
+    # def __str__(self):
+    #     return self.rname
+    #
+    # def save(self, *args, **kwargs):
+    #     self.slug = generate_slug(self.rname)
+    #     super(ReportNewsModel, self).save(*args, **kwargs)
+    #
+    # def get_date(self):
+    #     return self.modified.date()

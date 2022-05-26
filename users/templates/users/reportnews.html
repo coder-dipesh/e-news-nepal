@@ -7,8 +7,8 @@
 
     <section id="content-wrap" class="site-page">
         <div class="container row float-container">
-   <div class="successmessage">{% for success in messages %}
-        {{ success }}    {% endfor %}</div>
+            <div class="successmessage">{% for success in messages %}
+                {{ success }}    {% endfor %}</div>
 
             <section class="">
                 <div>
@@ -68,31 +68,31 @@
             <section class="">
                 <div>
                     <h2 style="text-align: center">Report Your News</h2>
-                    <form  method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <fieldset class="fieldset">
 
                             <div class="form-field">
-                                <input name="rname" type="text" id="cName" class="full-width"
+                                <input name="name" type="text" id="cName" class="full-width"
                                        placeholder="Your Name" value="" required>
                             </div>
 
                             <div class="form-field">
-                                <input name="remail" type="text" id="cEmail" class="full-width"
+                                <input name="email" type="email" id="cEmail" class="full-width"
                                        placeholder="Your Email" required value="">
                             </div>
 
 
                             <div class="form-field">
-                                <input name="rcontact" type="text" id="" class="full-width"
+                                <input name="contact" type="text" id="" class="full-width"
                                        placeholder="Your Contact" required value="">
                             </div>
 
 
-                            <div class="form-field full-width">{{ form.rcategory }}</div>
+                            <div class="form-field full-width">{{ form.category }}</div>
 
                             <div class="text-center">
-                                <input hidden type="file" name="rimage" id="file-7"
+                                <input hidden type="file" name="image" id="file-7"
                                        class="inputfile inputfile-6 "
                                        data-multiple-caption="{count} files selected" multiple/>
                                 <label for="file-7"><span></span> <strong>
@@ -104,7 +104,7 @@
                             </div>
 
                             <div class="form-field text-center">
-                                {{ form.media }} {{ form.rcontent }}</div>
+                                {{ form.media }} {{ form.content }}</div>
 
 
                             <div class="form-field text-center"><input type="checkbox" name="islegit" value="This news is Legit and well

@@ -3,10 +3,12 @@
     <title>Report News | e-News User</title>
 
 {% endblock title %} {% block content %}
-  <section id="content-wrap" class="site-page">
-        <div class="container row float-container">
-  {% include "message.html"%}
 
+
+    <section id="content-wrap" class="site-page">
+        <div class="container row float-container">
+   <div class="successmessage">{% for success in messages %}
+        {{ success }}    {% endfor %}</div>
 
             <section class="">
                 <div>
@@ -66,7 +68,7 @@
             <section class="">
                 <div>
                     <h2 style="text-align: center">Report Your News</h2>
-                    <form name="cForm" id="cForm" method="post" action="" enctype="multipart/form-data">
+                    <form  method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <fieldset class="fieldset">
 
@@ -80,12 +82,14 @@
                                        placeholder="Your Email" required value="">
                             </div>
 
+
                             <div class="form-field">
-                                <input name="rcontact" type="text" id="cWebsite" class="full-width"
-                                       placeholder="Contact Number" required value="">
+                                <input name="rcontact" type="text" id="" class="full-width"
+                                       placeholder="Your Contact" required value="">
                             </div>
 
-                            <div class="form-field ">{{ form.rcategory }}</div>
+
+                            <div class="form-field full-width">{{ form.rcategory }}</div>
 
                             <div class="text-center">
                                 <input hidden type="file" name="rimage" id="file-7"
@@ -108,7 +112,8 @@
                                 researched
                             </div>
                             <div class="form-field">
-                                <button type="submit" class="btn btn-submit form-field full-width-on-mobile">Submit</button>
+                                <button type="submit" class="btn btn-submit form-field full-width-on-mobile">Submit
+                                </button>
                             </div>
 
                         </fieldset>

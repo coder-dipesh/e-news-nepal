@@ -5,6 +5,7 @@ from .models import UserOTP
 import random
 from django.core.mail import send_mail
 from django.conf import settings
+from editors.models import NewsModel
 
 from .forms import CreateUserForm
 from django.contrib import messages, auth
@@ -92,4 +93,5 @@ def signOut(request):
 
 
 def home(request):
-    return render(request, 'accounts/home.html')
+    news = NewsModel.objects.all()
+    return render(request, 'accounts/home.html', {"news": news})

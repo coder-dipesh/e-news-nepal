@@ -27,9 +27,9 @@
                             <th>Category</th>
                             <th>Content</th>
                             <th>Image</th>
-                            <th>Uploaded By</th>
-                            <th>Contact Details</th>
+                            <th>Reporter Details</th>
                             <th>Uploaded On</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,8 +47,10 @@
                                         <img class="img-profile" height="40" width="40" src="{{ news.image.url }}"/>
                                     </a>
                                 </td>
-                                <td>{{ news.name }}</td>
-                                <td>{{ news.email }},
+
+                                <td>
+                                    {{ news.name }},
+                                    {{ news.email }},
                                     {{ news.contact }}
                                 </td>
                                 <td>{{ news.created_at }}</td>
@@ -72,9 +74,9 @@
                             <th>Category</th>
                             <th>Content</th>
                             <th>Image</th>
-                            <th>Uploaded By</th>
-                            <th>Contact Details</th>
+                            <th>Reporter Details</th>
                             <th>Uploaded On</th>
+                            <th>Actions</th>
                         </tr>
                         </tfoot>
                     </table>

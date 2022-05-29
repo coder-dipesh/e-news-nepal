@@ -10,12 +10,16 @@ from accounts.forms import ProfileForm
 from editors.forms import NewsForm
 from editors.models import NewsModel
 from users.models import ReportNewsModel
+from users.forms import ReportNewsForm
 
 
 @login_required
 @editor_only
 def editorDashboard(request):
     allNews = NewsModel.objects.all()
+    requestedNews = ReportNewsModel.objects.all()
+    requestedNewsCount = requestedNews.count()
+
     allNewsCount = allNews.count()
     myNewsCount = NewsModel.objects.filter(user_id=request.user.id).count()
 
@@ -23,6 +27,7 @@ def editorDashboard(request):
         'myNewsCount': myNewsCount,
         'allNewsCount': allNewsCount,
         'allNews': allNews,
+        'requestedNewsCount': requestedNewsCount,
     }
     return render(request, 'editors/editorsDashboard.html', context)
 
@@ -121,12 +126,10 @@ def myNews(request):
 @login_required
 @editor_only
 def request_news(request):
-    # allNews = NewsModel.objects.all()
-
     request_news = ReportNewsModel.objects.all()
     context = {'request_news': request_news,
                'activate_request_news': 'active'}
-    return render(request, 'editors/news/requestnews.html',context)
+    return render(request, 'editors/news/requestnews.html', context)
 
 
 @login_required
@@ -134,6 +137,38 @@ def request_news(request):
 def delete_request_news(request, news_id):
     news = ReportNewsModel.objects.get(id=news_id)
     news.delete()
-    # messages.add_message(request, messages.SUCCESS,
-    #                      'News deleted successfully!')
+    messages.add_message(request, messages.SUCCESS,
+                         'News deleted successfully!')
     return redirect('/editors/request_news')
+
+
+@login_required
+@editor_only
+def update_request_news(request, news_id):
+    news = ReportNewsModel.objects.get(id=news_id)
+    if request.method == 'POST':
+        newsForm = ReportNewsForm(request.POST, request.FILES, instance=news)
+        if newsForm.is_valid():
+            name = request.POST['name']
+            email = request.POST['email']
+            contact = request.POST['contact']
+            category = request.POST['category']
+            content = request.POST['content']
+            image = request.POST.get('image')
+
+            print(image + "image")
+
+            NewsModel.objects.create(
+                name=name, category_id=category, email=email, content=content, contact=contact,
+                image=image)
+
+            news.delete()
+            messages.add_message(request, messages.SUCCESS,
+                                 'News updated and published successfully!')
+            return redirect('/editors/update_request_news/' + str(news_id))
+
+    context = {'newsform': ReportNewsForm(instance=news),
+               'activate_add_news': 'active',
+               }
+
+    return render(request, 'editors/news/requestNewsUpdateForm.html', context)

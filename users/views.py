@@ -9,11 +9,6 @@ from users.models import ReportNewsModel
 def report_news(request):
     form = ReportNewsForm(request.POST, request.FILES)
     if request.method == "POST":
-        # print(request.POST)
-        # form = ReportNewsForm(request.POST, request.FILES)
-        # form.save()
-        # print("Item created")
-
         if form.is_valid():
             name = request.POST['name']
             email = request.POST['email']

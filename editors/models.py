@@ -7,16 +7,20 @@ from ckeditor.fields import RichTextField
 
 
 class NewsModel(models.Model):
-    title = models.CharField(max_length=1000)
+    title = models.CharField(max_length=1000, null=True)
     category = models.ForeignKey(
         Category, max_length=100, null=True, on_delete=models.CASCADE)
     content = RichTextField(blank=True, null=True)
     slug = models.SlugField(max_length=1000, null=True, blank=True)
     user = models.ForeignKey(
         User, blank=True, null=True, on_delete=models.CASCADE)
-    image = models.FileField(upload_to='news/')
+    image = models.FileField(upload_to='news/', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     upload_to = models.DateTimeField(auto_now=True)
+
+    name = models.CharField(max_length=100, null=True)
+    email = models.CharField(max_length=100, null=True)
+    contact = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.title

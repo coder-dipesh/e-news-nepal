@@ -8,3 +8,8 @@ class TestUrls(SimpleTestCase) :
          url = reverse('my-news')
          view = resolve(url).func
          self.assertEquals(view, myNews)
+         
+    def test_add_news_urls_is_resolved(self):
+        url = reverse('add-news')
+        view = resolve(url).func
+        self.assertEquals(view, addNews)

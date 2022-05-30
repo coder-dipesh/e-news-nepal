@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     # External Imports
     'ckeditor',
+    'tinymce',
     'bootstrapform',
     'social_django',
 

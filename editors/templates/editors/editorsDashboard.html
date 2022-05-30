@@ -135,7 +135,10 @@
                       <img class="img-profile" height="40" width="40" src="{{news.image.url}}" />
                     </a>
                   </td>
-                  <td>{{ news.user.username }}</td>
+                  <td>
+                    {% if news.user.username == None %} {{news.name}} {% else %} 
+                    {{ news.user.username }} {% endif %}
+                  </td>
                   <td>{{ news.created_at }}</td>
                 </tr>
                 {% endfor %}

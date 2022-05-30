@@ -10,7 +10,7 @@
     <h1 class="h3 mb-0 text-gray-800">Requested News</h1>
   </div>
 </div>
-
+{% include "message.html" %}
 <!--  Information Table -->
 <div class="container-fluid">
   <div class="card shadow mb-4">
@@ -47,7 +47,11 @@
                 </a>
               </td>
 
-              <td>{{ news.name }},<br> {{ news.email }},<br> {{ news.contact }}</td>
+              <td>
+                {{ news.name }},<br />
+                {{ news.email }},<br />
+                {{ news.contact }}
+              </td>
               <td>{{ news.created_at }}</td>
               <td class="text-center">
                 <div class="btn btn-sm btn-danger" data-bs-toggle="tooltip" title="Delete News!">
@@ -57,6 +61,16 @@
                     style="text-decoration: none; color: beige"
                   >
                     <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+
+                <div class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Publish News!">
+                  <a
+                    href="{% url 'publish_request_news' news.id %}"
+                    onclick="return confirm('Are you sure to publish this news?')"
+                    style="text-decoration: none; color: beige"
+                  >
+                    <i class="fas fa-check"></i>
                   </a>
                 </div>
 
@@ -85,8 +99,5 @@
     </div>
   </div>
 </div>
-
-
-
 
 {% endblock content %}

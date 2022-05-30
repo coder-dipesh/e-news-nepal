@@ -7,18 +7,15 @@ from django.contrib import messages, auth
 from accounts.auth import editor_only
 from accounts.forms import ProfileForm
 
-from editors.forms import NewsForm
+from editors.forms import NewsForm, RequestNewsUpdateForm
 from editors.models import NewsModel
-from users.models import ReportNewsModel
-from users.forms import ReportNewsForm
 
 
 @login_required
 @editor_only
 def editorDashboard(request):
-    allNews = NewsModel.objects.all()
-    requestedNews = ReportNewsModel.objects.all()
-    requestedNewsCount = requestedNews.count()
+    allNews = NewsModel.objects.filter(status='P')
+    requestedNewsCount = NewsModel.objects.filter(status='D').count()
 
     allNewsCount = allNews.count()
     myNewsCount = NewsModel.objects.filter(user_id=request.user.id).count()
@@ -77,7 +74,8 @@ def addNews(request):
             image = request.FILES['image']
 
             NewsModel.objects.create(
-                title=title, category_id=category, content=content, image=image, user_id=user)
+                title=title, category_id=category, content=content, image=image, user_id=user, status="Published")
+
             messages.add_message(request, messages.SUCCESS,
                                  'News added successfully!')
             return redirect('/editors/add-news')
@@ -126,7 +124,8 @@ def myNews(request):
 @login_required
 @editor_only
 def request_news(request):
-    request_news = ReportNewsModel.objects.all()
+    request_news = NewsModel.objects.filter(status='D')
+
     context = {'request_news': request_news,
                'activate_request_news': 'active'}
     return render(request, 'editors/news/requestnews.html', context)
@@ -135,7 +134,7 @@ def request_news(request):
 @login_required
 @editor_only
 def delete_request_news(request, news_id):
-    news = ReportNewsModel.objects.get(id=news_id)
+    news = NewsModel.objects.get(id=news_id)
     news.delete()
     messages.add_message(request, messages.SUCCESS,
                          'News deleted successfully!')
@@ -144,30 +143,34 @@ def delete_request_news(request, news_id):
 
 @login_required
 @editor_only
+def publish_request_news(request, news_id):
+    news = NewsModel.objects.get(id=news_id)
+    news.status = "P"
+    news.save()
+    messages.add_message(request, messages.SUCCESS,
+                         'News Published successfully!')
+    return redirect('/editors/request_news')
+
+
+@login_required
+@editor_only
 def update_request_news(request, news_id):
-    news = ReportNewsModel.objects.get(id=news_id)
+    news = NewsModel.objects.get(id=news_id)
     if request.method == 'POST':
-        newsForm = ReportNewsForm(request.POST, request.FILES, instance=news)
+        newsForm = RequestNewsUpdateForm(
+            request.POST, request.FILES, instance=news)
         if newsForm.is_valid():
-            name = request.POST['name']
-            email = request.POST['email']
-            contact = request.POST['contact']
-            category = request.POST['category']
-            content = request.POST['content']
-            image = request.POST.get('image')
-
-            print(image + "image")
-
-            NewsModel.objects.create(
-                name=name, category_id=category, email=email, content=content, contact=contact,
-                image=image)
-
-            news.delete()
+            newsForm.save()
+            news.status = "P"
+            news.save()
             messages.add_message(request, messages.SUCCESS,
                                  'News updated and published successfully!')
-            return redirect('/editors/update_request_news/' + str(news_id))
+            return redirect('/editors/request_news')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 'Error in updating news! Please check each field below.')
 
-    context = {'newsform': ReportNewsForm(instance=news),
+    context = {'newsform': RequestNewsUpdateForm(instance=news),
                'activate_add_news': 'active',
                }
 

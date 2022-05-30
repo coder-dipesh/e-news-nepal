@@ -2015,12 +2015,12 @@ footer {
   padding-top: 9rem;
   padding-bottom: 3rem;
   font-size: 1.5rem;
-  color: #8e8e8e;
+  color: #ffffff;
 }
 
 footer a,
 footer a:visited {
-  color: #000000;
+  color: #fff;
 }
 
 footer [class*="col-"] {
@@ -2031,6 +2031,7 @@ footer h4 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 1.2rem;
   margin-bottom: 1.5rem;
+  color: #453f3f;
 }
 
 footer ul {
@@ -2051,7 +2052,7 @@ footer ul li {
 
 .footer-main ul a,
 .footer-main ul a:visited {
-  color: #8e8e8e;
+  color: #fff;
   border: none;
 }
 
@@ -2073,7 +2074,7 @@ footer ul li {
   background: rgba(0, 0, 0, 0.1);
   border: none;
   width: 100%;
-  color: #777777;
+  color: #fff;
   margin-bottom: 1.8rem;
 }
 
@@ -2084,11 +2085,11 @@ footer ul li {
 .footer-main .footer-subscribe .subscribe-form .subscribe-message {
   font-family: "roboto-bold", sans-serif;
   font-size: 1.4rem;
-  color: #000000;
+  color: #fff;
 }
 
 .footer-main .footer-subscribe .subscribe-form .subscribe-message i {
-  color: #000000;
+  color: #fff;
   margin-right: 5px;
 }
 
@@ -2105,7 +2106,7 @@ footer ul li {
   content: "|";
   display: inline-block;
   padding: 0 1rem 0 1.2rem;
-  color: rgba(0, 0, 0, 0.2);
+  color: #ffff;
 }
 
 .footer-bottom .copyright span:last-child::after {
@@ -2157,6 +2158,7 @@ footer ul li {
 
   .footer-main .site-links h4,
   .footer-main .social-links h4 {
+    color: #fff;
     border: none;
   }
 
@@ -2198,7 +2200,7 @@ footer ul li {
   line-height: 63px;
   text-align: center;
   background: #b5b5b5;
-  color: #555;
+  color: #fff;
   text-align: center;
   text-transform: uppercase;
   -moz-transition: all 0.3s ease-in-out;
@@ -2215,7 +2217,7 @@ footer ul li {
 
 #go-top a:visited {
   background: #b5b5b5;
-  color: #555;
+  color: #fff;
 }
 
 #go-top a:hover,
@@ -2647,8 +2649,7 @@ footer ul li {
 
 .format-audio .mejs-controls .mejs-unmute button,
 .format-audio .no-svg .mejs-controls .mejs-unmute button {
-  background: transparent url("../images/mejs/speaker-mute.png") no-repeat
-    center;
+  background: transparent url("../images/mejs/speaker-mute.png") no-repeat center;
   background-size: 16px;
 }
 
@@ -2710,20 +2711,14 @@ footer ul li {
   margin-right: 6px;
 }
 
-.format-audio
-  .mejs-controls
-  .mejs-horizontal-volume-slider
-  .mejs-horizontal-volume-total {
+.format-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
   border-radius: 0;
   background: #333;
   height: 3px;
   top: 19px;
 }
 
-.format-audio
-  .mejs-controls
-  .mejs-horizontal-volume-slider
-  .mejs-horizontal-volume-current {
+.format-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
   border-radius: 0;
   background: #fff;
   height: 3px;

@@ -1,15 +1,10 @@
-from users.models import ReportNewsModel
+from editors.models import *
 from django import forms
 
 
-# class ReportNewsForm(forms.ModelForm):
-# class Meta:
-#     model = ReportNewsModel
-#     fields = "__all__"
-
 class ReportNewsForm(forms.ModelForm):
     class Meta:
-        model = ReportNewsModel
+        model = NewsModel
         fields = ['name', 'email', 'contact', 'category', 'content', 'image']
 
     # Overriding the form-control
@@ -38,7 +33,7 @@ class ReportNewsForm(forms.ModelForm):
             'name': 'category',
             'id': 'category',
             'placeholder': 'Choose Category',
-            'class': 'form-control form-control-user',
+            'class': 'full-width categorycss',
         })
         self.fields['image'].widget.attrs.update({
             'name': 'image',

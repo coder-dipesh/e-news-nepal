@@ -15,6 +15,8 @@ urlpatterns = [
     path('request_news', views.request_news, name='request_news'),
     path('delete_request_news/<int:news_id>',
          views.delete_request_news, name='delete_request_news'),
+    path('publish_request_news/<int:news_id>',
+         views.publish_request_news, name='publish_request_news'),
     path('update_request_news/<int:news_id>',
          views.update_request_news, name='update_request_news'),
 

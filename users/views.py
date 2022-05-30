@@ -1,13 +1,11 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from accounts.auth import unauthenticated_user
 
 # Create your views here.
 from users.forms import ReportNewsForm
 from users.models import ReportNewsModel
 
 
-@unauthenticated_user
 def report_news(request):
     form = ReportNewsForm(request.POST, request.FILES)
     if request.method == "POST":

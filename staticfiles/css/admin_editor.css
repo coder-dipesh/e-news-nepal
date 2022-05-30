@@ -1,0 +1,42 @@
+.bg-enews {
+  background-color: #4e73df;
+}
+.text-enews {
+  color: #4e73df;
+}
+.center {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.breadcrumb {
+  background-color: #f8f9fc !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: auto !important;
+  }
+}
+
+.custom-tooltip-primary {
+  --bs-tooltip-bg: var(--bs-primary);
+}
+
+/* Editor View News Section Read More CSS */
+.post button {
+  padding: 5px;
+  background-color: #4e73df;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+.post:not(:last-child) {
+  margin-bottom: 50px;
+}
+.hide {
+  display: none;
+}

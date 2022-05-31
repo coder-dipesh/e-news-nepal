@@ -50,3 +50,7 @@ def view_news(request):
     # context = {'form': ReportNewsForm,
     #            'activate_report_news': 'active'}
     return render(request, 'users/viewnews.html')
+
+
+def about_us(request):
+    return render(request, 'users/aboutus.html')

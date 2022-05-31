@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{% static 'css/filechooser/component.css' %}" />
     <link rel="stylesheet" href="{% static 'css/filechooser/normalize.css' %}" />
     <link rel="stylesheet" href="{% static 'css/filechooser/demo.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/aboutus.css' %}" />
 
     <!-- script
    ================================================== -->
@@ -68,7 +69,7 @@
             <li>
               <a href="{% url 'report_news' %}" title="">Report News</a>
             </li>
-            <li><a href="about.html" title="">About</a></li>
+            <li><a href="{% url 'about_us' %}" title="">About</a></li>
             <li><a href="contact.html" title="">Contact</a></li>
 
             <li>

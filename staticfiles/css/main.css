@@ -2503,21 +2503,6 @@ footer ul li {
   padding-top: 1.8rem;
 }
 
-/* comments form
- * ---------------------------- */
-#comments .respond {
-  padding-top: 4.2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-#comments form {
-  padding-top: 3rem;
-}
-
-#comments form .form-field {
-  margin-bottom: 3.9rem;
-}
-
 /* responsive:
  * comments
  * ------------------------------------------------------------------- */

@@ -22,7 +22,7 @@ class NewsModel(models.Model):
         User, blank=True, null=True, on_delete=models.CASCADE)
     image = models.FileField(upload_to='news/', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    upload_to = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=1, choices=status, default='D')
     name = models.CharField(max_length=100, null=True)
     email = models.CharField(max_length=100, null=True)

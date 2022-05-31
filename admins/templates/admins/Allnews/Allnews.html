@@ -45,14 +45,14 @@
                 <td>{{ c.category.categoryName }}</td>
                 <td>
                   <div class="post">
-                    <p class="content">{{ c.content }}</p>
+                    <p class="content">{{ c.content|safe|striptags }}</p>
                     <button onclick="readMore(this)">View More</button>
                   </div>
                 </td>
                 <td>
                   <img class="img-profile" height="40" width="40" src="{{c.image.url}}" />
                 </td>
-                <td>{{ c.user.username }}</td>
+                <td>{% if c.user.username == None %} {{c.name}} {% else %} {{ c.user.username }} {% endif %}</td>
                 <td>{{ c.created_at }}</td>
               </tr>
               {% endfor %}

@@ -30,7 +30,7 @@
 
                   <div class="post-content">
                     <ul class="entry-meta">
-                      <li>September 06, 2016</li>
+                      <li>{{ d.created_at|date }}</li>
                       <li><a href="#">{{ d.category.categoryName }}</a></li>
                     </ul>
 
@@ -64,13 +64,15 @@
                 <a href="#">{{ c.category.categoryName }}</a>
               </span>
             </div>
+            <span class="entry-meta"> As of {{ c.created_at|date }} </span>
 
             <h1 class="entry-title">
               <a href="single-standard.html">{{ c.title}}</a>
             </h1>
           </div>
-          <div class="entry-excerpt">{{ c.content|slice:":255"|safe }}...</div>
-          <button type="button" class="btn btn-readmore">Read More</button>
+          <div class="entry-excerpt">{{ c.content|slice:":255"|safe|striptags }}...</div>
+
+          {% comment %} <button type="button" class="btn btn-readmore">Read More</button> {% endcomment %}
         </div>
       </article>
       <!-- end article -->

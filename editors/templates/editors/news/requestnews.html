@@ -37,7 +37,7 @@
               <td>{{ news.category.categoryName }}</td>
               <td>
                 <div class="post">
-                  <p class="content">{{ news.content }}</p>
+                  <p class="content">{{ news.content|safe|striptags }}</p>
                   <button onclick="readMore(this)">View More</button>
                 </div>
               </td>

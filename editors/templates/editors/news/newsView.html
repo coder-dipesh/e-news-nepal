@@ -68,13 +68,13 @@
                 <td>{{ news.category.categoryName }}</td>
                 <td>
                   <div class="post">
-                    <p class="content">{{ news.content }}</p>
+                    <p class="content">{{ news.content|safe|striptags }}</p>
                     <button onclick="readMore(this)">View More</button>
                   </div>
                 </td>
                 <td>
                   <a href="{{news.image.url}}" target="_blank">
-                  <img class="img-profile" height="40" width="40" src="{{news.image.url}}" />
+                    <img class="img-profile" height="40" width="40" src="{{news.image.url}}" />
                   </a>
                 </td>
                 <td>{{ news.created_at.date }}</td>
@@ -83,17 +83,16 @@
                     <a
                       href="{% url 'delete-news' news.id %}"
                       onclick="return confirm('Are you sure to delete this news?')"
-                      style="text-decoration: none; color: beige">
+                      style="text-decoration: none; color: beige"
+                    >
                       <i class="fas fa-trash"></i>
-                      </a>
+                    </a>
                   </div>
 
                   <div class="btn btn-sm btn-warning" data-bs-toggle="tooltip" title="Update News Details!">
-                    <a
-                      href="{% url 'update-news' news.id %}"
-                      style="text-decoration: none; color: beige"
-                      ><i class="fas fa-edit"></i></a
-                    >
+                    <a href="{% url 'update-news' news.id %}" style="text-decoration: none; color: beige"
+                      ><i class="fas fa-edit"></i
+                    ></a>
                   </div>
                 </td>
               </tr>

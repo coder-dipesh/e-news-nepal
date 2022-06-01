@@ -247,7 +247,6 @@ fieldset {
 img.pull-right {
   margin: 0.9rem 0 0 2.4rem;
   vertical-align:middle;
-  height: 300px;
 }
 
 /*Close comment button*/
@@ -1685,6 +1684,7 @@ header .logo a {
 }
 #content-wrap .primary-content h5{
 font-weight: normal;
+  text-align: justify;
 }
 
 #content-wrap .primary-content img {
@@ -2538,4 +2538,12 @@ footer ul li {
   border: none;
   width: 8em;
   line-height: 35px;
+}
+.editor_image{
+  border-radius: 6px;
+  height: 50px;
+
+}
+.publisher{
+  margin-right: 10px;
 }

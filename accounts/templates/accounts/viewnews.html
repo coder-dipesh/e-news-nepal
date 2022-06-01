@@ -17,8 +17,8 @@
 
                         <h1 class="page-title">{{ news.title}}</h1>
 
-                        <ul class="entry-meta">
-                            <li class="date">September 06, 2016</li>
+                        <ul class="entry-meta" style="list-style:none;">
+                            <li class="date">{{ news.created_at|date:"F d, Y"}}</li>
                             <li class="cat"><a href="">{{ news.category.categoryName }}</a></li>
                         </ul>
                         <div style="width:100%;">

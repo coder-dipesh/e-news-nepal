@@ -6,6 +6,8 @@ import random
 from django.core.mail import send_mail
 from django.conf import settings
 from editors.models import NewsModel
+from django.contrib.auth.models import User
+from django.contrib.auth.models import accounts_profile
 
 from .forms import CreateUserForm
 from django.contrib import messages, auth

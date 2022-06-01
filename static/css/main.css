@@ -222,25 +222,25 @@ fieldset {
   margin-bottom: 1.5rem;
 }
 
-/*input,*/
-/*textarea,*/
-/*select,*/
-/*pre,*/
-/*blockquote,*/
-/*figure,*/
-/*table,*/
-/*p,*/
-/*ul,*/
-/*ol,*/
-/*dl,*/
-/*form,*/
-/*.fluid-video-wrapper,*/
-/*.ss-custom-select {*/
-/*}*/
-/*.form-field input {*/
-/*  border-radius: 8px;*/
-/*  margin-bottom: 1.5rem;*/
-/*}*/
+input,
+textarea,
+select,
+pre,
+blockquote,
+figure,
+table,
+p,
+ul,
+ol,
+dl,
+form,
+.fluid-video-wrapper,
+.ss-custom-select {
+}
+.form-field input {
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
 /* -------------------------------------------------------------------
  * floated image - (_document-setup)
  * ------------------------------------------------------------------- */
@@ -1554,10 +1554,55 @@ header .logo a {
  *
  * ------------------------------------------------------------------- */
 #content-wrap {
-  margin-top: 6.6rem;
+	margin-top: 6.6rem;
 }
 
 #content-wrap .row {
+	max-width: 950px;
+}
+
+#content-wrap .row.wide {
+	max-width: 1300px;
+}
+
+#content-wrap .row.narrow {
+	max-width: 800px;
+}
+
+#content-wrap .content-media {
+	position: relative;
+	margin-bottom: 4.8rem;
+}
+
+#content-wrap .content-media img {
+	vertical-align: bottom;
+}
+
+#content-wrap .primary-content {
+	padding-left: 6rem;
+	padding-right: 6rem;
+}
+
+#content-wrap .primary-content img {
+	max-width: 910px;
+	margin: 3rem 0 3rem -6rem;
+}
+
+#content-wrap .primary-content img.pull-right {
+	margin: 0.9rem 0 0 2.4rem;
+	max-width: 100%;
+}
+
+#content-wrap .primary-content img.pull-left {
+	margin: 0.9rem 2.4rem 0 0;
+	max-width: 100%;
+}
+
+#content-wrap .entry-title,
+#content-wrap .page-title {
+	font-size: 3.3rem;
+	line-height: 1.364;
+	margin-bottom: 0.9rem;
 }
 
 .float-child {
@@ -2441,88 +2486,91 @@ footer ul li {
 /* contact page
  * ------------------------------------------------------------------- */
 
-/* map
+//* map
  * ----------------------------------------------- */
 #map-wrap {
-  background: white;
-  z-index: 800;
-  height: 420px;
+	background: white;
+	z-index: 800;
+	height: 420px;
 }
 
 #map-wrap .gm-style img {
-  max-width: none;
+	max-width: none;
 }
 
 #map-wrap .gm-style label {
-  width: auto;
-  display: inline;
+	width: auto;
+	display: inline;
 }
 
 #map-wrap #map-container {
-  height: 100%;
-  width: 100%;
-  background: #dbdbdb;
-  position: relative;
+	height: 100%;
+	width: 100%;
+	background: #DBDBDB;
+	position: relative;
 }
 
 #map-wrap #map-zoom-in,
 #map-wrap #map-zoom-out {
-  height: 3.2rem;
-  width: 3.2rem;
-  cursor: pointer;
-  margin-right: 4rem;
-  color: white;
-  background-color: black;
-  display: none;
+	height: 3.2rem;
+	width: 3.2rem;
+	cursor: pointer;
+	margin-right: 4rem;
+	color: white;
+	background-color: black;
+	display: none;
 }
 
-@media only screen and (max-width: 600px) {
-  #map-wrap #map-zoom-in,
-  #map-wrap #map-zoom-out {
-    margin-right: 3.5rem;
-  }
+@media only screen and (max-width:600px) {
+	#map-wrap #map-zoom-in,
+	#map-wrap #map-zoom-out {
+		margin-right: 3.5rem;
+	}
+
 }
 
-@media only screen and (max-width: 400px) {
-  #map-wrap #map-zoom-in,
-  #map-wrap #map-zoom-out {
-    margin-right: 2.5rem;
-  }
+@media only screen and (max-width:400px) {
+	#map-wrap #map-zoom-in,
+	#map-wrap #map-zoom-out {
+		margin-right: 2.5rem;
+	}
+
 }
 
 #map-wrap #map-zoom-in {
-  margin-bottom: 2px;
-  margin-top: 30px;
+	margin-bottom: 2px;
+	margin-top: 30px;
 }
 
 #map-wrap #map-zoom-in::before,
 #map-wrap #map-zoom-out::before {
-  display: block;
-  color: white;
-  text-align: center;
-  font-size: 14px;
-  content: "\f067";
-  height: 32px;
-  width: 32px;
-  line-height: 32px;
-  -moz-transition: color 0.3s ease-in-out;
-  -o-transition: color 0.3s ease-in-out;
-  -webkit-transition: color 0.3s ease-in-out;
-  -ms-transition: color 0.3s ease-in-out;
-  transition: color 0.3s ease-in-out;
+	display: block;
+	color: white;
+	text-align: center;
+	font-family: 'FontAwesome';
+	font-size: 14px;
+	content: "\f067";
+	height: 32px;
+	width: 32px;
+	line-height: 32px;
+	-moz-transition: color 0.3s ease-in-out;
+	-o-transition: color 0.3s ease-in-out;
+	-webkit-transition: color 0.3s ease-in-out;
+	-ms-transition: color 0.3s ease-in-out;
+	transition: color 0.3s ease-in-out;
 }
 
 #map-wrap #map-zoom-in::before {
-  content: "\f067";
+	content: "\f067";
 }
 
 #map-wrap #map-zoom-out::before {
-  content: "\f068";
+	content: "\f068";
 }
 
 #map-wrap #map-zoom-in:hover::before,
 #map-wrap #map-zoom-out:hover::before {
-  color: #034e4a;
+	color: #034e4a;
 }
 
 /* contact form
@@ -2546,4 +2594,10 @@ footer ul li {
 }
 .publisher{
   margin-right: 10px;
+}
+
+/* Then style the iframe to fit in the container div with full height and width */
+.responsive-iframe {
+
+  width: 100%;
 }

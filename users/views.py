@@ -55,6 +55,9 @@ def view_news(request):
 def about_us(request):
     return render(request, 'users/aboutus.html')
 
+def contact_us(request):
+    return render(request, 'users/contactus.html')
+
 
     #This is the account page for the user.
 def account(request):

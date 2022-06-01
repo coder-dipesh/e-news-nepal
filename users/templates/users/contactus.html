@@ -1,0 +1,107 @@
+{% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+    <title>Contact | e-News User</title>
+
+{% endblock title %} {% block content %}
+
+
+    <!-- content
+    ================================================== -->
+    <section id="content-wrap" class="site-page">
+        <div class="row">
+            <div class="col-twelve">
+
+                <section>
+
+                    <div class="content-media">
+                        <div id="map-wrap">
+                            <div id="map-container">
+                                <iframe class="responsive-iframe"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.31625950954!2d85.29111325668332!3d27.708955944412793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600%2C%20Nepal!5e0!3m2!1sen!2sus!4v1654068570066!5m2!1sen!2sus"
+                                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="primary-content">
+
+                        <h1 class="entry-title add-bottom">Get In Touch With Us.</h1>
+
+                        <h5 class="lead">Lorem ipsum Deserunt est dolore Ut Excepteur nulla occaecat magna occaecat
+                            Excepteur nisi esse veniam dolor consectetur minim qui nisi esse deserunt commodo ea enim
+                            ullamco non voluptate consectetur minim aliquip Ut incididunt amet ut cupidatat.</h5>
+
+                        <h5>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt
+                            sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit
+                            amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna
+                            cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea
+                            nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim
+                            cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut
+                            nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</h5>
+
+                        <div class="row">
+                            <div class="col-six tab-full">
+                                <h4>Where to Find Us <i class="fas fa-location-dot" style="color: #28a745"></i>
+                                </h4>
+
+                                <p>
+                                    Dilli Bazar <br>
+                                    Softwarica College,<br>
+                                    44600 Kathmandu
+                                </p>
+
+                            </div>
+
+                            <div class="col-six tab-full">
+                                <h4>Contact Info <i class="fas fa-address-book" style="color: #3caac8"></i></h4>
+
+                                <i class="fas fa-earth-americas" style="color:#3caac8 "></i> <a href="">
+                                someone@abstractwebsite.com</a><br>
+                                <i class="fas fa-envelope" style="color:#007bff "></i><a
+                                    href="mailto:info@abstractwebsite.com"> info@abstractwebsite.com</a> <br>
+                                <i class="fas fa-phone" style="color: #1cc88a"></i> <a href="tel:123-456-7890"> (+63)
+                                555 1212</a>
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <form name="cForm" id="cForm" method="post" action="">
+                            <fieldset>
+
+                                <div class="form-field">
+                                    <input name="cName" type="text" id="cName" class="full-width"
+                                           placeholder="Your Name" value="">
+                                </div>
+
+                                <div class="form-field">
+                                    <input name="cEmail" type="text" id="cEmail" class="full-width"
+                                           placeholder="Your Email" value="">
+                                </div>
+
+                                <div class="form-field">
+                                    <input name="cWebsite" type="text" id="cWebsite" class="full-width"
+                                           placeholder="Website" value="">
+                                </div>
+
+                                <div class="message form-field">
+                                    <textarea name="cMessage" id="cMessage" class="full-width"
+                                              placeholder="Your Message"></textarea>
+                                </div>
+
+                                <button class="btn-submit full-width-on-mobile">Submit</button>
+
+                            </fieldset>
+                        </form> <!-- end form -->
+                    </div>
+                </section>
+
+
+            </div> <!-- end col-twelve -->
+        </div> <!-- end row -->
+    </section> <!-- end content -->
+
+{% endblock content %}

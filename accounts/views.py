@@ -10,7 +10,7 @@ from editors.models import NewsModel
 from .forms import CreateUserForm
 from django.contrib import messages, auth
 from accounts.auth import unauthenticated_user
-
+from accounts.models import Profile
 # Create your views here.
 
 
@@ -51,7 +51,8 @@ def signUp(request):
             if int(get_otp) == UserOTP.objects.filter(user=usr).last().otp:
                 usr.is_active = True
                 usr.save()
-                # Profile.objects.create(user=usr, username=usr.username, email= usr.email)
+                Profile.objects.create(
+                    user=usr, username=usr.username, email=usr.email)
                 messages.add_message(
                     request, messages.SUCCESS, f'"{usr.username}" verified and registered successfully!')
                 return redirect('sign-in')
@@ -100,6 +101,7 @@ def signOut(request):
 def home(request):
     news = NewsModel.objects.filter(status='P')
     return render(request, 'accounts/home.html', {"news": news})
+
 
 def viewnews(request, news_id):
     news = NewsModel.objects.get(id=news_id)

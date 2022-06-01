@@ -30,12 +30,12 @@
 
                   <div class="post-content">
                     <ul class="entry-meta">
-                      <li>{{ d.created_at|date }}</li>
+                      <li>{{ d.created_at|date:"F d, Y"}}<li>
                       <li><a href="#">{{ d.category.categoryName }}</a></li>
                     </ul>
 
                     <h1 class="slide-title">
-                      <a href="single-standard.html" title="">{{ d.title}}</a>
+                      <a href="{% url 'viewnews' d.id %}" title="">{{ d.title}}</a>
                     </h1>
                   </div>
                 </div>
@@ -52,7 +52,7 @@
       {% for c in news %}
       <article class="brick entry format-standard animate-this">
         <div class="entry-thumb">
-          <a href="single-standard.html" class="thumb-link">
+          <a href="{% url 'viewnews' c.id %}" class="thumb-link">
             <img src="{{c.image.url}}" alt="building" />
           </a>
         </div>
@@ -61,18 +61,18 @@
           <div class="entry-header">
             <div class="entry-meta">
               <span class="cat-links">
-                <a href="#">{{ c.category.categoryName }}</a>
+                <a href="">{{ c.category.categoryName }}</a>
               </span>
             </div>
-            <span class="entry-meta"> As of {{ c.created_at|date }} </span>
 
             <h1 class="entry-title">
-              <a href="single-standard.html">{{ c.title}}</a>
+              <a href="{% url 'viewnews' c.id %}">{{ c.title}}</a>
             </h1>
           </div>
-          <div class="entry-excerpt">{{ c.content|slice:":255"|safe|striptags }}...</div>
-
-          {% comment %} <button type="button" class="btn btn-readmore">Read More</button> {% endcomment %}
+          <div class="entry-excerpt">{{ c.content|slice:":255"|safe }}...</div>
+          <button type="button" class="btn btn-readmore">
+            <a href="{% url 'viewnews' c.id %}" style="color: #fff;">Read More</a>
+          </button>
         </div>
       </article>
       <!-- end article -->

@@ -1,0 +1,99 @@
+{% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+    <title>Report News | e-News User</title>
+
+{% endblock title %} {% block content %}
+        <link rel="stylesheet" href="{% static 'css/lcs.css' %}" />
+
+    <!-- content
+    ================================================== -->
+    <section id="content-wrap" class="blog-single">
+        <div class="row">
+            <div class="col-twelve">
+                <article class="format-standard">
+
+
+                    <div class="primary-content">
+
+                        <h1 class="page-title">{{ news.title}}</h1>
+
+                        <ul class="entry-meta" style="list-style:none;">
+                            <li class="date">{{ news.created_at|date:"F d, Y"}}</li>
+                            <li class="cat"><a href="">{{ news.category.categoryName }}</a></li>
+                        </ul>
+                        <div style="width:100%;">
+                            <img class="pull-right pull-left " src="{{news.image.url}}" alt="">
+                        </div>
+
+                        <p class="p-left">{{news.content|safe}}
+                        </p>
+
+                    </div>
+                            <p>
+                <div class="like-content">
+
+                    <button class="btn-secondary like-review">
+                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
+                    </button>
+
+                </div>
+                </p>
+
+                </article>
+
+                
+            </div> <!-- end col-twelve -->
+        </div> <!-- end row -->
+
+
+        <div class="comments-wrap">
+            <div id="comments" class="row">
+                <div class="col-full">
+                    <!-- respond -->
+                    <h3>5 Comments</h3>
+
+                    <!-- commentlist -->
+                    <ol class="commentlist">
+
+
+                        <li class="thread-alt depth-1">
+
+                            <div class="avatar">
+                                <img width="50" height="50" class="avatar" src="/static/images/avatars/user-04.jpg"
+                                     alt="">
+                            </div>
+
+                            <div class="comment-content">
+
+                                <div class="comment-info">
+                                    <cite>John Doe</cite>
+
+                                    <div class="comment-meta">
+                                        <time class="comment-time" datetime="2014-07-12T24:05">Jul 12, 2014 @ 24:05
+                                        </time>
+                                        <span class="sep">/</span><a class="reply" href="#">Reply</a>
+                                    </div>
+                                </div>
+
+                                <div class="comment-text">
+                                    <p>Sumo euismod dissentiunt ne sit, ad eos iudico qualisque adversarium, tota falli
+                                        et mei. Esse euismod
+                                        urbanitas ut sed, et duo scaevola pericula splendide. Primis veritus
+                                        contentiones nec ad, nec et
+                                        tantas semper delicatissimi.</p>
+                                </div>
+
+                            </div>
+
+
+                    </ol> <!-- Commentlist End -->
+
+
+                </div> <!-- end col-full -->
+            </div> <!-- end row comments -->
+        </div> <!-- end comments-wrap -->
+
+    </section> <!-- end content -->
+
+
+{% endblock %}

@@ -100,3 +100,7 @@ def signOut(request):
 def home(request):
     news = NewsModel.objects.filter(status='P')
     return render(request, 'accounts/home.html', {"news": news})
+
+def viewnews(request, news_id):
+    news = NewsModel.objects.get(id=news_id)
+    return render(request, 'accounts/viewnews.html', {"news": news})

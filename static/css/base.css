@@ -1,25 +1,5 @@
-/* =================================================================== 
- *
- *  Abstract v1.0 Base Stylesheet
- *  url: www.styleshout.com
- *  09-06-2016
- *  ------------------------------------------------------------------
- *  TOC:
- *  01. reset
- *  02. basic/base setup styles
- *  03. grid
- *  04. block grids
- *  05. MISC
- *
- * =================================================================== */
-
-
-/* ===================================================================
- *  01. reset - normalize.css v3.0.2 | MIT License | git.io/normalize
- *
- * ------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap');
 html {
-	font-family: sans-serif;
 	-ms-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
 }
@@ -140,7 +120,6 @@ code,
 kbd,
 pre,
 samp {
-	font-family: monospace, monospace;
 	font-size: 1em;
 }
 
@@ -270,7 +249,7 @@ button {
 	-webkit-font-smoothing: antialiased;
 }
 
-/* ------------------------------------------------------------------- 
+/* -------------------------------------------------------------------
  * Media - (_basic.scss)
  * ------------------------------------------------------------------- */
 img,
@@ -282,16 +261,7 @@ video {
 /* -------------------------------------------------------------------
  * Typography resets - (_basic.scss)
  * ------------------------------------------------------------------- */
-div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, p, blockquote, th, td {
-	margin: 0;
-	padding: 0;
-}
-h1, h2, h3, h4, h5, h6 {
-	-webkit-font-variant-ligatures: common-ligatures;
-	-moz-font-variant-ligatures: common-ligatures;
-	font-variant-ligatures: common-ligatures;
-	text-rendering: optimizeLegibility;
-}
+
 em, i {
 	font-style: italic;
 	line-height: inherit;
@@ -457,7 +427,7 @@ textarea {
 
 }
 
-/* --------------------------------------------------------------- 
+/* ---------------------------------------------------------------
  * tablets - (_grid.scss)
  * --------------------------------------------------------------- */
 @media screen and (max-width:768px) {
@@ -504,7 +474,7 @@ textarea {
 
 }
 
-/* --------------------------------------------------------------- 
+/* ---------------------------------------------------------------
  * large mobile devices - (_grid.scss)
  * --------------------------------------------------------------- */
 @media screen and (max-width:600px) {
@@ -540,7 +510,7 @@ textarea {
 
 }
 
-/* --------------------------------------------------------------- 
+/* ---------------------------------------------------------------
  * small mobile devices - (_grid.scss)
  * --------------------------------------------------------------- */
 @media screen and (max-width:400px) {
@@ -566,7 +536,7 @@ textarea {
 
 }
 
- 
+
 /* ===================================================================
  *  04. block grids - (_grid.scss)
  *
@@ -598,7 +568,7 @@ textarea {
 }
 
 /**
- * Clearing for block grid columns. Allow columns with 
+ * Clearing for block grid columns. Allow columns with
  * different heights to align properly.
  */
 .block-1-6 .bgrid:nth-child(6n+1),
@@ -736,7 +706,7 @@ textarea {
 
 }
 
- 
+
 /* ===================================================================
  *  05. MISC  - (_grid.scss)
  *
@@ -756,7 +726,7 @@ textarea {
 }
 
 /**
- * Misc Helper Styles 
+ * Misc Helper Styles
  */
 .hide {
 	display: none;

@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate,logout
+from django.contrib.auth import authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import UserOTP
@@ -6,12 +6,15 @@ import random
 from django.core.mail import send_mail
 from django.conf import settings
 from editors.models import NewsModel
+from django.contrib.auth.models import User
+from django.contrib.auth.models import accounts_profile
 
 from .forms import CreateUserForm
 from django.contrib import messages, auth
 from accounts.auth import unauthenticated_user
 
 # Create your views here.
+
 
 @unauthenticated_user
 def signIn(request):
@@ -37,32 +40,35 @@ def signIn(request):
     context = {}
     return render(request, 'accounts/signIn.html', context)
 
+
 @unauthenticated_user
 def signUp(request):
     if request.method == 'POST':
         get_otp = request.POST.get('otp')
-        
+
         if get_otp:
             get_usr = request.POST.get('usr')
-            usr = User.objects.get(username = get_usr)
+            usr = User.objects.get(username=get_usr)
 
-            if int(get_otp) == UserOTP.objects.filter(user = usr).last().otp:
+            if int(get_otp) == UserOTP.objects.filter(user=usr).last().otp:
                 usr.is_active = True
                 usr.save()
                 # Profile.objects.create(user=usr, username=usr.username, email= usr.email)
-                messages.add_message(request, messages.SUCCESS, f'"{usr.username}" verified and registered successfully!')
+                messages.add_message(
+                    request, messages.SUCCESS, f'"{usr.username}" verified and registered successfully!')
                 return redirect('sign-in')
             else:
-                messages.add_message(request, messages.WARNING, 'Invalid OTP! Please check again. ')
-                
-                return render(request, 'accounts/signUp.html', {'otp':True, 'usr':usr})
-        
+                messages.add_message(
+                    request, messages.WARNING, 'Invalid OTP! Please check again. ')
+
+                return render(request, 'accounts/signUp.html', {'otp': True, 'usr': usr})
+
         userdata = CreateUserForm(request.POST)
         username = request.POST.get('username')
         if userdata.is_valid():
             userdata.save()
-            usr = User.objects.get(username = username)
-            usr.is_active= False
+            usr = User.objects.get(username=username)
+            usr.is_active = False
             usr.save()
 
             usr_otp = random.randint(100000, 999999)
@@ -75,11 +81,12 @@ def signUp(request):
                 mail_message,
                 settings.EMAIL_HOST_USER,
                 [usr.email],
-                fail_silently= False
+                fail_silently=False
             )
-            return render(request, 'accounts/signUp.html', {'otp':True, 'usr':usr})
+            return render(request, 'accounts/signUp.html', {'otp': True, 'usr': usr})
         else:
-            messages.add_message(request, messages.ERROR, 'Please enter a valid credentials!!')
+            messages.add_message(request, messages.ERROR,
+                                 'Please enter a valid credentials!!')
 
     context = {'form': CreateUserForm}
 
@@ -93,7 +100,7 @@ def signOut(request):
 
 
 def home(request):
-    news = NewsModel.objects.all()
+    news = NewsModel.objects.filter(status='P')
     return render(request, 'accounts/home.html', {"news": news})
 
 def viewnews(request, news_id):

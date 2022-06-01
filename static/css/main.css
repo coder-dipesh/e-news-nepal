@@ -371,11 +371,17 @@ form,
  * ------------------------------------------------------------------- */
 img.pull-right {
   margin: 0.9rem 0 0 2.4rem;
+  vertical-align:middle;
+  
 }
 
 /*Close comment button*/
 img.pull-left {
   margin: 0.9rem 2.4rem 0 0;
+  padding-right: 100px;
+}
+p.pull-left{
+  padding-top: 500px;
 }
 .successmessage {
   background-color: #1cc88a;

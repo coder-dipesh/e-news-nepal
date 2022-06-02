@@ -32,11 +32,37 @@
           <h5>{{news.content|safe}}</h5>
 
           <div style="display: flex">
-            <div class="like-content">
-              <button class="btn-secondary like-review">
-                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
-              </button>
-            </div>
+            <form action="{% url 'like_news' %}" method="POST">
+              {% csrf_token %} {% if request.user.is_authenticated %} {% if is_liked %}
+              <div class="like-content">
+                <button type="submit" name="news_id" value="{{ news.id }}" class="btn-secondary">
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Liked
+                </button>
+              </div>
+              {% else %}
+              <div class="like-content">
+                <button type="submit" name="news_id" value="{{ news.id }}" class="btn-secondary">
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
+                </button>
+              </div>
+
+              {% endif %} {% else %}
+              <div class="like-content">
+                <button
+                  type="submit"
+                  disabled="disabled"
+                  name="news_id"
+                  value="{{ news.id }}"
+                  class="btn-secondary like-review"
+                >
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
+                </button>
+              </div>
+              <span style="color: #d61c4e">Login to like. </span>
+              {% endif %}
+            </form>
+
+            {% comment %}
             <div class="like-content">
               <button class="btn-secondary"><i class="fa fa-comment" aria-hidden="true"></i> Comment</button>
             </div>
@@ -44,6 +70,7 @@
             <div class="like-content">
               <button class="btn-secondary"><i class="fa fa-share" aria-hidden="true"></i> Share</button>
             </div>
+            {% endcomment %}
           </div>
         </div>
 
@@ -57,6 +84,7 @@
               <ol class="commentlist">
                 <li class="thread-alt depth-1">
                   <div class="avatar">
+                    {% if request.user.is_authenticated %}
                     <img
                       width="50"
                       height="50"
@@ -64,17 +92,27 @@
                       src="/media/{{request.user.profile.profile_pic}}"
                       alt=""
                     />
+                    {% else %}
+
+                    <img width="50" height="50" class="avatar" src="/media/images/user.png" alt="" />
+
+                    {% endif %}
                   </div>
 
                   <div class="comment-content">
+                    {% if request.user.is_authenticated %}
                     <div class="comment-info">{{request.user.first_name}} {{request.user.last_name}}</div>
+                    {% else %} Anonymous User {% endif %}
+
                     <div class="comment-text">
                       <form method="POST">
-                        {% csrf_token %} {{form.content}}
-
+                        {% csrf_token %} {{form.content}} {% if request.user.is_authenticated %}
                         <div class="like-content" style="margin: 0; padding: 0">
                           <button class="btn-comment" type="submit" id="submit">Comment</button>
                         </div>
+                        {% else %}
+                        <span style="color: #d61c4e">Please login to add yout comment. </span>
+                        {% endif %}
                       </form>
                     </div>
                   </div>

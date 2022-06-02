@@ -20,7 +20,6 @@
   text-decoration: none;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  margin-left: 30px;
 }
 .like-content .btn-secondary:hover {
   transform: translateY(-3px);

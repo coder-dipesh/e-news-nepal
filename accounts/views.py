@@ -110,6 +110,7 @@ def viewnews(request, news_id):
     news = NewsModel.objects.get(id=news_id)
     commentForm = CommentForm(request.POST)
     comments = Comment.objects.filter(post=news).order_by('-id')
+    
 
     if request.method == 'POST':
         commentForm = CommentForm(request.POST)
@@ -121,8 +122,27 @@ def viewnews(request, news_id):
 
     else:
         commentForm = CommentForm()
+
+    is_liked = False
+    if news.like.filter(id=request.user.id).exists():
+        is_liked = True
+
     context = {"news": news,
                "form": commentForm,
                'comments': comments,
+               'is_liked': is_liked
                }
     return render(request, 'accounts/viewnews.html', context)
+
+
+def like_news(request):
+    post = NewsModel.objects.get(id=request.POST.get('news_id'))
+    is_liked = False
+    if post.like.filter(id=request.user.id).exists():
+        post.like.remove(request.user)
+        is_liked = False
+    else:
+        post.like.add(request.user)
+        is_liked = True
+
+    return redirect('/viewnews/'+str(post.id))

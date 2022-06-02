@@ -11,19 +11,20 @@
   <div class="row">
     <div class="col-twelve">
       <article class="format-standard">
-        <div class="primary-content">
+        <div class="content-media">
           <h1 class="page-title">{{ news.title}}</h1>
-
-          <h4 class="date">{{ news.created_at|date:"F d, Y"}}</h4>
           <h4 class="date">{{ news.category.categoryName }}</h4>
+
           <div style="display: flex">
-            <img width="50" height="50" class="pull-right editor_image" src="{{news.profile_pic.url}}" alt="" />
-            <h4 class="publisher">
+            <img width="50" height="50" class="editor_image" src="/media/{{news.user.profile.profile_pic}}" alt="" />
+            <h4 class="publisher" style="display: flex; flex-direction: column; margin-top: 0">
               <a href=""
                 >Published By: {% if news.user.username == None %} {{news.name}} {% else %} {{ news.user.username }}
                 {%endif %}</a
               >
+              <a class="date">{{ news.created_at|date:"F d, Y"}}</a>
             </h4>
+            <br />
           </div>
 
           <img class="pull-right" style="height: 300px !important" src="{{news.image.url}}" alt="" />
@@ -51,7 +52,7 @@
             <div class="col-full">
               <!-- respond -->
               <hr />
-              <h3>5 Comments</h3>
+              <h3>{{comments.count}} Comment{{comments|pluralize}}</h3>
 
               <ol class="commentlist">
                 <li class="thread-alt depth-1">
@@ -69,14 +70,7 @@
                     <div class="comment-info">{{request.user.first_name}} {{request.user.last_name}}</div>
                     <div class="comment-text">
                       <form method="POST">
-                        {% csrf_token %}
-                        <textarea
-                          id="comment"
-                          name="comment"
-                          cols="70"
-                          rows="1"
-                          placeholder="Write your comment..."
-                        ></textarea>
+                        {% csrf_token %} {{form.content}}
 
                         <div class="like-content" style="margin: 0; padding: 0">
                           <button class="btn-comment" type="submit" id="submit">Comment</button>
@@ -88,32 +82,38 @@
               </ol>
 
               <!-- commentlist -->
+              {% for comment in comments %}
+
               <ol class="commentlist">
                 <li class="thread-alt depth-1">
                   <div class="avatar">
-                    <img width="50" height="50" class="avatar" src="{{request.user.profile.profile_pic}}" alt="" />
+                    <img
+                      width="50"
+                      height="50"
+                      class="avatar"
+                      src="/media/{{comment.user.profile.profile_pic}}"
+                      alt=""
+                    />
                   </div>
-
                   <div class="comment-content">
                     <div class="comment-info">
-                      <cite>John Doe</cite>
+                      <cite>{{comment.user.first_name|capfirst }} {{comment.user.last_name|capfirst }}</cite>
 
                       <div class="comment-meta">
-                        <time class="comment-time" datetime="2014-07-12T24:05">Jul 12, 2014 @ 24:05 </time>
-                        <span class="sep">/</span><a class="reply" href="#">Reply</a>
+                        <time class="comment-time" datetime="2014-07-12T24:05"
+                          >{{comment.timestamp|date }} @ {{comment.timestamp|time}}
+                        </time>
+                        {% comment %} <span class="sep">/</span><a class="reply" href="#">Reply</a> {% endcomment %}
                       </div>
                     </div>
 
                     <div class="comment-text">
-                      <p>
-                        Sumo euismod dissentiunt ne sit, ad eos iudico qualisque adversarium, tota falli et mei. Esse
-                        euismod urbanitas ut sed, et duo scaevola pericula splendide. Primis veritus contentiones nec
-                        ad, nec et tantas semper delicatissimi.
-                      </p>
+                      <p>{{comment.content}}</p>
                     </div>
                   </div>
                 </li>
               </ol>
+              {% endfor %}
 
               <!-- Commentlist End -->
             </div>

@@ -410,7 +410,8 @@ select {
 }
 
 textarea {
-  min-height: 25rem;
+  min-height: 10rem;
+  border-radius: 6px;
 }
 
 input[type="email"]:focus,
@@ -1712,12 +1713,16 @@ header .logo a {
   position: relative;
   margin-bottom: 4.8rem;
 }
+#content-wrap h5 {
+  font-weight: normal;
+  text-align: justify;
+}
 
 #content-wrap .content-media img {
   vertical-align: bottom;
 }
 
-#content-wrap .primary-content {
+#content-wrap #content-wrap #content-wrap #content-wrap #content-wrap .primary-content {
   padding-left: 6rem;
   padding-right: 6rem;
   margin-bottom: 50px;
@@ -1935,7 +1940,6 @@ header .logo a {
  *
  * ------------------------------------------------------------------- */
 footer {
-  padding-top: 9rem;
   padding-bottom: 1rem;
   font-size: 1.5rem;
   color: #ffffff;
@@ -2289,7 +2293,6 @@ footer ul li {
   }
 }
 
-
 #map-wrap {
   background: white;
   z-index: 800;
@@ -2382,9 +2385,9 @@ footer ul li {
   background-color: #6563ff;
   border-radius: 6px;
   color: #ffffff;
-  float: right;
-  border: none;
+  margin-top: 2rem;
   width: 8em;
+  border: none;
   line-height: 35px;
 }
 .editor_image {

@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from requests import post
 from .models import UserOTP
 import random
 from django.core.mail import send_mail
@@ -12,7 +13,8 @@ from .forms import CreateUserForm
 from django.contrib import messages, auth
 from accounts.auth import unauthenticated_user
 from accounts.models import Profile
-# Create your views here.
+from users.forms import CommentForm
+from users.forms import Comment
 
 
 @unauthenticated_user
@@ -106,4 +108,21 @@ def home(request):
 
 def viewnews(request, news_id):
     news = NewsModel.objects.get(id=news_id)
-    return render(request, 'accounts/viewnews.html', {"news": news})
+    commentForm = CommentForm(request.POST)
+    comments = Comment.objects.filter(post=news).order_by('-id')
+
+    if request.method == 'POST':
+        commentForm = CommentForm(request.POST)
+        if commentForm.is_valid():
+            content = request.POST.get('content')
+            comment = Comment.objects.create(
+                post=news, user=request.user, content=content)
+            comment.save()
+
+    else:
+        commentForm = CommentForm()
+    context = {"news": news,
+               "form": commentForm,
+               'comments': comments,
+               }
+    return render(request, 'accounts/viewnews.html', context)

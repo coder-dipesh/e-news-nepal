@@ -23,7 +23,6 @@ class ReportNewsForm(forms.ModelForm):
         })
 
 
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -36,6 +35,7 @@ class CommentForm(forms.ModelForm):
         self.fields['content'].widget.attrs.update({
             'name': 'content',
             'id': 'content',
-            'placeholder': 'Your Comment',
+            'placeholder': 'Write your comment...',
+            'cols': '70',
             'class': 'form-control form-control-user',
         })

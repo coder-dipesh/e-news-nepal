@@ -131,6 +131,7 @@ def viewnews(request, news_id):
                "form": commentForm,
                'comments': comments,
                'is_liked': is_liked,
+               'total_likes': news.total_likes(),
                
                }
     return render(request, 'accounts/viewnews.html', context)

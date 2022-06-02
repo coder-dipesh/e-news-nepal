@@ -41,3 +41,6 @@ class NewsModel(models.Model):
 
     def get_date(self):
         return self.modified.date()
+
+    def total_likes(self):
+        return self.like.count()

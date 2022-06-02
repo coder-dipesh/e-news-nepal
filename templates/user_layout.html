@@ -7,7 +7,7 @@
 
     <!--- basic page needs
    ================================================== -->
-    <title>e-News Nepal</title>
+    {% block title %} {{ section.title }} {% endblock title%}
     <meta name="description" content="" />
     <meta name="author" content="" />
 
@@ -102,7 +102,7 @@
 
     <!-- footer
 ================================================== -->
-    <footer style="background-color: #4e73df;">
+    <footer style="background-color: #4e73df">
       <div class="footer-main">
         <div class="row">
           <div class="col-four tab-full mob-full footer-info">
@@ -213,7 +213,6 @@
         window.history.replaceState(null, null, window.location.href);
       }
     </script>
-      <script src="{% static 'js/lcs.js' %}"></script>
-
+    <script src="{% static 'js/lcs.js' %}"></script>
   </body>
 </html>

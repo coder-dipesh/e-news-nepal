@@ -1,23 +1,4 @@
-/* =================================================================== 
- *
- *  Abstract v1.0 Base Stylesheet
- *  url: www.styleshout.com
- *  09-06-2016
- *  ------------------------------------------------------------------
- *  TOC:
- *  01. reset
- *  02. basic/base setup styles
- *  03. grid
- *  04. block grids
- *  05. MISC
- *
- * =================================================================== */
 
-
-/* ===================================================================
- *  01. reset - normalize.css v3.0.2 | MIT License | git.io/normalize
- *
- * ------------------------------------------------------------------- */
 html {
 	font-family: sans-serif;
 	-ms-text-size-adjust: 100%;
@@ -736,15 +717,7 @@ textarea {
 
 }
 
- 
-/* ===================================================================
- *  05. MISC  - (_grid.scss)
- *
- * ------------------------------------------------------------------- */
 
-/**
- * Clearing - (http://nicolasgallagher.com/micro-clearfix-hack/
- */
 .group:before,
 .group:after {
 	content: "";
@@ -755,9 +728,7 @@ textarea {
 	clear: both;
 }
 
-/**
- * Misc Helper Styles 
- */
+
 .hide {
 	display: none;
 }

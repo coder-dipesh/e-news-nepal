@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&display=swap");
 html {
   font-size: 10px;
 }
@@ -13,24 +13,21 @@ html {
 @media only screen and (max-width: 768px) {
   html {
     font-size: 10px;
-        font-family: Poppins, serif;
-
+    font-family: Poppins, serif;
   }
 }
 
 @media only screen and (max-width: 400px) {
   html {
     font-size: 9px;
-        font-family: Poppins, serif;
-
+    font-family: Poppins, serif;
   }
 }
 
 html,
 body {
   height: 100%;
-      font-family: Poppins, serif;
-
+  font-family: Poppins, serif;
 }
 
 body {
@@ -38,8 +35,7 @@ body {
   font-size: 1.7rem;
   line-height: 3rem;
   color: #111111;
-      font-family: Poppins, serif;
-
+  font-family: Poppins, serif;
 }
 
 /* -------------------------------------------------------------------
@@ -88,8 +84,6 @@ small {
   font-size: 1.1rem;
   line-height: inherit;
 }
-
-
 
 .instruction li {
   font-size: 12px;
@@ -246,7 +240,7 @@ form,
  * ------------------------------------------------------------------- */
 img.pull-right {
   margin: 0.9rem 0 0 2.4rem;
-  vertical-align:middle;
+  vertical-align: middle;
 }
 
 /*Close comment button*/
@@ -254,7 +248,7 @@ img.pull-left {
   margin: 0.9rem 2.4rem 0 0;
   padding-right: 100px;
 }
-p.pull-left{
+p.pull-left {
   padding-top: 500px;
 }
 .successmessage {
@@ -1554,55 +1548,55 @@ header .logo a {
  *
  * ------------------------------------------------------------------- */
 #content-wrap {
-	margin-top: 6.6rem;
+  margin-top: 6.6rem;
 }
 
 #content-wrap .row {
-	max-width: 950px;
+  max-width: 950px;
 }
 
 #content-wrap .row.wide {
-	max-width: 1300px;
+  max-width: 1300px;
 }
 
 #content-wrap .row.narrow {
-	max-width: 800px;
+  max-width: 800px;
 }
 
 #content-wrap .content-media {
-	position: relative;
-	margin-bottom: 4.8rem;
+  position: relative;
+  margin-bottom: 4.8rem;
 }
 
 #content-wrap .content-media img {
-	vertical-align: bottom;
+  vertical-align: bottom;
 }
 
 #content-wrap .primary-content {
-	padding-left: 6rem;
-	padding-right: 6rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
 }
 
 #content-wrap .primary-content img {
-	max-width: 910px;
-	margin: 3rem 0 3rem -6rem;
+  max-width: 910px;
+  margin: 3rem 0 3rem -6rem;
 }
 
 #content-wrap .primary-content img.pull-right {
-	margin: 0.9rem 0 0 2.4rem;
-	max-width: 100%;
+  margin: 0.9rem 0 0 2.4rem;
+  max-width: 100%;
 }
 
 #content-wrap .primary-content img.pull-left {
-	margin: 0.9rem 2.4rem 0 0;
-	max-width: 100%;
+  margin: 0.9rem 2.4rem 0 0;
+  max-width: 100%;
 }
 
 #content-wrap .entry-title,
 #content-wrap .page-title {
-	font-size: 3.3rem;
-	line-height: 1.364;
-	margin-bottom: 0.9rem;
+  font-size: 3.3rem;
+  line-height: 1.364;
+  margin-bottom: 0.9rem;
 }
 
 .float-child {
@@ -1664,7 +1658,7 @@ header .logo a {
   width: 200px;
   padding: 5px 10px;
   margin-left: 23px;
-  border: 1px solid #6563ff;
+  border: none;
   outline: none;
 }
 .icon-white {
@@ -1676,10 +1670,11 @@ header .logo a {
   padding: 5px 0;
   background: #1cc88a;
   color: #fff;
-  margin-left: -6px;
-  border: 1px solid #6563ff;
+  margin-left: 33px;
   outline: none;
+  border-bottom-right-radius: 6px;
   cursor: pointer;
+  border-top-right-radius: 6px;
 }
 .search-box input[type="submit"]:hover {
   background: #45464e;
@@ -1725,10 +1720,10 @@ header .logo a {
 #content-wrap .primary-content {
   padding-left: 6rem;
   padding-right: 6rem;
-  margin-bottom: 50px
+  margin-bottom: 50px;
 }
-#content-wrap .primary-content h5{
-font-weight: normal;
+#content-wrap .primary-content h5 {
+  font-weight: normal;
   text-align: justify;
 }
 
@@ -1765,7 +1760,7 @@ font-weight: normal;
   #content-wrap .primary-content {
     padding-left: 5rem;
     padding-right: 5rem;
-margin-bottom: 50px
+    margin-bottom: 50px;
   }
 
   #content-wrap .primary-content img {
@@ -1963,7 +1958,7 @@ footer h4 {
 }
 
 footer p {
-text-align: justify;
+  text-align: justify;
   font-size: 14px;
 }
 
@@ -1981,7 +1976,6 @@ footer ul li {
 
 .footer-main ul li {
   list-style: none;
-
 }
 
 .footer-main ul a,
@@ -2019,7 +2013,6 @@ footer ul li {
 .footer-main .footer-subscribe .subscribe-form .subscribe-message {
   font-size: 1.4rem;
   color: #fff;
-
 }
 
 .footer-main .footer-subscribe .subscribe-form .subscribe-message i {
@@ -2170,11 +2163,11 @@ footer ul li {
   }
 }
 
-
 /* comments - (_blog.scss)
  * ------------------------------------------------------------------- */
 .comments-wrap {
-  background-color: rgba(0, 0, 0, 0.08);
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, 0.08); */
 }
 
 /* comments
@@ -2296,281 +2289,88 @@ footer ul li {
   }
 }
 
-/* post format gallery (_blog.scss)
- * ------------------------------------------------------------------- */
-.format-gallery .post-slider {
-  position: relative;
-  cursor: pointer;
-}
 
-.format-gallery .flex-control-paging {
-  position: absolute;
-  bottom: 2.1rem;
-  right: 2rem;
-  margin-left: 0;
-  z-index: 500;
-}
-
-.format-gallery .flex-control-paging li {
-  float: left;
-  cursor: pointer;
-  margin: 0 3px;
-  font: 0/0 a;
-  text-shadow: none;
-  color: transparent;
-}
-
-.format-gallery .flex-control-paging li a {
-  background-color: #ffffff;
-  border-radius: 50%;
-  display: block;
-  height: 10px;
-  width: 10px;
-  opacity: 0.6;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.format-gallery .flex-control-paging li a:hover,
-.format-gallery .flex-control-paging li a.flex-active {
-  opacity: 1;
-}
-
-/* post format audio (_blog.scss)
- * ------------------------------------------------------------------- */
-.format-audio .audio-wrap {
-  position: absolute !important;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
-.format-audio .mejs-controls,
-.format-audio .mejs-mediaelement,
-.format-audio .mejs-container {
-  background: url("#") !important;
-  background-color: rgba(17, 17, 17, 0.5) !important;
-  height: 42px;
-}
-
-.format-audio .mejs-container {
-  z-index: 500;
-  max-width: 100%;
-}
-
-.format-audio .mejs-container .mejs-controls {
-  padding: 0 10px;
-  z-index: 2;
-}
-
-.format-audio .mejs-container .mejs-controls button {
-  -moz-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  -webkit-transition: all 0.1s ease-in-out;
-  -ms-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-  height: 42px;
-  margin: 0 6px;
-}
-
-.format-audio .mejs-container .mejs-controls .mejs-time {
-  line-height: 42px;
-  height: 42px;
-  padding-top: 0;
-}
-
-.format-audio .mejs-controls .mejs-button {
-  height: 42px;
-}
-
-.format-audio .mejs-controls .mejs-button button,
-.format-audio .no-svg .mejs-controls .mejs-button button {
-  background: transparent url("../images/mejs/play.png") no-repeat center;
-  background-size: 14px;
-}
-
-.format-audio .mejs-controls .mejs-pause button,
-.format-audio .no-svg .mejs-controls .mejs-pause button {
-  background: transparent url("../images/mejs/pause.png") no-repeat center;
-  background-size: 14px;
-}
-
-.format-audio .mejs-controls .mejs-mute button,
-.format-audio .no-svg .mejs-controls .mejs-mute button {
-  background: transparent url("../images/mejs/speaker-on.png") no-repeat center;
-  background-size: 16px;
-}
-
-.format-audio .mejs-controls .mejs-unmute button,
-.format-audio .no-svg .mejs-controls .mejs-unmute button {
-  background: transparent url("../images/mejs/speaker-mute.png") no-repeat center;
-  background-size: 16px;
-}
-
-.format-audio .mejs-controls .mejs-button button:focus {
-  outline: none;
-}
-
-.format-audio .mejs-controls div.mejs-time-rail {
-  margin: 19px 6px 0;
-  padding: 0;
-  height: 3px;
-  top: 19px;
-}
-
-.format-audio .mejs-controls .mejs-time-rail span,
-.format-audio .mejs-controls .mejs-time-rail a {
-  border-radius: 0;
-  margin: 0;
-}
-
-.format-audio .mejs-controls .mejs-time-rail .mejs-time-total {
-  position: relative;
-  background: #333;
-  height: 3px;
-}
-
-.format-audio .mejs-controls .mejs-time-rail .mejs-time-loaded {
-  background: #7a7a7a;
-  height: 3px;
-}
-
-.format-audio .mejs-controls .mejs-time-rail .mejs-time-current {
-  background: #fff;
-  height: 3px;
-}
-
-.format-audio .mejs-controls .mejs-time-rail .mejs-time-float {
-  border: none;
-  height: 18px;
-  line-height: 18px;
-  border-radius: 2px;
-}
-
-.format-audio .mejs-controls .mejs-time-rail .mejs-time-float-current {
-  padding: 0 4px;
-  width: auto;
-}
-
-.format-audio .mejs-controls .mejs-time-rail .mejs-time-float-corner {
-  top: 16px;
-}
-
-.format-audio .mejs-controls a.mejs-horizontal-volume-slider {
-  height: 42px;
-}
-
-.format-audio .mejs-controls .mejs-volume-button {
-  position: relative;
-  margin-right: 6px;
-}
-
-.format-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
-  border-radius: 0;
-  background: #333;
-  height: 3px;
-  top: 19px;
-}
-
-.format-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
-  border-radius: 0;
-  background: #fff;
-  height: 3px;
-  top: 19px;
-}
-
-/* ===================================================================
- *  15. page styles
- *
- * ------------------------------------------------------------------- */
-
-/* contact page
- * ------------------------------------------------------------------- */
-
-//* map
- * ----------------------------------------------- */
 #map-wrap {
-	background: white;
-	z-index: 800;
-	height: 420px;
+  background: white;
+  z-index: 800;
+  height: 420px;
 }
 
 #map-wrap .gm-style img {
-	max-width: none;
+  max-width: none;
 }
 
 #map-wrap .gm-style label {
-	width: auto;
-	display: inline;
+  width: auto;
+  display: inline;
 }
 
 #map-wrap #map-container {
-	height: 100%;
-	width: 100%;
-	background: #DBDBDB;
-	position: relative;
+  height: 100%;
+  width: 100%;
+  background: #dbdbdb;
+  position: relative;
 }
 
 #map-wrap #map-zoom-in,
 #map-wrap #map-zoom-out {
-	height: 3.2rem;
-	width: 3.2rem;
-	cursor: pointer;
-	margin-right: 4rem;
-	color: white;
-	background-color: black;
-	display: none;
+  height: 3.2rem;
+  width: 3.2rem;
+  cursor: pointer;
+  margin-right: 4rem;
+  color: white;
+  background-color: black;
+  display: none;
 }
 
-@media only screen and (max-width:600px) {
-	#map-wrap #map-zoom-in,
-	#map-wrap #map-zoom-out {
-		margin-right: 3.5rem;
-	}
-
+@media only screen and (max-width: 600px) {
+  #map-wrap #map-zoom-in,
+  #map-wrap #map-zoom-out {
+    margin-right: 3.5rem;
+  }
 }
 
-@media only screen and (max-width:400px) {
-	#map-wrap #map-zoom-in,
-	#map-wrap #map-zoom-out {
-		margin-right: 2.5rem;
-	}
-
+@media only screen and (max-width: 400px) {
+  #map-wrap #map-zoom-in,
+  #map-wrap #map-zoom-out {
+    margin-right: 2.5rem;
+  }
 }
 
 #map-wrap #map-zoom-in {
-	margin-bottom: 2px;
-	margin-top: 30px;
+  margin-bottom: 2px;
+  margin-top: 30px;
 }
 
 #map-wrap #map-zoom-in::before,
 #map-wrap #map-zoom-out::before {
-	display: block;
-	color: white;
-	text-align: center;
-	font-family: 'FontAwesome';
-	font-size: 14px;
-	content: "\f067";
-	height: 32px;
-	width: 32px;
-	line-height: 32px;
-	-moz-transition: color 0.3s ease-in-out;
-	-o-transition: color 0.3s ease-in-out;
-	-webkit-transition: color 0.3s ease-in-out;
-	-ms-transition: color 0.3s ease-in-out;
-	transition: color 0.3s ease-in-out;
+  display: block;
+  color: white;
+  text-align: center;
+  font-family: "FontAwesome";
+  font-size: 14px;
+  content: "\f067";
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  -moz-transition: color 0.3s ease-in-out;
+  -o-transition: color 0.3s ease-in-out;
+  -webkit-transition: color 0.3s ease-in-out;
+  -ms-transition: color 0.3s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 #map-wrap #map-zoom-in::before {
-	content: "\f067";
+  content: "\f067";
 }
 
 #map-wrap #map-zoom-out::before {
-	content: "\f068";
+  content: "\f068";
 }
 
 #map-wrap #map-zoom-in:hover::before,
 #map-wrap #map-zoom-out:hover::before {
-	color: #034e4a;
+  color: #034e4a;
 }
 
 /* contact form
@@ -2587,17 +2387,15 @@ footer ul li {
   width: 8em;
   line-height: 35px;
 }
-.editor_image{
+.editor_image {
   border-radius: 6px;
   height: 50px;
-
 }
-.publisher{
+.publisher {
   margin-right: 10px;
 }
 
 /* Then style the iframe to fit in the container div with full height and width */
 .responsive-iframe {
-
   width: 100%;
 }

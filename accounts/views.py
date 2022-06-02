@@ -130,7 +130,8 @@ def viewnews(request, news_id):
     context = {"news": news,
                "form": commentForm,
                'comments': comments,
-               'is_liked': is_liked
+               'is_liked': is_liked,
+               
                }
     return render(request, 'accounts/viewnews.html', context)
 

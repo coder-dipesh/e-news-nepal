@@ -41,7 +41,13 @@
               </div>
               {% else %}
               <div class="like-content">
-                <button type="submit" name="news_id" value="{{ news.id }}" class="btn-secondary">
+                <button
+                  type="submit"
+                  name="news_id"
+                  value="{{ news.id }}"
+                  class="btn-secondary"
+                  style="background-color: #6563ffe6 !important"
+                >
                   <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
                 </button>
               </div>
@@ -60,12 +66,12 @@
               </div>
               <span style="color: #d61c4e">Login to like. </span>
               {% endif %}
+
+              
+
             </form>
 
             {% comment %}
-            <div class="like-content">
-              <button class="btn-secondary"><i class="fa fa-comment" aria-hidden="true"></i> Comment</button>
-            </div>
 
             <div class="like-content">
               <button class="btn-secondary"><i class="fa fa-share" aria-hidden="true"></i> Share</button>

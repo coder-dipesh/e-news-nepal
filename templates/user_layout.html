@@ -70,11 +70,43 @@
             <li><a href="{% url 'about_us' %}" title="">About</a></li>
             <li><a href="{% url 'contact_us' %}" title="">Contact</a></li>
 
+            {% if request.user.is_authenticated %}
+
+         
+<li>
+  <div class="dropdown">
+    <img class="img-profile " src="{% static 'media/images/me_250x250.png'%}" />
+  <div class="dropdown-content">
+    <a href="{% url 'account' %}" title=""><i class="fas fa-user fa-sm fa-fw mr-2 "></i>&nbsp; Profile</a>
+    
+    <a href="#" style="color: #f44336;" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> &nbsp; Logout</a>
+  </div>
+</li>
+
+{% comment %} <button >Open Modal</button> {% endcomment %}
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Logout">&times;</span>
+  <form class="modal-content">
+    <div class="container">
+      <h1>Logout </h1>
+      <p>Are you sure you want to logout from this account?</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">No</button>
+        <a href="{% url 'sign-out' %}"><button type="button" class="deletebtn">Yes</button></a>
+      </div>
+    </div>
+  </form>
+</div>
+
+            {% else %}
             <li>
               <a href="/sign-in" title="">
                 <button class="btn-login full-width-on-mobile">Login</button>
               </a>
             </li>
+            {% endif %}
             <li style="cursor: pointer">
               <form method="post">
                 {% csrf_token %}
@@ -85,8 +117,6 @@
                 </div>
               </form>
             </li>
-            <li><a href="{% url 'account' %}" title="">Account</a></li>
-            <li><a href="{% url 'sign-out' %}" title="">Logout</a></li>
           </ul>
         </nav>
 

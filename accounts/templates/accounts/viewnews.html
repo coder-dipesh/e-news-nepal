@@ -130,7 +130,7 @@
               <!-- commentlist -->
               {% for comment in comments %}
 
-              <ol class="commentlist">
+              <ol class="commentlist" style="background-color: #ffffff;" >
                 <li class="thread-alt depth-1">
                   <div class="avatar">
                     <img
@@ -141,10 +141,10 @@
                       alt=""
                     />
                   </div>
-                  <div class="comment-content">
+                  <div class="comment-content" >
                     <div class="comment-info">
                       <cite>{{comment.user.first_name|capfirst }} {{comment.user.last_name|capfirst }}</cite>
-
+                        <a style="float: right; margin-right:20px; "><i style="color:#d61c4e;" class="fa fa-times-circle" aria-hidden="true"></i></a>
                       <div class="comment-meta">
                         <time class="comment-time" datetime="2014-07-12T24:05"
                           >{{comment.timestamp|date }} @ {{comment.timestamp|time}}

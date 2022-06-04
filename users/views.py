@@ -64,7 +64,6 @@ def account(request):
             userdata.save()
             messages.add_message(request, messages.SUCCESS,
                                  'Profile data updated successfully!')
-            return redirect('profile.html')
         else:
             messages.add_message(request, messages.ERROR,
                                  "Something went wrong!")

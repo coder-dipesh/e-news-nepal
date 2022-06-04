@@ -58,7 +58,6 @@
         <h2 style="text-align: center">Report Your News</h2>
         <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
-          <fieldset class="fieldset">
             <div class="form-field">
               <input name="name" type="text" id="cName" class="full-width" placeholder="Your Name" value="" required />
             </div>
@@ -131,7 +130,6 @@
             <div class="form-field">
               <button type="submit" class="btn btn-submit form-field full-width-on-mobile">Submit</button>
             </div>
-          </fieldset>
         </form>
         <!-- end form -->
       </div>

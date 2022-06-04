@@ -13,6 +13,10 @@ urlpatterns = [
     path('viewnews/<int:news_id>', views.viewnews, name='viewnews'),
     path('likes', views.like_news, name='like_news'),
 
+    path('delete-comment/<int:id>',
+         views.deleteComment, name='delete-comment'),
+
+
     path('', views.home, name='home'),
 
 

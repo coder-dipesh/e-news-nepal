@@ -68,9 +68,6 @@
               {% endif %}
 
               <span style="color: #6563ff; margin-left: 1rem"> {{ total_likes }} Like{{ total_likes|pluralize }}</span>
-
-              
-
             </form>
 
             {% comment %}
@@ -81,7 +78,6 @@
             {% endcomment %}
           </div>
         </div>
-
         <div class="comments-wrap">
           <div id="comments" class="row">
             <div class="col-full">
@@ -130,7 +126,7 @@
               <!-- commentlist -->
               {% for comment in comments %}
 
-              <ol class="commentlist" style="background-color: #ffffff;" >
+              <ol class="commentlist" style="background-color: #ffffff">
                 <li class="thread-alt depth-1">
                   <div class="avatar">
                     <img
@@ -141,10 +137,29 @@
                       alt=""
                     />
                   </div>
-                  <div class="comment-content" >
+                  <div class="comment-content">
                     <div class="comment-info">
-                      <cite>{{comment.user.first_name|capfirst }} {{comment.user.last_name|capfirst }}</cite>
-                        <a style="float: right; margin-right:20px; "><i style="color:#d61c4e;" class="fa fa-times-circle" aria-hidden="true"></i></a>
+                      <cite> {{comment.user.first_name|capfirst }} {{comment.user.last_name|capfirst }} </cite>
+
+                      {% if comment.user.username == request.user.username %}
+                      
+                      <div style="float: right; margin-right: 20px" class="comment-dropdown" >
+                        <i style="color: #151515" class="fa fa-ellipsis-h" aria-hidden="true"> </i>
+
+                        <div class="comment-dropdown-content">
+                            <a href=" {% url 'delete-comment' comment.id %}   " style="" onclick="return confirm('Are you sure you want to delete this comment')">
+                              
+                            <i style="color: #d61c4e" class="fa fa-trash" aria-hidden="true"> </i> &nbsp;
+                            Delete Comment
+                            </a>
+                        </div>
+                      
+
+                      </div>
+
+                      
+                      {% endif %}
+
                       <div class="comment-meta">
                         <time class="comment-time" datetime="2014-07-12T24:05"
                           >{{comment.timestamp|date }} @ {{comment.timestamp|time}}

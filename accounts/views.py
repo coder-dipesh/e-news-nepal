@@ -138,6 +138,14 @@ def viewnews(request, news_id):
                }
     return render(request, 'accounts/viewnews.html', context)
 
+
+def deleteComment(request, id):
+
+    comment = Comment.objects.get(id=id, user_id=request.user.id)
+    comment.delete()
+    return redirect('/viewnews/' + str(comment.post.id))
+
+
 @login_required
 def like_news(request):
     post = NewsModel.objects.get(id=request.POST.get('news_id'))

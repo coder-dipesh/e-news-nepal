@@ -8,7 +8,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from editors.models import NewsModel
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
 from django.contrib import messages, auth
 from accounts.auth import unauthenticated_user
@@ -33,10 +33,10 @@ def signIn(request):
             elif not user.is_superuser and user.is_staff and user.is_active:
                 return redirect('/editors')
             elif not user.is_superuser and not user.is_staff and user.is_active:
-                return redirect('/users')
+                return redirect('/')
         else:
             print("working")
-            messages.error(request, "Username or Password is incorrect.")
+            messages.error(request, "Username or Password is Incorrect.")
             return render(request, 'accounts/signIn.html', {})
     context = {}
     return render(request, 'accounts/signIn.html', context)
@@ -98,19 +98,21 @@ def signUp(request):
 def signOut(request):
     request.session.clear()
     print("Logged Out Successfully!!")
-    return redirect('/sign-in')
+    return redirect('/')
 
 
 def home(request):
     news = NewsModel.objects.filter(status='P')
-    return render(request, 'accounts/home.html', {"news": news})
+    context = {
+        "news": news,
+        'activate_home': 'current', }
+    return render(request, 'accounts/home.html', context)
 
 
 def viewnews(request, news_id):
     news = NewsModel.objects.get(id=news_id)
     commentForm = CommentForm(request.POST)
     comments = Comment.objects.filter(post=news).order_by('-id')
-    
 
     if request.method == 'POST':
         commentForm = CommentForm(request.POST)
@@ -132,11 +134,11 @@ def viewnews(request, news_id):
                'comments': comments,
                'is_liked': is_liked,
                'total_likes': news.total_likes(),
-               
+
                }
     return render(request, 'accounts/viewnews.html', context)
 
-
+@login_required
 def like_news(request):
     post = NewsModel.objects.get(id=request.POST.get('news_id'))
     is_liked = False

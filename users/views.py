@@ -27,20 +27,25 @@ def report_news(request):
         return redirect('/users/report_news')
 
     context = {'form': ReportNewsForm,
-               'activate_report_news': 'active'}
+               'activate_report_news': 'current', }
 
     return render(request, 'users/reportnews.html', context)
 
 
-
 def about_us(request):
-    return render(request, 'users/aboutus.html')
+    context = {
+        'activate_about_us': 'current', }
+    return render(request, 'users/aboutus.html', context)
+
 
 def contact_us(request):
-    return render(request, 'users/contactus.html')
+    context = {
+        'activate_contact_us': 'current', }
+    return render(request, 'users/contactus.html', context)
+
+    # This is the account page for the user.
 
 
-    #This is the account page for the user.
 def account(request):
     profile = request.user.profile  # Getting currently logged in user data
     user = User.objects.get(username=profile)

@@ -60,15 +60,15 @@
         <nav id="main-nav-wrap">
           <ul class="main-navigation sf-menu">
             <li></li>
-            <li class="current">
+            <li class="{{activate_home}}">
               <a href="{% url 'home' %}" title="">Home</a>
             </li>
-            <li>
+            <li class="{{activate_report_news}}">
               <a href="{% url 'report_news' %}" title="">Report news</a>
             </li>
 
-            <li><a href="{% url 'about_us' %}" title="">About</a></li>
-            <li><a href="{% url 'contact_us' %}" title="">Contact</a></li>
+            <li class="{{activate_about_us}}"><a href="{% url 'about_us' %}" title="">About</a></li>
+            <li class="{{activate_contact_us}}"><a href="{% url 'contact_us' %}" title="">Contact</a></li>
 
             {% if request.user.is_authenticated %}
 
@@ -79,8 +79,10 @@
   <div class="dropdown-content">
     <a href="{% url 'account' %}" title=""><i class="fas fa-user fa-sm fa-fw mr-2 "></i>&nbsp; Profile</a>
     
-    <a href="#" style="color: #f44336;" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> &nbsp; Logout</a>
+    <a href="#" style="color: #f16b62;" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> &nbsp; Logout</a>
   </div>
+
+
 </li>
 
 {% comment %} <button >Open Modal</button> {% endcomment %}

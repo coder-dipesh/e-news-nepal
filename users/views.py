@@ -8,7 +8,7 @@ from accounts.forms import ProfileForm
 from accounts.auth import user_only
 
 
-@user_only
+# @user_only
 def report_news(request):
     form = ReportNewsForm(request.POST, request.FILES)
     if request.method == "POST":

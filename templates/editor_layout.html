@@ -159,7 +159,7 @@
                   aria-expanded="false"
                 >
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ request.user.email }}</span>
-                  <img class="img-profile rounded-circle" src="{% static 'images/avatars/user-01.jpg'%}" />
+                  <img class="img-profile rounded-circle" src="/media/{{ request.user.profile.profile_pic }}" />
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

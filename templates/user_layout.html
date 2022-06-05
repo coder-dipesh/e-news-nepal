@@ -76,7 +76,7 @@
          
 <li>
   <div class="dropdown">
-    <img class="img-profile " src="{% static 'media/images/me_250x250.png'%}" />
+    <img class="img-profile " src="/media/{{request.user.profile.profile_pic}}" />
   
     <div class="dropdown-content">
     <a href="{% url 'account' %}" title=""><i class="fas fa-user fa-sm fa-fw mr-2 "></i>&nbsp; Profile</a>

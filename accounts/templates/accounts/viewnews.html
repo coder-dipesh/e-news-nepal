@@ -1,197 +1,201 @@
 {% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
 
-    <title>{{ news.title }} | e-News User</title>
+<title>{{ news.title }} | e-News User</title>
 
 {% endblock title %} {% block content %}
-    <link rel="stylesheet" href="{% static 'css/lcs.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/lcs.css' %}" />
 
-    <!-- content
+<!-- content
         ================================================== -->
-    <section id="content-wrap" class="blog-single">
-        <div class="row">
-            <div class="col-twelve">
-                <article class="format-standard">
-                    <div class="content-media">
-                        <h1 class="page-title">{{ news.title }}</h1>
-                        <h4 class="date">{{ news.category.categoryName }}</h4>
+<section id="content-wrap" class="blog-single">
+  <div class="row">
+    <div class="col-twelve">
+      <article class="format-standard">
+        <div class="content-media">
+          <h1 class="page-title">{{ news.title }}</h1>
+          <h4 class="date">{{ news.category.categoryName }}</h4>
 
-                        <div style="display: flex">
-                            <img width="50" height="50" class="editor_image"
-                                 src="/media/{{ news.user.profile.profile_pic }}" alt=""/>
-                            <h4 class="publisher" style="display: flex; flex-direction: column; margin-top: 0">
-                                <a href=""
-                                >Published By: {% if news.user.username == None %} {{ news.name }} {% else %}
-                                    {{ news.user.first_name }} {{ news.user.last_name }}
-                                {% endif %}
+          <div style="display: flex">
+            <img width="50" height="50" class="editor_image" src="/media/{{ news.user.profile.profile_pic }}" alt="" />
+            <h4 class="publisher" style="display: flex; flex-direction: column; margin-top: 0">
+              <a href=""
+                >Published By: {% if news.user.username == None %} {{ news.name }} {% else %} {{ news.user.first_name }}
+                {{ news.user.last_name }} {% endif %}
+              </a>
 
+              <a class="date">{{ news.created_at|date:"F d, Y" }}</a>
+            </h4>
 
-                                </a>
+            <br />
+            <div class="social_align">
+              <a target="_blank" href="#" class="social_links"><i class="fa fa-facebook"></i></a>
+              <a target="_blank" href="#" class="social_links"><i class="fa fa-instagram"></i></a>
+              <a target="_blank" href="#" class="social_links"><i class="fa fa-linkedin"></i></a>
+            </div>
+          </div>
 
-                                <a class="date">{{ news.created_at|date:"F d, Y" }}</a>
-                            </h4>
+          <img class="pull-right" style="height: 300px !important" src="{{ news.image.url }}" alt="" />
 
+          <h5>{{ news.content|safe }}</h5>
 
+          <div style="display: flex">
+            <form action="{% url 'like_news' %}" method="POST">
+              {% csrf_token %} {% if request.user.is_authenticated %} {% if is_liked %}
+              <div class="like-content">
+                <button type="submit" name="news_id" value="{{ news.id }}" class="btn-secondary">
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Liked
+                </button>
+              </div>
+              {% else %}
+              <div class="like-content">
+                <button
+                  type="submit"
+                  name="news_id"
+                  value="{{ news.id }}"
+                  class="btn-secondary"
+                  style="background-color: #6563ffe6 !important"
+                >
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
+                </button>
+              </div>
 
-                            <br/>
-                                <div class="social_align">
-                                <a target="_blank" href="#" class="social_links"><i class="fa fa-facebook"></i></a>
-                                <a target="_blank" href="#" class="social_links"><i class="fa fa-instagram"></i></a>
-                                <a target="_blank" href="#" class="social_links"><i class="fa fa-linkedin"></i></a>
-                            </div>
-                        </div>
+              {% endif %} {% else %}
+              <div class="like-content">
+                <button
+                  type="submit"
+                  disabled="disabled"
+                  name="news_id"
+                  value="{{ news.id }}"
+                  class="btn-secondary like-review"
+                >
+                  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
+                </button>
+              </div>
+              <span style="color: #d61c4e">Login to like. </span>
+              {% endif %}
 
-                        <img class="pull-right" style="height: 300px !important" src="{{ news.image.url }}" alt=""/>
+              <span style="color: #6563ff; margin-left: 1rem"> {{ total_likes }} Like{{ total_likes|pluralize }}</span>
+            </form>
 
-                        <h5>{{ news.content|safe }}</h5>
+           
 
-                        <div style="display: flex">
-                            <form action="{% url 'like_news' %}" method="POST">
-                                {% csrf_token %} {% if request.user.is_authenticated %} {% if is_liked %}
-                                <div class="like-content">
-                                    <button type="submit" name="news_id" value="{{ news.id }}" class="btn-secondary">
-                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Liked
-                                    </button>
-                                </div>
-                            {% else %}
-                                <div class="like-content">
-                                    <button
-                                            type="submit"
-                                            name="news_id"
-                                            value="{{ news.id }}"
-                                            class="btn-secondary"
-                                            style="background-color: #6563ffe6 !important"
-                                    >
-                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
-                                    </button>
-                                </div>
-
-                            {% endif %} {% else %}
-                                <div class="like-content">
-                                    <button
-                                            type="submit"
-                                            disabled="disabled"
-                                            name="news_id"
-                                            value="{{ news.id }}"
-                                            class="btn-secondary like-review"
-                                    >
-                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
-                                    </button>
-                                </div>
-                                <span style="color: #d61c4e">Login to like. </span>
-                            {% endif %}
-
-                                <span style="color: #6563ff; margin-left: 1rem"> {{ total_likes }} Like{{ total_likes|pluralize }}</span>
-
-
-                            </form>
-
-                            {% comment %}
-
-            <div class="like-content">
+            {% comment %} <div class="like-content">
               <button class="btn-secondary"><i class="fa fa-share" aria-hidden="true"></i> Share</button>
-            </div>
-            {% endcomment %}
-                        </div>
-                    </div>
-
-                    <div class="comments-wrap">
-                        <div id="comments" class="row">
-                            <div class="col-full">
-                                <!-- respond -->
-                                <hr/>
-                                <h3>{{ comments.count }} Comment{{ comments|pluralize }}</h3>
-
-                                <ol class="commentlist">
-                                    <li class="thread-alt depth-1">
-                                        <div class="avatar">
-                                            {% if request.user.is_authenticated %}
-                                                <img
-                                                        width="50"
-                                                        height="50"
-                                                        class="avatar"
-                                                        src="/media/{{ request.user.profile.profile_pic }}"
-                                                        alt=""
-                                                />
-                                            {% else %}
-
-                                                <img width="50" height="50" class="avatar" src="/media/images/user.png"
-                                                     alt=""/>
-
-                                            {% endif %}
-                                        </div>
-
-                                        <div class="comment-content">
-                                            {% if request.user.is_authenticated %}
-                                                <div class="comment-info">{{ request.user.first_name }} {{ request.user.last_name }}</div>
-                                            {% else %} Anonymous User {% endif %}
-
-                                            <div class="comment-text">
-                                                <form method="POST">
-                                                    {% csrf_token %} {{ form.content }}
-                                                    {% if request.user.is_authenticated %}
-                                                        <div class="like-content" style="margin: 0; padding: 0">
-                                                            <button class="btn-comment" type="submit" id="submit">
-                                                                Comment
-                                                            </button>
-                                                        </div>
-                                                    {% else %}
-                                                        <span style="color: #d61c4e">Please login to add yout comment. </span>
-                                                    {% endif %}
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ol>
-
-                                <!-- commentlist -->
-                                {% for comment in comments %}
-
-                                    <ol class="commentlist" style="background-color: #ffffff;">
-                                        <li class="thread-alt depth-1">
-                                            <div class="avatar">
-                                                <img
-                                                        width="50"
-                                                        height="50"
-                                                        class="avatar"
-                                                        src="/media/{{ comment.user.profile.profile_pic }}"
-                                                        alt=""
-                                                />
-                                            </div>
-                                            <div class="comment-content">
-                                                <div class="comment-info">
-                                                    <cite>{{ comment.user.first_name|capfirst }} {{ comment.user.last_name|capfirst }}</cite>
-                                                    <a style="float: right; margin-right:20px; "><i
-                                                            style="color:#d61c4e;" class="fa fa-times-circle"
-                                                            aria-hidden="true"></i></a>
-                                                    <div class="comment-meta">
-                                                        <time class="comment-time" datetime="2014-07-12T24:05"
-                                                        >{{ comment.timestamp|date }} @ {{ comment.timestamp|time }}
-                                                        </time>
-                                                        {% comment %} <span class="sep">/</span><a class="reply" href="#">Reply</a> {% endcomment %}
-                                                    </div>
-                                                </div>
-
-                                                <div class="comment-text">
-                                                    <p>{{ comment.content }}</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                {% endfor %}
-
-                                <!-- Commentlist End -->
-                            </div>
-                            <!-- end col-full -->
-                        </div>
-                        <!-- end row comments -->
-                    </div>
-                    <!-- end comments-wrap -->
-                </article>
-            </div>
-            <!-- end col-twelve -->
+            </div> {% endcomment %}
+           
+          </div>
         </div>
-        <!-- end row -->
-    </section>
-    <!-- end content -->
+
+        <div class="comments-wrap">
+          <div id="comments" class="row">
+            <div class="col-full">
+              <!-- respond -->
+              <hr />
+              <h3>{{ comments.count }} Comment{{ comments|pluralize }}</h3>
+
+              <ol class="commentlist">
+                <li class="thread-alt depth-1">
+                  <div class="avatar">
+                    {% if request.user.is_authenticated %}
+                    <img
+                      width="50"
+                      height="50"
+                      class="avatar"
+                      src="/media/{{ request.user.profile.profile_pic }}"
+                      alt=""
+                    />
+                    {% else %}
+
+                    <img width="50" height="50" class="avatar" src="/media/images/user.png" alt="" />
+
+                    {% endif %}
+                  </div>
+
+                  <div class="comment-content">
+                    {% if request.user.is_authenticated %}
+                    <div class="comment-info">{{ request.user.first_name }} {{ request.user.last_name }}</div>
+                    {% else %} Anonymous User {% endif %}
+
+                    <div class="comment-text">
+                      <form method="POST">
+                        {% csrf_token %} {{ form.content }} {% if request.user.is_authenticated %}
+                        <div class="like-content" style="margin: 0; padding: 0">
+                          <button class="btn-comment" type="submit" id="submit">Comment</button>
+                        </div>
+                        {% else %}
+                        <span style="color: #d61c4e">Please login to add yout comment. </span>
+                        {% endif %}
+                      </form>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+
+              <!-- commentlist -->
+              {% for comment in comments %}
+
+              <ol class="commentlist" style="background-color: #ffffff">
+                <li class="thread-alt depth-1">
+                  <div class="avatar">
+                    <img
+                      width="50"
+                      height="50"
+                      class="avatar"
+                      src="/media/{{ comment.user.profile.profile_pic }}"
+                      alt=""
+                    />
+                  </div>
+                  <div class="comment-content">
+                    <div class="comment-info">
+                      <cite>{{ comment.user.first_name|capfirst }} {{ comment.user.last_name|capfirst }}</cite>
+
+                      {% if comment.user.username == request.user.username %}
+
+                      <div style="float: right; margin-right: 20px" class="comment-dropdown">
+                        <i style="color: #151515" class="fa fa-ellipsis-h" aria-hidden="true"> </i>
+
+                        <div class="comment-dropdown-content">
+                          <a
+                            href=" {% url 'delete-comment' comment.id %}   "
+                            style=""
+                            onclick="return confirm('Are you sure you want to delete this comment')"
+                          >
+                            <i style="color: #d61c4e" class="fa fa-trash" aria-hidden="true"> </i> &nbsp; Delete Comment
+                          </a>
+                        </div>
+                      </div>
+
+                      {% endif %}
+
+                      <div class="comment-meta">
+                        <time class="comment-time" datetime="2014-07-12T24:05"
+                          >{{ comment.timestamp|date }} @ {{ comment.timestamp|time }}
+                        </time>
+                        {% comment %} <span class="sep">/</span><a class="reply" href="#">Reply</a> {% endcomment %}
+                      </div>
+                    </div>
+
+                    <div class="comment-text">
+                      <p>{{ comment.content }}</p>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+              {% endfor %}
+
+              <!-- Commentlist End -->
+            </div>
+            <!-- end col-full -->
+          </div>
+          <!-- end row comments -->
+        </div>
+        <!-- end comments-wrap -->
+      </article>
+    </div>
+    <!-- end col-twelve -->
+  </div>
+  <!-- end row -->
+</section>
+<!-- end content -->
 
 {% endblock %}

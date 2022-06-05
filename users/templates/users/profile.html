@@ -1,224 +1,198 @@
 {% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
 
-    <title>Report News | e-News User</title>
+<title>Report News | e-News User</title>
 
 {% endblock title %} {% block content %}
-    <style>
-        .profile-image {
-            height: 10em;
-            width: 10em;
-            border-radius: 5%;
-            box-shadow: 0 0.2em 0.5em;
-            object-fit: cover;
-        }
+<style>
+  .profile-image {
+    height: 10em;
+    width: 10em;
+    border-radius: 5%;
+    box-shadow: 0 0.2em 0.5em;
+    object-fit: cover;
+  }
 
+  .text-enews {
+    color: #4e73df;
+  }
 
-        .text-enews {
-            color: #4e73df;
-        }
+  /* Float four columns side by side */
+  .column {
+    float: left;
+    width: 45%;
+    padding: 0 10px;
+  }
 
-
-        /* Float four columns side by side */
-        .column {
-            float: left;
-            width: 45%;
-            padding: 0 10px;
-        }
-
-        /* Remove extra left and right margins, due to padding */
-        .row_align {
-            padding-bottom: 30px;
-            padding-top: 30px;
-        }
+  /* Remove extra left and right margins, due to padding */
+  .row_align {
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
   .py-3 {
     padding-bottom: 1rem !important;
   }
-        /* Clear floats after the columns */
-        .row_align:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+  /* Clear floats after the columns */
+  .row_align:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 
-        /* Responsive columns */
-        @media screen and (max-width: 600px) {
-            .column {
-                width: 100%;
-                display: block;
-                margin-bottom: 20px;
-            }
-        }
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
 
-        /* Style the counter cards */
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            padding: 16px;
-            text-align: center;
-            background-color: #f1f1f1;
-        }
-    </style>
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+</style>
 
-    <h2 style="text-align: left;margin-left: 30px;margin-top: 20px;color: #3a3b45">Profile</h2>
+<h2 style="text-align: left; margin-left: 30px; margin-top: 20px; color: #3a3b45">Profile</h2>
 
-    <div class="row_align ">
-        <div class="column">
-            <div class="card">
+<div class="row_align">
+  <div class="column">
+    <div class="card">
+      <div class="">
+        <center>
+          <img src="/media/{{ request.user.profile.profile_pic }}" width="60%" class="card-img-top profile-image" />
 
-                <div class="">
-                    <center>
-                        <img
-                                src="/media/{{ request.user.profile.profile_pic }}"
-                                width="60%"
-                                class="card-img-top profile-image"
-                        />
-                    </center>
-                </div>
-                <div class="py-3">
-                    <b>First Name :</b>
-                    <span>{{ request.user.profile.firstname }}</span>
-                </div>
-                <div class="py-3">
-                    <b>Last Name :</b>
-                    <span>{{ request.user.profile.lastname }}</span>
-                </div>
-                <div class="py-3">
-                    <b>Bio :</b> <span>{{ request.user.profile.bio }}</span>
-                </div>
-                <div class="py-3">
-                    <b>Email :</b> <span>{{ request.user.email }}</span>
-                </div>
-                <div class="py-3">
-                    <b>Phone :</b> <span>+977 {{ request.user.profile.phone }}</span>
-                </div>
-                <div class="py-3">
-                    <b>Address :</b> <span>{{ request.user.profile.address }}</span>
-                </div>
-                <div class="py-3">
-                    <b>City :</b> <span>{{ request.user.profile.city }}</span>
-                </div>
-            </div>
+          <div class="py-3" style="padding: 1rem !important">
+            
+            <span> <b> @{{ request.user.profile.username }} </b></span>
+          </div>
+        </center>
+      </div>
+      <div class="py-3" style="text-align: flex-start; display: flex; padding: 1rem !important">
+        <b>First Name :</b>
+        <span>{{ request.user.profile.firstname }}</span>
+      </div>
+      <div class="py-3" style="text-align: flex-start; display: flex; padding: 1rem !important">
+        <b>Last Name :</b>
+        <span>{{ request.user.profile.lastname }}</span>
+      </div>
+      <div>
+        <div class="py-3" style="text-align: flex-start; display: flex; padding: 1rem !important">
+          <b>Bio :</b> <span>{{ request.user.profile.bio }}</span>
         </div>
-
-        <div class="column">
-            <div class="card">
-
-                <div class="py-3">
-                    <div
-                            class="text-xl font-weight-bold text-enews text-title text-center mb-1"
-                    >
-                        Update Details
-                    </div>
-                    <div
-                            class="text-xs font-weight-bold text-enews text-muted text-center mb-1"
-                    >
-                        <span class="text-danger">*</span> Please fill your details
-                    </div>
-                    <hr/>
-                    <form method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                            <div class="form-field">
-                                <input
-                                        id="firstname"
-                                        name="firstname"
-                                        placeholder="Firstname"
-                                        value="{{ request.user.profile.firstname }}"
-                                        type="text"
-                                        class="full-width validate"
-                                />
-                            </div>
-                            <div class="form-field">
-                                <input
-                                        id="lastname"
-                                        name="lastname"
-                                        placeholder="Lastname"
-                                        value="{{ request.user.profile.lastname }}"
-                                        type="text"
-                                        class="full-width validate"
-                                />
-                            </div>
-
-
-                            <div class="form-field">
-                      <textarea
-                              id="bio"
-                              name="bio"
-                              maxlength="70"
-                              placeholder="Your Bio"
-                              class="full-width validate"
-                              required
-                              style="margin-bottom: 20px"
-                      >
-                      {{ request.user.profile.bio }}</textarea>
-                            </div>
-
-                            <div class="form-field">
-
-                                <input
-                                        id="email"
-                                        name="email"
-                                        placeholder="youremail@example.com"
-                                        value="{{ request.user.email }}"
-                                        type="email"
-                                        class="full-width validate"
-                                />
-
-                            </div>
-                            <div class="form-field">
-
-                                <input
-                                        id="phone"
-                                        name="phone"
-                                        placeholder="981232413411"
-                                        value="{{ request.user.profile.phone }}"
-                                        type="text"
-                                        class="full-width validate"
-                                />
-                            </div>
-
-
-                            <div class="form-field">
-
-                                <input
-                                        id="address"
-                                        name="address"
-                                        placeholder="Budanilakantha, Baluwakhani"
-                                        value="{{ request.user.profile.address }}"
-                                        type="text"
-                                        class="full-width validate"
-                                />
-
-                            </div>
-                            <div class="form-field">
-
-                                <input
-                                        id="city"
-                                        name="city"
-                                        placeholder="Kathmandu"
-                                        value="{{ request.user.profile.city }}"
-                                        type="text"
-                                        class="full-width validate">
-
-                            </div>
-
-                            <div class="form-field">
-
-                                {{ profileForm.profile_pic }}
-
-                            </div>
-                            <div class="form-field">
-                                <button type="submit" class="btn btn-submit form-field full-width-on-mobile">Update
-                                    Profile
-                                </button>
-                            </div>
-
-
-                    </form>
-                </div>
-            </div>
+        <div class="py-3" style="text-align: flex-start; display: flex; padding: 1rem !important">
+          <b>Email :</b> <span>{{ request.user.email }}</span>
         </div>
-
-
+        <div class="py-3" style="text-align: flex-start; display: flex; padding: 1rem !important">
+          <b>Phone :</b> <span>+977 {{ request.user.profile.phone }}</span>
+        </div>
+        <div class="py-3" style="text-align: flex-start; display: flex; padding: 1rem !important">
+          <b>Address :</b> <span>{{ request.user.profile.address }}</span>
+        </div>
+        <div class="py-3" style="text-align: flex-start; display: flex; padding: 1rem !important">
+          <b>City :</b> <span>{{ request.user.profile.city }}</span>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <div class="column">
+    {% include "message.html" %}
+    <div class="card">
+      <div class="py-3">
+        <div class="text-xl font-weight-bold text-enews text-title text-center mb-1">Update Details</div>
+        <div class="text-xs font-weight-bold text-enews text-muted text-center mb-1">
+          <span class="text-danger">*</span> Please fill your details
+        </div>
+        <hr />
+
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-field">
+            <input
+              id="firstname"
+              name="firstname"
+              placeholder="Firstname"
+              value="{{ request.user.profile.firstname }}"
+              type="text"
+              class="full-width validate"
+            />
+          </div>
+          <div class="form-field">
+            <input
+              id="lastname"
+              name="lastname"
+              placeholder="Lastname"
+              value="{{ request.user.profile.lastname }}"
+              type="text"
+              class="full-width validate"
+            />
+          </div>
+          <div class="form-field">
+            <textarea
+              id="bio"
+              name="bio"
+              maxlength="70"
+              placeholder="Your Bio"
+              class="full-width validate"
+              required
+              style="margin-bottom: 20px"
+            >
+                      {{ request.user.profile.bio }}</textarea
+            >
+          </div>
+          <div class="form-field">
+            <input
+              id="email"
+              name="email"
+              placeholder="youremail@example.com"
+              value="{{ request.user.email }}"
+              type="email"
+              class="full-width validate"
+            />
+          </div>
+          <div class="form-field">
+            <input
+              id="phone"
+              name="phone"
+              placeholder="981232413411"
+              value="{{ request.user.profile.phone }}"
+              type="text"
+              class="full-width validate"
+            />
+          </div>
+          <div class="form-field">
+            <input
+              id="address"
+              name="address"
+              placeholder="Budanilakantha, Baluwakhani"
+              value="{{ request.user.profile.address }}"
+              type="text"
+              class="full-width validate"
+            />
+          </div>
+          <div class="form-field">
+            <input
+              id="city"
+              name="city"
+              placeholder="Kathmandu"
+              value="{{ request.user.profile.city }}"
+              type="text"
+              class="full-width validate"
+            />
+          </div>
+          <div class="form-field">{{ profileForm.profile_pic }}</div>
+
+          <div class="form-field">
+            <button type="submit" class="btn btn-submit">Update Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}
-

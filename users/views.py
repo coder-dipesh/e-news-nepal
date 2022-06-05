@@ -5,8 +5,10 @@ from editors.models import *
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from accounts.forms import ProfileForm
+from accounts.auth import user_only
 
 
+@user_only
 def report_news(request):
     form = ReportNewsForm(request.POST, request.FILES)
     if request.method == "POST":
@@ -46,6 +48,7 @@ def contact_us(request):
     # This is the account page for the user.
 
 
+@user_only
 def account(request):
     profile = request.user.profile  # Getting currently logged in user data
     user = User.objects.get(username=profile)
@@ -69,6 +72,8 @@ def account(request):
                                  "Something went wrong!")
             context = {'profileForm': userdata}
             return render(request, 'users/profile.html', context)
+
     context = {'profileForm': userdata,
                'activate_profile': 'active'}
-    return render(request, 'users/profile.html')
+
+    return render(request, 'users/profile.html', context)

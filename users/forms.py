@@ -1,5 +1,7 @@
 from django import forms
 from users.models import *
+from accounts.models import *
+from django.forms import ModelForm
 
 
 class ReportNewsForm(forms.ModelForm):
@@ -38,4 +40,21 @@ class CommentForm(forms.ModelForm):
             'placeholder': 'Write your comment...',
             'cols': '70',
             'class': 'form-control form-control-user',
+        })
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['firstname', 'lastname', 'bio',
+                  'phone', 'address', 'city', 'profile_pic']
+
+    # Overriding the form-control
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['profile_pic'].widget.attrs.update({
+            'name': 'profile_pic',
+            'id': 'profile_pic',
+            'class': 'full-width validate',
         })

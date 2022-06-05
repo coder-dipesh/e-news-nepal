@@ -1611,7 +1611,6 @@ header .logo a {
   background-color: #6563ff;
   border-radius: 6px;
   color: #ffffff;
-  float: right;
   border: none;
   width: 8em;
   line-height: 40px;
@@ -1666,11 +1665,11 @@ header .logo a {
   color: #ffffff;
 }
 
-.social_align{
+.social_align {
   margin-left: 50%;
 }
-.social_links{
-font-size: 16px;
+.social_links {
+  font-size: 16px;
   padding-left: 12px;
   text-decoration: none;
 }
@@ -1694,7 +1693,6 @@ font-size: 16px;
   .icon-white {
     color: #000000;
   }
-
 
   .search-box {
     width: 270px;
@@ -1788,9 +1786,9 @@ font-size: 16px;
   #content-wrap .row {
     max-width: 880px;
   }
-    .social_align{
-  margin-left: 40%;
-}
+  .social_align {
+    margin-left: 40%;
+  }
 
   #content-wrap .primary-content {
     padding-left: 4rem;
@@ -1807,9 +1805,9 @@ font-size: 16px;
   #content-wrap {
     margin-top: 4.8rem;
   }
-      .social_align{
-  margin-left: 20%;
-}
+  .social_align {
+    margin-left: 20%;
+  }
 
   #content-wrap .primary-content {
     padding-left: 0;
@@ -1827,13 +1825,13 @@ font-size: 16px;
   #content-wrap .page-title {
     font-size: 2.8rem;
   }
-        .social_align{
-  margin-left: 5%;
-}
-      .social_links{
-        font-size: 12px;
-        padding-left: 5px;
-      }
+  .social_align {
+    margin-left: 5%;
+  }
+  .social_links {
+    font-size: 12px;
+    padding-left: 5px;
+  }
 }
 
 /* ===================================================================
@@ -1956,9 +1954,9 @@ font-size: 16px;
     margin-right: 0;
     padding: 0;
   }
-        .social_align{
-  margin-left: 2%;
-}
+  .social_align {
+    margin-left: 2%;
+  }
 }
 
 /* ===================================================================

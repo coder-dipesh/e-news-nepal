@@ -14,5 +14,13 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(view, about_us)
         
     def test_urls_contact(self):
-        
+          url = reverse('contact_us')
+        view = resolve(url).func
+        self.assertEquals(view, contact_us)
+    
+    def test_urls_account(self):
+        url = reverse('account')
+        view = resolve(url).func
+        self.assertEquals(view, account)
 
+#testing

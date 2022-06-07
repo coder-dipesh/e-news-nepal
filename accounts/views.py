@@ -158,3 +158,9 @@ def like_news(request):
         is_liked = True
 
     return redirect('/viewnews/'+str(post.id))
+
+
+# Reset Password
+
+def enterUsername(request):
+    return render(request, 'accounts/resetPassword/resetPasswordEnterUsername.html')

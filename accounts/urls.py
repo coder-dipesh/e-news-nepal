@@ -18,6 +18,11 @@ urlpatterns = [
 
 
     path('', views.home, name='home'),
+    
+    # Password Reset 
+    
+    path('reset-password-enter-username', views.enterUsername, name='reset-password-enter-username'),
+    
 
 
 ]

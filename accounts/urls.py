@@ -22,7 +22,7 @@ urlpatterns = [
     # Password Reset 
     
     path('reset-password-enter-username', views.enterUsername, name='reset-password-enter-username'),
-    
+    path('new-password/<token>/', views.resetPassword, name='new-password'),
 
 
 ]

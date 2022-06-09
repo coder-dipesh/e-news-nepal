@@ -12,3 +12,15 @@ class Comment(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.post.title, self.user.username)
+
+
+class contactinfo(models.Model):
+    name = models.CharField(max_length=200, blank=True)
+    email = models.CharField(max_length=200, blank=True)
+    contact = models.CharField(max_length=200, blank=True)
+    message = models.TextField(blank=True, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "contactinfo"
+

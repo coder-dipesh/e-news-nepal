@@ -58,3 +58,8 @@ class ProfileForm(ModelForm):
             'id': 'profile_pic',
             'class': 'full-width validate',
         })
+
+class contactForm(forms.ModelForm):
+    class Meta:
+        model = contactinfo
+        fields = "__all__"

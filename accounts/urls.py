@@ -4,6 +4,7 @@ from django.urls import path, include
 urlpatterns = [
     # Socail Auth
     path('', include('django.contrib.auth.urls')),
+    path('social-login', views.socialLogin, name='social-login'),
 
 
     # Login Register
@@ -18,11 +19,14 @@ urlpatterns = [
 
 
     path('', views.home, name='home'),
-    
-    # Password Reset 
-    
-    path('reset-password-enter-username', views.enterUsername, name='reset-password-enter-username'),
+
+    # Password Reset
+
+    path('reset-password-enter-username', views.enterUsername,
+         name='reset-password-enter-username'),
     path('new-password/<token>/', views.resetPassword, name='new-password'),
+    path('reset-password-success', views.resetPasswordSuccess, name='reset-password-success'),
+
 
 
 ]

@@ -47,6 +47,13 @@ def signIn(request):
     return render(request, 'accounts/signIn.html', context)
 
 
+def socialLogin(request):
+    usr = request.user
+    print(usr)
+    Profile.objects.create(
+        user=usr, username=usr.username, email=usr.email)
+
+
 @unauthenticated_user
 def signUp(request):
     if request.method == 'POST':
@@ -145,7 +152,6 @@ def viewnews(request, news_id):
 
 
 def deleteComment(request, id):
-
     comment = Comment.objects.get(id=id, user_id=request.user.id)
     comment.delete()
     return redirect('/viewnews/' + str(comment.post.id))
@@ -216,15 +222,18 @@ def resetPassword(request, token):
             return redirect(f'/new-password/{token}/')
 
         if new_password != confirm_new_password:
-            messages.add_message(request, messages.ERROR,
-                                 'Password must be equal.')
             return redirect(f'new-password/{token}/')
+        else:
+            print(user_id)
+            user_obj = User.objects.get(id=user_id)
+            print(user_obj)
 
-        print(user_id)
-        user_obj = User.objects.get(id=user_id)
-        print(user_obj)
-
-        user_obj.set_password(new_password)
-        user_obj.save()
+            user_obj.set_password(new_password)
+            user_obj.save()
+            return redirect('/reset-password-success')
 
     return render(request, 'accounts/resetPassword/newPassword.html', context)
+
+
+def resetPasswordSuccess(request):
+    return render(request, 'accounts/resetPassword/resetPasswordDone.html',)

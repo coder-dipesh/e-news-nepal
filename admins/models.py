@@ -26,3 +26,20 @@ class Category(models.Model):
 
     def __str__(self):
         return self.categoryName
+
+
+# This is the user Category models
+
+
+class Site(models.Model):
+    title = models.CharField(max_length=100)
+    metaDesc = models.CharField(max_length=100)
+    metaKey = models.CharField(max_length=100)
+    logo = models.FileField(upload_to='news/', null=True)
+    favicon = models.FileField(upload_to='news/', null=True)
+    aboutimg = models.FileField(upload_to='news/', null=True)
+    abouttitle = models.CharField(max_length=100)
+    aboutdesc = models.TextField(max_length=1000)
+
+    def __str__(self):
+        return self.siteSettings

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-from .models import Category, CustomUser
+from .models import Category, CustomUser, Site
 
 import re
 EMAIL_REGEX = "^[a-z]+[\._]?[a-z 0-9]+[@]\w+[.]\w{2,3}$"
@@ -140,3 +140,59 @@ class CategoryForm(ModelForm):
             'id': 'description',
             'class': 'form-control validate',
         })
+
+
+# This is the custom site setting and about us page form
+class SiteSetting(ModelForm):
+    class Meta:
+        model = Site
+        fields = ['title', 'metaDesc', 'metaKey', 'logo', 'favicon', 'aboutimg', 'abouttitle','aboutdesc']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({
+            'required': '',
+            'name': 'title',
+            'id': 'title',
+            'class': 'form-control validate',
+        })
+        self.fields['metaDesc'].widget.attrs.update({
+            'required': '',
+            'name': 'metaDesc',
+            'id': 'title',
+            'class': 'form-control validate',
+        })
+        self.fields['metaKey'].widget.attrs.update({
+            'required': '',
+            'name': 'metaKey',
+            'id': 'title',
+            'class': 'form-control validate',
+        })
+        self.fields['logo'].widget.attrs.update({
+            'name': 'logo',
+            'id': 'image',
+            'class': 'form-control form-control-user',
+        })
+        self.fields['favicon'].widget.attrs.update({
+            'name': 'favicon',
+            'id': 'image',
+            'class': 'form-control form-control-user',
+        })
+        self.fields['aboutimg'].widget.attrs.update({
+            'name': 'aboutimg',
+            'id': 'image',
+            'class': 'form-control form-control-user',
+        })
+        self.fields['abouttitle'].widget.attrs.update({
+            'required': '',
+            'name': 'abouttitle',
+            'id': 'title',
+            'class': 'form-control validate',
+        })
+        self.fields['aboutdesc'].widget.attrs.update({
+            'required': '',
+            'name': 'aboutdesc',
+            'id': 'description',
+            'class': 'form-control validate',
+        })
+        

@@ -40,12 +40,25 @@ def about_us(request):
     return render(request, 'users/aboutus.html', context)
 
 
+# def contact_us(request):
+#     context = {
+#         'activate_contact_us': 'current', }
+#     return render(request, 'users/contactus.html', context)
+
+# This is the account page for the user.
+
 def contact_us(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        contact = request.POST['contact']
+        message = request.POST['message']
+        ins = contactinfo(name=name, email=email, contact=contact, message=message)
+        ins.save()
     context = {
         'activate_contact_us': 'current', }
+    messages.success(request, "Message Successfully Sent!")
     return render(request, 'users/contactus.html', context)
-
-    # This is the account page for the user.
 
 
 @user_only

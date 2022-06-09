@@ -11,10 +11,10 @@ from accounts.auth import admin_only
 from django.contrib.auth.models import User
 
 from accounts.auth import admin_only, unauthenticated_user
-from .models import Category, CustomUser
+from .models import Category, CustomUser , Site
 # Create your views here.
 from accounts.forms import CreateUserForm
-from .forms import CustomUserForm, CreateUserForm, CategoryForm
+from .forms import CustomUserForm, CreateUserForm, CategoryForm , SiteSetting
 from enews import settings
 
 from django.template.loader import render_to_string
@@ -298,3 +298,47 @@ def update_category(request, p_id):
 def getNews(request):
     news = NewsModel.objects.all()
     return render(request, 'admins/Allnews/Allnews.html', {"news": news})
+
+
+
+
+
+# @login_required
+# @admin_only
+# def SiteSettingss(request):
+#     sitee = Site.objects.get(pk=1)
+#     return render(request, 'admins/site/sitesetting.html', {'sitee': sitee})
+
+
+# @login_required
+# @admin_only
+# def SiteSettingss(request):
+#     sitee = Site.objects.get(pk=1)
+#     form = SiteSetting(request.POST, request.FILES)
+#     if request.method == 'POST':
+#         title = request.POST.get('title')
+#         metadesc = request.POST.get('metadesc')
+#         metakey = request.POST.get('metakey')
+#         logo = request.POST.get('logo')
+        
+#     return render(request, 'admins/site/sitesetting.html', {'sitee': sitee})
+
+
+
+@login_required
+@admin_only
+def SiteSettingss(request):
+    sitee = Site.objects.get(pk=1)
+    if request.method == 'POST':
+        sitee = SiteSetting(request.POST, request.FILES, instance=sitee)
+
+        if sitee.is_valid():
+            sitee.save()
+            setee=Site.objects.get(pk=1)
+            messages.add_message(request, messages.SUCCESS,
+                                 'Category Updated Successfully')
+            return render(request, 'admins/site/sitesetting.html', {"sitee": setee})
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 'Unable to update Category')
+    return render(request, 'admins/site/sitesetting.html', {"sitee": sitee})

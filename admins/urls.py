@@ -32,5 +32,8 @@ urlpatterns = [
      # THis is url for the all news 
      path('all-news', views.getNews, name='all-news'),
 
+      # THis is url for the Site Setting
+     path('siteSetting', views.SiteSettingss, name='siteSetting'),
+
 
 ]

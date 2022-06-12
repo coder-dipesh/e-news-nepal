@@ -29,11 +29,14 @@ urlpatterns = [
 
     path('categoryupdatebutton', views.categoryupdatebutton,
          name='categoryupdatebutton'),
-     # THis is url for the all news 
-     path('all-news', views.getNews, name='all-news'),
+    # THis is url for the all news
+    path('all-news', views.getNews, name='all-news'),
 
-      # THis is url for the Site Setting
-     path('siteSetting', views.SiteSettingss, name='siteSetting'),
+    # THis is url for the Site Setting
+    path('siteSetting', views.SiteSettingss, name='siteSetting'),
+
+    path('all-contacts', views.allContact, name='all-contacts'),
+
 
 
 ]

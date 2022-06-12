@@ -11,16 +11,18 @@ from accounts.auth import admin_only
 from django.contrib.auth.models import User
 
 from accounts.auth import admin_only, unauthenticated_user
-from .models import Category, CustomUser , Site
+from .models import Category, CustomUser, Site
 # Create your views here.
 from accounts.forms import CreateUserForm
-from .forms import CustomUserForm, CreateUserForm, CategoryForm , SiteSetting
+from .forms import CustomUserForm, CreateUserForm, CategoryForm, SiteSetting
 from enews import settings
 
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from accounts.models import Profile
 from editors.models import NewsModel
+
+from users.models import *
 
 # from django.utils.encoding import force_bytes, force_text
 # from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -300,31 +302,6 @@ def getNews(request):
     return render(request, 'admins/Allnews/Allnews.html', {"news": news})
 
 
-
-
-
-# @login_required
-# @admin_only
-# def SiteSettingss(request):
-#     sitee = Site.objects.get(pk=1)
-#     return render(request, 'admins/site/sitesetting.html', {'sitee': sitee})
-
-
-# @login_required
-# @admin_only
-# def SiteSettingss(request):
-#     sitee = Site.objects.get(pk=1)
-#     form = SiteSetting(request.POST, request.FILES)
-#     if request.method == 'POST':
-#         title = request.POST.get('title')
-#         metadesc = request.POST.get('metadesc')
-#         metakey = request.POST.get('metakey')
-#         logo = request.POST.get('logo')
-        
-#     return render(request, 'admins/site/sitesetting.html', {'sitee': sitee})
-
-
-
 @login_required
 @admin_only
 def SiteSettingss(request):
@@ -334,11 +311,19 @@ def SiteSettingss(request):
 
         if sitee.is_valid():
             sitee.save()
-            setee=Site.objects.get(pk=1)
+            setee = Site.objects.get(pk=1)
             messages.add_message(request, messages.SUCCESS,
                                  'Category Updated Successfully')
             return render(request, 'admins/site/sitesetting.html', {"sitee": setee})
         else:
             messages.add_message(request, messages.ERROR,
-                                 'Unable to update Category')
+                                 'Unable to update site settings')
     return render(request, 'admins/site/sitesetting.html', {"sitee": sitee})
+
+
+def allContact(request):
+    contact = contactinfo.objects.all()
+
+    context = {'contact': contact}
+
+    return render(request, 'admins/contactUs.html', context)

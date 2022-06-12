@@ -1,6 +1,6 @@
 {% extends 'admin_layout.html' %} {% load static%} {% load bootstrap %} {% block title %}
 
-<title>Sitesetting | e-News Admin</title>
+<title>Site Setting | e-News Admin</title>
 
 {% endblock title%}
 
@@ -36,6 +36,19 @@
         </li>
       </ol>
     </nav>
+    <!-- Back To Editor Information  -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'admins'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-backward fa-sm text-white-100"></i>
+        &nbsp; Back
+      </a>
+    </div>
   </div>
 
   <div class="container-fluid">
@@ -90,18 +103,18 @@
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Fav icon</label>
-                    <input class="form-control" type="file" id="formFileMultiple" >
-                    <img src="{{sitee.favicon.url}}" alt="" width="50" height="50">
+                    <input class="form-control" type="file" id="formFileMultiple" />
+                    <img src="{{sitee.favicon.url}}" alt="" width="50" height="50" />
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Logo</label>
-                    <input class="form-control" type="file" id="formFileMultiple" >
-                    <img src="{{sitee.logo.url}}" alt="" width="50" height="50">
+                    <input class="form-control" type="file" id="formFileMultiple" />
+                    <img src="{{sitee.logo.url}}" alt="" width="50" height="50" />
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">About Image</label>
-                    <input class="form-control" type="file" id="formFileMultiple" >
-                    <img src="{{sitee.aboutimg.url}}" alt="" width="50" height="50">
+                    <input class="form-control" type="file" id="formFileMultiple" />
+                    <img src="{{sitee.aboutimg.url}}" alt="" width="50" height="50" />
                   </div>
                   <div class="form-group mb-3">
                     <label for="">About US Title<span class="text-danger">*</span> </label>
@@ -125,7 +138,8 @@
                       placeholder="Write some text..."
                       required=""
                       spellcheck="false"
-                    >{{sitee.aboutdesc}}
+                    >
+{{sitee.aboutdesc}}
                     </textarea>
                   </div>
 

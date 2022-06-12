@@ -1,6 +1,6 @@
 {% extends "admin_layout.html"%} {% load static %} {% load bootstrap %} {% block title %}
 
-<title>All Users | e-News Admin</title>
+<title>All Contact | e-News Admin</title>
 
 {%endblock title %} {% block content %}
 
@@ -13,12 +13,11 @@
           <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">
-          <a href="{% url 'all-users' %}" class="text-primary">All Users</a>
+          <a href="{% url 'all-contacts' %}" class="text-primary">All Contact</a>
         </li>
       </ol>
     </nav>
-
-    <!-- Back To Editor Information  -->
+        <!-- Back To Editor Information  -->
     <div class="no-arrow d-sm-inline-block">
       <a
         class="btn btn-sm bg-enews text-white"
@@ -35,48 +34,46 @@
   <!-- Show User Information Table -->
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">Users Information</h6>
+      <h6 class="m-0 font-weight-bold text-primary">User Contact</h6>
     </div>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Username</th>
+              <th>Name</th>
               <th>Email</th>
-              <th>Profile</th>
-              <th>Role</th>
-              <th>Joined</th>
+              <th>Number</th>
+              <th>Message</th>
+              <th>Date</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>ID</th>
-              <th>Username</th>
+              <th>Name</th>
               <th>Email</th>
-              <th>Profile</th>
-              <th>Role</th>
-              <th>Joined</th>
+              <th>Number</th>
+              <th>Message</th>
+              <th>Date</th>
+              <th>Action</th>
             </tr>
           </tfoot>
           <tbody>
-            {% for user in user_info %}
+            {% for i in contact %}
             <tr>
-              <td>{{ user.id }}</td>
-              <td>{{ user.username }}</td>
-              <td>{{ user.email }}</td>
-              <td>
-                <img
-                  class="img-profile rounded-circle"
-                  height="40"
-                  width="40"
-                  src="{% static 'images/avatars/user-01.jpg'%}"
-                />
+              <td>{{ i.name }}</td>
+              <td>{{ i.email }}</td>
+              <td>{{ i.contact }}</td>
+              <td>{{ i.message }}</td>
+              <td>{{ i.date }}</td>
+              <td class="text-center">
+                <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="Send Mail to Editor!">
+                  <a href="mailto:{{i.email}}" style="color: white !important; text-decoration: none">
+                    <i class="fas fa-paper-plane"></i>
+                  </a>
+                </button>
               </td>
-              <td>User</td>
-
-              <td>{{ user.date_joined }}</td>
             </tr>
             {% endfor %}
           </tbody>

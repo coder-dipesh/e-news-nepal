@@ -9,3 +9,7 @@ class TestUrls(SimpleTestCase):
         view = resolve(url).func
         self.assertEquals(view, enterUsername)
 
+    def test_urls_reset_password_success(self):
+        url = reverse('reset-password-success')
+        view = resolve(url).func
+        self.assertEquals(view, resetPasswordSuccess)

@@ -1,7 +1,3 @@
-from pickle import NONE
-from turtle import update
-from unicodedata import category
-from unittest import result
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -12,7 +8,6 @@ from django.contrib.auth.models import User
 
 from accounts.auth import admin_only, unauthenticated_user
 from .models import Category, CustomUser, Site
-# Create your views here.
 from accounts.forms import CreateUserForm
 from .forms import CustomUserForm, CreateUserForm, CategoryForm, SiteSetting
 from enews import settings
@@ -32,8 +27,9 @@ from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
-import os
 from django.core.mail import EmailMultiAlternatives
+
+
 
 # ==============================================
 # ============= ADMIN DASHBOARD ================
@@ -320,7 +316,8 @@ def SiteSettingss(request):
                                  'Unable to update site settings')
     return render(request, 'admins/site/sitesetting.html', {"sitee": sitee})
 
-
+@login_required
+@admin_only
 def allContact(request):
     contact = contactinfo.objects.all()
 

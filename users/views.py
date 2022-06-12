@@ -40,13 +40,6 @@ def about_us(request):
     return render(request, 'users/aboutus.html', context)
 
 
-# def contact_us(request):
-#     context = {
-#         'activate_contact_us': 'current', }
-#     return render(request, 'users/contactus.html', context)
-
-# This is the account page for the user.
-
 def contact_us(request):
     if request.method == "POST":
         name = request.POST['name']

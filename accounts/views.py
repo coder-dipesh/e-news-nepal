@@ -1,3 +1,6 @@
+from django.utils.html import strip_tags
+from django.template.loader import render_to_string
+from django.core.mail import EmailMultiAlternatives
 from django.contrib.auth import authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -172,13 +175,27 @@ def like_news(request):
 
 
 # Reset Password
+# Imports for sendin HTML as mail
 
-def send_forget_password_mail(email, token):
-    subject = 'Your forget password link'
-    message = f'Hi , click on the link to reset your password http://localhost:8000/new-password/{token}/'
-    email_from = settings.EMAIL_HOST_USER
-    recipient_list = [email]
-    send_mail(subject, message, email_from, recipient_list)
+
+def send_forget_password_mail(email, token,username):
+
+    html_content = render_to_string(
+        'accounts/resetPassword/reset_password_mail.html', {'title': "Reset Password", 'token': token, 'username':username})
+    text_content = strip_tags(html_content)
+    email = EmailMultiAlternatives(
+        # Subject
+        'Your forget password link',
+        # content
+        text_content,
+        # Sender
+        settings.EMAIL_HOST_USER,
+        # Receiver
+        [email],
+
+    )
+    email.attach_alternative(html_content, "text/html")
+    email.send()
     return True
 
 
@@ -199,7 +216,7 @@ def enterUsername(request):
         profile_obj.forget_password_token = token
         profile_obj.save()
         print(user_obj.email)
-        send_forget_password_mail(user_obj.email, token)
+        send_forget_password_mail(user_obj.email, token,username)
         messages.add_message(
             request, messages.SUCCESS, 'An email is sent to user with password changing link.')
         return redirect('/reset-password-enter-username')

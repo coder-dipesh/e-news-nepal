@@ -8,3 +8,9 @@ class Test_views(TestCase):
         response = client.get(reverse('reset-password-enter-username'))
         self.assertTemplateUsed(
             response, 'accounts/resetPassword/resetPasswordEnterUsername.html')
+
+    def test_resetPassword_done(self):
+        client = Client()
+        response = client.get(reverse('reset-password-success'))
+        self.assertTemplateUsed(
+            response, 'accounts/resetPassword/resetPasswordDone.html')

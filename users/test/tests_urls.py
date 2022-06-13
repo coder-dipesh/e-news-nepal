@@ -7,3 +7,9 @@ class TestUrls(SimpleTestCase):
         url = reverse('about_us')
         view = resolve(url).func
         self.assertEquals(view, about_us)
+
+        
+    def test_urls_contact(self):
+        url = reverse('contact_us')
+        view = resolve(url).func
+        self.assertEquals(view, contact_us)

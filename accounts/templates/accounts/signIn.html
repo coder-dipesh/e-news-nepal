@@ -110,12 +110,14 @@
                     <form method="POST">
                       {% csrf_token %}
                       <a href="{% url 'social-login' %}" >
+
                       <a
                         style="text-decoration: none; color: #fff"
                         class="btn btn-danger btn-block"
                         href='{% url "social:begin" "google-oauth2" %}'
                       >
-                        <i class="fa fa-google fa-fw"></i> Sign in with Google
+                        <i class="fab fa-google"></i>
+                        Sign in with Google
                       </a>
                       </a>
                     </form>

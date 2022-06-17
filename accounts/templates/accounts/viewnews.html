@@ -1,4 +1,4 @@
-{% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+{% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% load social_share %}  {% block title %}
 
 <title>{{ news.title }} | e-News User</title>
 
@@ -37,7 +37,8 @@
           <img class="pull-right" style="height: 300px !important" src="{{ news.image.url }}" alt="" />
 
           <h5>{{ news.content|safe }}</h5>
-
+          {% post_to_twitter "{{object.title}}" object_or_url "Post to twitter" %}
+          {% post_to_facebook "{{object.title}}" object_or_url "Post to facebook" %}
           <div style="display: flex">
             <form action="{% url 'like_news' %}" method="POST">
               {% csrf_token %} {% if request.user.is_authenticated %} {% if is_liked %}

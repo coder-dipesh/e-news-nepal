@@ -37,8 +37,9 @@
           <img class="pull-right" style="height: 300px !important" src="{{ news.image.url }}" alt="" />
 
           <h5>{{ news.content|safe }}</h5>
-          {% post_to_twitter "{{object.title}}" object_or_url "Post to twitter" %}
-          {% post_to_facebook "{{object.title}}" object_or_url "Post to facebook" %}
+          
+          
+          
           <div style="display: flex">
             <form action="{% url 'like_news' %}" method="POST">
               {% csrf_token %} {% if request.user.is_authenticated %} {% if is_liked %}
@@ -59,6 +60,7 @@
                   <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
                 </button>
               </div>
+              
 
               {% endif %} {% else %}
               <div class="like-content">
@@ -76,7 +78,16 @@
               {% endif %}
 
               <span style="color: #6563ff; margin-left: 1rem"> {{ total_likes }} Like{{ total_likes|pluralize }}</span>
+              
+              
             </form>
+            <div class="like-content">
+              <button class="btn-secondary">
+                  <i class="fa fa-share" ></i> Share
+                  <a href="" target="_blank" rel="">{% post_to_twitter "{{object.title}}" object_or_url "Post to twitter" %}</a>
+                  <a href="" target="_blank" rel="">{% post_to_facebook "{{object.title}}" object_or_url "Post to facebook" %}</a>
+              </button>
+            </div>
 
            
 

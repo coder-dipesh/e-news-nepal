@@ -102,7 +102,7 @@ class ProfileForm(ModelForm):
     class Meta:
         model = Profile
         fields = ['firstname', 'lastname', 'bio',
-                  'phone', 'address', 'city', 'profile_pic']
+                  'phone', 'address', 'city', 'profile_pic', 'facebook', 'instagram', 'linkedin']
 
         widgets = {
             'profile_pic': forms.FileInput(attrs={'class': 'form-control validate'}),

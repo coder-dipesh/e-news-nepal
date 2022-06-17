@@ -28,9 +28,15 @@
 
             <br />
             <div class="social_align">
-              <a target="_blank" href="#" class="social_links"><i class="fa fa-facebook"></i></a>
-              <a target="_blank" href="#" class="social_links"><i class="fa fa-instagram"></i></a>
-              <a target="_blank" href="#" class="social_links"><i class="fa fa-linkedin"></i></a>
+              <a target="_blank" href="{{news.user.profile.facebook}}" class="social_links"
+                ><i class="fa fa-facebook"></i
+              ></a>
+              <a target="_blank" href="{{news.user.profile.instagram}}" class="social_links"
+                ><i class="fa fa-instagram"></i
+              ></a>
+              <a target="_blank" href="{{news.user.profile.linkedin}}" class="social_links"
+                ><i class="fa fa-linkedin"></i
+              ></a>
             </div>
           </div>
 
@@ -77,12 +83,11 @@
               <span style="color: #6563ff; margin-left: 1rem"> {{ total_likes }} Like{{ total_likes|pluralize }}</span>
             </form>
 
-           
-
-            {% comment %} <div class="like-content">
+            {% comment %}
+            <div class="like-content">
               <button class="btn-secondary"><i class="fa fa-share" aria-hidden="true"></i> Share</button>
-            </div> {% endcomment %}
-           
+            </div>
+            {% endcomment %}
           </div>
         </div>
 

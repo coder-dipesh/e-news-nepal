@@ -56,6 +56,19 @@
                   <div class="py-3"><b>@{{request.user.profile.username}}</b></div>
                 </center>
               </div>
+              <div class="py-3">
+                <div class="social_align center">
+                  <a target="_blank" href="{{request.user.profile.facebook}}" class="social_links px-3"
+                    ><i class="fa fa-facebook"></i
+                  ></a>
+                  <a target="_blank" href="{{request.user.profile.instagram}}" class="social_links px-3"
+                    ><i class="fa fa-instagram"></i
+                  ></a>
+                  <a target="_blank" href="{{request.user.profile.linkedin}}" class="social_links px-3"
+                    ><i class="fa fa-linkedin"></i
+                  ></a>
+                </div>
+              </div>
               <div class="py-3"><b>First Name :</b> <span>{{request.user.profile.firstname}}</span></div>
               <div class="py-3"><b>Last Name :</b> <span>{{request.user.profile.lastname}}</span></div>
               <div class="py-3"><b>Bio :</b> <span>{{request.user.profile.bio}}</span></div>
@@ -158,6 +171,7 @@
                       />
                     </div>
                   </div>
+
                   <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">
                       <input
@@ -171,8 +185,46 @@
                     </div>
                   </div>
                   <div class="form-group row">
+                    <div class="col-sm-12 mb-3 mb-sm-0">
+                      <input
+                        id="facebook"
+                        name="facebook"
+                        placeholder="https://www.facebook.com/username"
+                        value="{{request.user.profile.facebook}}"
+                        type="url"
+                        class="form-control validate"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-12 mb-3 mb-sm-0">
+                      <input
+                        id="instagram"
+                        name="instagram"
+                        placeholder="https://www.instagram.com/username"
+                        value="{{request.user.profile.instagram}}"
+                        type="url"
+                        class="form-control validate"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-12 mb-3 mb-sm-0">
+                      <input
+                        id="linkedin"
+                        name="linkedin"
+                        placeholder="https://www.linkedin.com/in/username"
+                        value="{{request.user.profile.linkedin}}"
+                        type="url"
+                        class="form-control validate"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
                     <div class="col-sm-12 mb-3 mb-sm-0">{{profileForm.profile_pic}}</div>
                   </div>
+
                   <button type="submit" class="btn btn-primary bg-enews">Update Profile</button>
                 </form>
               </div>

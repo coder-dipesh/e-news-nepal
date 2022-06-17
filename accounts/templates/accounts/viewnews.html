@@ -81,12 +81,18 @@
               
               
             </form>
-            <div class="like-content">
+            <div class="like-content dropdown">
               <button class="btn-secondary">
-                  <i class="fa fa-share" ></i> Share
-                  <a href="" target="_blank" rel="">{% post_to_twitter "{{object.title}}" object_or_url "Post to twitter" %}</a>
-                  <a href="" target="_blank" rel="">{% post_to_facebook "{{object.title}}" object_or_url "Post to facebook" %}</a>
-              </button>
+                <i class="fa fa-share" ></i> Share
+            </button>
+              <div class="dropdown-content">
+                <a href="" title="">{% post_to_twitter "{{object.title}}" object_or_url "twitter" %}</a>
+                <a href="" title="">{% post_to_facebook "{{object.title}}" object_or_url "facebook" %}</a>
+              </div>
+          
+            </div>
+            <div class="">
+              
             </div>
 
            

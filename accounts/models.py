@@ -19,9 +19,9 @@ class Profile(models.Model):
         upload_to='images/', default='images/user.png')
 
     # Social Links
-    facebook = models.CharField(max_length=150, null=True)
-    instagram = models.CharField(max_length=150, null=True)
-    linkedin = models.CharField(max_length=150, null=True)
+    facebook = models.CharField(max_length=150, default="#", null=True)
+    instagram = models.CharField(max_length=150, default="#", null=True)
+    linkedin = models.CharField(max_length=150, default="#", null=True)
 
     created_date = models.DateField(auto_now_add=True, null=True)
 

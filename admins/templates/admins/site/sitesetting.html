@@ -61,10 +61,10 @@
                 <div class="col-md-12">
                   <h3 class="title text-gray-900 mb-8">Update Site Setting</h3>
 
-                  <hr />
+                  <hr /> 
                   {% include "message.html" %}
                 </div>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                   {% csrf_token %}
 
                   <!-- django -->

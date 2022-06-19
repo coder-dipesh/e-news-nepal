@@ -35,9 +35,9 @@ class Site(models.Model):
     title = models.CharField(max_length=100)
     metaDesc = models.CharField(max_length=100)
     metaKey = models.CharField(max_length=100)
-    logo = models.FileField(upload_to='news/', null=True)
-    favicon = models.FileField(upload_to='news/', null=True)
-    aboutimg = models.FileField(upload_to='news/', null=True)
+    logo = models.FileField(upload_to='site/', null=True)
+    favicon = models.FileField(upload_to='site/', null=True)
+    aboutimg = models.FileField(upload_to='site/', null=True)
     abouttitle = models.CharField(max_length=100)
     aboutdesc = models.TextField(max_length=1000)
 

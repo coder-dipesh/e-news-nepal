@@ -30,7 +30,6 @@ from xhtml2pdf import pisa
 from django.core.mail import EmailMultiAlternatives
 
 
-
 # ==============================================
 # ============= ADMIN DASHBOARD ================
 # ==============================================
@@ -315,6 +314,7 @@ def SiteSettingss(request):
             messages.add_message(request, messages.ERROR,
                                  'Unable to update site settings')
     return render(request, 'admins/site/sitesetting.html', {"sitee": sitee})
+
 
 @login_required
 @admin_only

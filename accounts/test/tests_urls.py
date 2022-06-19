@@ -8,3 +8,8 @@ class TestUrls(SimpleTestCase):
         url = reverse('social-login')
         view = resolve(url).func
         self.assertEquals(view, socialLogin)
+
+    def test_urls_deletecomment(self):
+        url = reverse('delete-comment')
+        view = resolve(url).func
+        self.assertEquals(view, deleteComment)

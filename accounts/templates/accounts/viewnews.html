@@ -87,13 +87,18 @@
               
               
             </form>
-            <div class="like-content dropdown">
-              <button class="btn-secondary">
+            <div class="like-content dropdown" style="padding-left: 20px;">
+              <button class="btn-secondary" >
                 <i class="fa fa-share" ></i> Share
             </button>
-              <div class="dropdown-content">
-                <a href="" title="">{% post_to_twitter "{{object.title}}" object_or_url "twitter" %}</a>
-                <a href="" title="">{% post_to_facebook "{{object.title}}" object_or_url "facebook" %}</a>
+              <div class="dropdown-content" style="background-color: #6563ff; padding-top:20px;">
+                
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}/">
+                  <i class="fa fa-facebook" aria-hidden="true"></i> 
+                </a>
+                <a href="https://twitter.com/home?status={{ request.build_absolute_uri }}/">
+                  <i class="fa fa-twitter" aria-hidden="true"></i> 
+                </a>
               </div>
           
             </div>

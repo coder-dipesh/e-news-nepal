@@ -43,3 +43,14 @@ class Site(models.Model):
 
     def __str__(self):
         return self.siteSettings
+
+
+
+# This is the user Email address (news Models) models
+
+
+class Newsletter(models.Model):
+    email = models.CharField(max_length=200, blank=True)
+
+    class Meta:
+        db_table = "Newsletter"

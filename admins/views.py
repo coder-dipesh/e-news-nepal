@@ -324,3 +324,10 @@ def allContact(request):
     context = {'contact': contact}
 
     return render(request, 'admins/contactUs.html', context)
+
+
+# Download Editor User and All News Data
+
+def downloadEditorData(request):
+    
+    return 1

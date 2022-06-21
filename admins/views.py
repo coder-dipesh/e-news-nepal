@@ -329,8 +329,8 @@ def allContact(request):
 @admin_only
 def emailNewsletter(request):
     newsletter = Newsletter.objects.all()
-
-    context = {'contact': newsletter}
+    
+    context = {'newsletter': newsletter}
 
     return render(request, 'admins/Subscribe/Newsletter.html', context)
 

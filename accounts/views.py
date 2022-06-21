@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from requests import post
+
+from admins.models import Newsletter
 from .models import UserOTP
 import random
 from django.core.mail import send_mail
@@ -117,10 +119,17 @@ def signOut(request):
 
 
 def home(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            news_model = Newsletter()
+            news_model.email = email
+            news_model.save()
     news = NewsModel.objects.filter(status='P')
     context = {
         "news": news,
         'activate_home': 'current', }
+    
     return render(request, 'accounts/home.html', context)
 
 

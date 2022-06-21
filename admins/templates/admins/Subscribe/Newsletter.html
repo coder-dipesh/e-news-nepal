@@ -47,7 +47,7 @@
               </tr>
             </thead>
             <tbody>
-              {% for c in context %}
+              {% for c in newsletter %}
               <tr>
                 <td>{{ c.id}}</td>
                 <td>{{ c.email }}</td>
@@ -59,14 +59,6 @@
                       style="text-decoration: none; color: beige"
                       <i class="fas fa-trash"></i>
                       </a
-                    >
-                  </div>
-
-                  <div class="btn btn-sm btn-warning" data-bs-toggle="tooltip" title="Update Category Information!">
-                    <a
-                      href="{% url 'update_category' c.id %}"
-                      style="text-decoration: none; color: beige"
-                      ><i class="fas fa-edit"></i></a
                     >
                   </div>
                 </td>

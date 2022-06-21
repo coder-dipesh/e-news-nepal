@@ -36,5 +36,7 @@ urlpatterns = [
     path('all-contacts', views.allContact, name='all-contacts'),
 
 
+    # THis is url for the Site Setting
+    path('Newsletters', views.emailNewsletter, name='Newsletters'),
 
 ]

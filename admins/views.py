@@ -7,7 +7,7 @@ from accounts.auth import admin_only
 from django.contrib.auth.models import User
 
 from accounts.auth import admin_only, unauthenticated_user
-from .models import Category, CustomUser, Site
+from .models import Category, CustomUser, Site, Newsletter
 from accounts.forms import CreateUserForm
 from .forms import CustomUserForm, CreateUserForm, CategoryForm, SiteSetting
 from enews import settings
@@ -325,6 +325,14 @@ def allContact(request):
 
     return render(request, 'admins/contactUs.html', context)
 
+@login_required
+@admin_only
+def emailNewsletter(request):
+    newsletter = Newsletter.objects.all()
+    
+    context = {'newsletter': newsletter}
+
+    return render(request, 'admins/Subscribe/Newsletter.html', context)
 
 # Download Editor User and All News Data
 

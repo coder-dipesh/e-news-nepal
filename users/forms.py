@@ -4,6 +4,8 @@ from accounts.models import *
 from django.forms import ModelForm
 
 
+
+
 class ReportNewsForm(forms.ModelForm):
     class Meta:
         model = NewsModel
@@ -63,3 +65,7 @@ class contactForm(forms.ModelForm):
     class Meta:
         model = contactinfo
         fields = "__all__"
+
+
+
+

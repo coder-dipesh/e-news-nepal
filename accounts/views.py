@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
@@ -117,10 +118,12 @@ def signOut(request):
 
 
 def home(request):
-    news = NewsModel.objects.filter(status='P')
+    news = Paginator(NewsModel.objects.filter(status='P'), 5)
+    page = request.GET.get('page')
+    news = news.get_page(page)
     context = {
         "news": news,
-        'activate_home': 'current', }
+        'activate_home': 'current'}
     return render(request, 'accounts/home.html', context)
 
 

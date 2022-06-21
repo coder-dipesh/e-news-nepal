@@ -154,12 +154,15 @@
             </li>
             {% endif %}
             <li style="cursor: pointer">
-              <form method="post">
+              <form name="myForm" method="post" action="{% url 'search' %}">
                 {% csrf_token %}
                 <i class="fa fa-search icon-white" autofocus></i>
                 <div class="search-box">
-                  <input type="" placeholder="Search..." />
-                  <input type="submit" value="Search" />
+                  <input type="" placeholder="Search..." name="searched" required/>
+{#                        <a href="{% url 'search' %}"> <i class='bx bx-search' type="submit"></i></a>#}
+
+                 <input type="submit" value="Search" />
+
                 </div>
               </form>
             </li>

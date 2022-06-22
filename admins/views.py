@@ -338,6 +338,8 @@ def emailNewsletter(request):
 # Download Editor User and All News Data
 
 
+@login_required
+@admin_only
 def downloadEditorData(request):
     users = User.objects.all()
     editor_info = users.filter(is_superuser=0, is_staff=1)
@@ -376,6 +378,8 @@ def downloadEditorData(request):
     # return HttpResponse("Not found")
 
 
+@login_required
+@admin_only
 def downloadUserData(request):
     users = User.objects.all()
     user_info = users.filter(is_superuser=0, is_staff=0)
@@ -387,6 +391,24 @@ def downloadUserData(request):
     result = BytesIO()
     pdf = pisa.pisaDocument(
         BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = result.getvalue()
+
+    return HttpResponse(pdf, content_type='application/pdf')
+
+
+@login_required
+@admin_only
+def downloadAllNewsData(request):
+    news = NewsModel.objects.all()
+    news_info = news.filter(status="P")
+
+    template = get_template('admins/download/allNewsData.html')
+    context = {'news': news_info}
+
+    html = template.render(context)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(
+        BytesIO(html.encode("cp1252")), result)
     pdf = result.getvalue()
 
     return HttpResponse(pdf, content_type='application/pdf')

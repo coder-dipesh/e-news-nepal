@@ -38,6 +38,8 @@ urlpatterns = [
     # Download Data
     path('download-editor', views.downloadEditorData, name='download_editor'),
     path('download-user', views.downloadUserData, name='download_user'),
+    path('download-allnews', views.downloadAllNewsData, name='download_allnews'),
+
 
 
 

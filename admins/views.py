@@ -7,7 +7,7 @@ from accounts.auth import admin_only
 from django.contrib.auth.models import User
 
 from accounts.auth import admin_only, unauthenticated_user
-from .models import Category, CustomUser, Site
+from .models import Category, CustomUser, Site, Newsletter
 from accounts.forms import CreateUserForm
 from .forms import CustomUserForm, CreateUserForm, CategoryForm, SiteSetting
 from enews import settings
@@ -326,7 +326,17 @@ def allContact(request):
     return render(request, 'admins/contactUs.html', context)
 
 
+@login_required
+@admin_only
+def emailNewsletter(request):
+    newsletter = Newsletter.objects.all()
+
+    context = {'newsletter': newsletter}
+
+    return render(request, 'admins/Subscribe/Newsletter.html', context)
+
 # Download Editor User and All News Data
+
 
 def downloadEditorData(request):
     users = User.objects.all()
@@ -350,12 +360,20 @@ def downloadEditorData(request):
         BytesIO(html.encode("ISO-8859-1")), result)
     pdf = result.getvalue()
 
-    # , link_callback=fetch_resources)
-    # pdf = pisa.pisaDocument(
-    #     BytesIO(html.encode("ISO-8859-1")), result)
-    # pdf = result.getvalue()
-    # filename = 'EditorData'+'.pdf'
-    # return None
+    return HttpResponse(pdf, content_type='application/pdf')
+
+    # force download
+    # if pdf:
+    #     response = HttpResponse(pdf, content_type='application/pdf')
+    #     filename = "Editor Data.pdf"
+    #     content = "inline; filename='%s'" % (filename)
+    #     #download = request.GET.get("download")
+    #     # if download:
+    #     content = "attachment; filename=%s" % (filename)
+    #     response['Content-Disposition'] = content
+    #     return response
+
+    # return HttpResponse("Not found")
 
 
 def demoview(request):

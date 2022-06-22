@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.utils.html import strip_tags
 from django.template.loader import render_to_string
 from django.core.mail import EmailMultiAlternatives
@@ -5,6 +6,8 @@ from django.contrib.auth import authenticate, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from requests import post
+
+from admins.models import Newsletter
 from .models import UserOTP
 import random
 from django.core.mail import send_mail
@@ -18,7 +21,6 @@ from accounts.auth import unauthenticated_user
 from accounts.models import Profile
 from users.forms import CommentForm
 from users.forms import Comment
-
 
 from django.core.mail import send_mail
 from django.conf import settings
@@ -117,10 +119,17 @@ def signOut(request):
 
 
 def home(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            news_model = Newsletter()
+            news_model.email = email
+            news_model.save()
     news = NewsModel.objects.filter(status='P')
     context = {
         "news": news,
         'activate_home': 'current', }
+    
     return render(request, 'accounts/home.html', context)
 
 
@@ -171,17 +180,17 @@ def like_news(request):
         post.like.add(request.user)
         is_liked = True
 
-    return redirect('/viewnews/'+str(post.id))
+    return redirect('/viewnews/' + str(post.id))
 
 
 # Reset Password
 # Imports for sendin HTML as mail
 
 
-def send_forget_password_mail(email, token,username):
-
+def send_forget_password_mail(email, token, username):
     html_content = render_to_string(
-        'accounts/resetPassword/reset_password_mail.html', {'title': "Reset Password", 'token': token, 'username':username})
+        'accounts/resetPassword/reset_password_mail.html',
+        {'title': "Reset Password", 'token': token, 'username': username})
     text_content = strip_tags(html_content)
     email = EmailMultiAlternatives(
         # Subject
@@ -216,7 +225,7 @@ def enterUsername(request):
         profile_obj.forget_password_token = token
         profile_obj.save()
         print(user_obj.email)
-        send_forget_password_mail(user_obj.email, token,username)
+        send_forget_password_mail(user_obj.email, token, username)
         messages.add_message(
             request, messages.SUCCESS, 'An email is sent to user with password changing link.')
         return redirect('/reset-password-enter-username')
@@ -253,4 +262,15 @@ def resetPassword(request, token):
 
 
 def resetPasswordSuccess(request):
-    return render(request, 'accounts/resetPassword/resetPasswordDone.html',)
+    return render(request, 'accounts/resetPassword/resetPasswordDone.html', )
+
+
+def search(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        newssearch = NewsModel.objects.filter(title__contains=searched)
+        return render(request, 'accounts/home.html', {'searched': searched, 'newssearch': newssearch})
+    else:
+        return render(request, 'accounts/home.html')
+
+

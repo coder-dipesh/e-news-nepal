@@ -39,5 +39,7 @@ urlpatterns = [
     path('demo-view', views.demoview, name='demo_view'),
 
     path('download-editor', views.downloadEditorData, name='download_editor'),
+    # THis is url for the Site Setting
+    path('Newsletters', views.emailNewsletter, name='Newsletters'),
 
 ]

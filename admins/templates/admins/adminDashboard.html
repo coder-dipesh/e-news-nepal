@@ -25,7 +25,7 @@
       </a>
       <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
         <div class="dropdown-header">Download CSV</div>
-        <a class="dropdown-item" href="#">Editor Data</a>
+        <a class="dropdown-item" href="/admins/download-editor">Editor Data</a>
         <a class="dropdown-item" href="#">User Data</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">All News</a>
@@ -161,8 +161,7 @@
                 />
               </td>
               <td>
-                {% if user.is_staff == True %} {% if user.is_superuser == False %} Editor {% endif %} {% else %} User 
-                {% endif %}
+                {% if user.is_staff == True %} {% if user.is_superuser == False %} Editor {% endif %} {% else %} User {% endif %}
               </td>
 
               <td>{{ user.date_joined }}</td>

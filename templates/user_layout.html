@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
+    <link rel="stylesheet" href="{% static 'preloader/preloader.css' %}" />
+    <script src="{% static 'preloader/preloader.js' %}" defer></script>
     <!--- basic page needs
    ================================================== -->
     {% block title %} {{ section.title }} {% endblock title%}
@@ -44,7 +45,7 @@
 	================================================== -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-      <title></title>
+    <title></title>
   </head>
 
   <body id="top">
@@ -73,36 +74,46 @@
 
             {% if request.user.is_authenticated %}
 
-         
-<li>
-  <div class="dropdown">
-    <img class="img-profile " src="/media/{{request.user.profile.profile_pic}}" />
-  
-    <div class="dropdown-content">
-    <a href="{% url 'account' %}" title=""><i class="fas fa-user fa-sm fa-fw mr-2 "></i>&nbsp; Profile</a>
-    
-    <a href="#" style="color: #f16b62;" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> &nbsp; Logout</a>
-  </div>
+            <li>
+              <div class="dropdown">
+                <img class="img-profile" src="/media/{{request.user.profile.profile_pic}}" />
 
-  </div>
-</li>
+                <div class="dropdown-content">
+                  <a href="{% url 'account' %}" title=""><i class="fas fa-user fa-sm fa-fw mr-2"></i>&nbsp; Profile</a>
 
-{% comment %} <button >Open Modal</button> {% endcomment %}
+                  <a href="#" style="color: #f16b62" onclick="document.getElementById('id01').style.display='block'"
+                    ><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> &nbsp; Logout</a
+                  >
+                </div>
+              </div>
+            </li>
 
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Logout">&times;</span>
-  <form class="modal-content">
-    <div class="container">
-      <h1>Logout </h1>
-      <p>Are you sure you want to logout from this account?</p>
+            {% comment %}
+            <button>Open Modal</button>
+            {% endcomment %}
 
-      <div class="clearfix">
-        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">No</button>
-        <a href="{% url 'sign-out' %}"><button type="button" class="deletebtn">Yes</button></a>
-      </div>
-    </div>
-  </form>
-</div>
+            <div id="id01" class="modal">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Logout"
+                >&times;</span
+              >
+              <form class="modal-content">
+                <div class="container">
+                  <h1>Logout</h1>
+                  <p>Are you sure you want to logout from this account?</p>
+
+                  <div class="clearfix">
+                    <button
+                      type="button"
+                      onclick="document.getElementById('id01').style.display='none'"
+                      class="cancelbtn"
+                    >
+                      No
+                    </button>
+                    <a href="{% url 'sign-out' %}"><button type="button" class="deletebtn">Yes</button></a>
+                  </div>
+                </div>
+              </form>
+            </div>
 
             {% else %}
             <li>
@@ -131,7 +142,7 @@
       </div>
     </header>
     <!-- end header -->
-
+    <div class="preloader"></div>
     {% block content %} {% endblock content %}
 
     <!-- footer

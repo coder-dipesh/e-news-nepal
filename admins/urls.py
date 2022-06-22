@@ -36,5 +36,8 @@ urlpatterns = [
     path('all-contacts', views.allContact, name='all-contacts'),
 
 
+    path('demo-view', views.demoview, name='demo_view'),
+
+    path('download-editor', views.downloadEditorData, name='download_editor'),
 
 ]

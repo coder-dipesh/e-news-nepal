@@ -329,5 +329,63 @@ def allContact(request):
 # Download Editor User and All News Data
 
 def downloadEditorData(request):
-    
-    return 1
+    users = User.objects.all()
+    editor_info = users.filter(is_superuser=0, is_staff=1)
+    role = []
+    salary = []
+    for i in users:
+        if not i.is_superuser and i.is_staff:
+            print(i)
+            editor = CustomUser.objects.get(user=i)
+            role.append(editor.role)
+            salary.append(editor.salary)
+    editor = zip(editor_info, role, salary)
+
+    template = get_template('admins/download/editorData.html')
+    context = {'editor': editor}
+
+    html = template.render(context)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(
+        BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = result.getvalue()
+
+    # , link_callback=fetch_resources)
+    # pdf = pisa.pisaDocument(
+    #     BytesIO(html.encode("ISO-8859-1")), result)
+    # pdf = result.getvalue()
+    # filename = 'EditorData'+'.pdf'
+    # return None
+
+
+def demoview(request):
+    users = User.objects.all()
+    editor_info = users.filter(is_superuser=0, is_staff=1)
+    role = []
+    salary = []
+    for i in users:
+        if not i.is_superuser and i.is_staff:
+            print(i)
+            editor = CustomUser.objects.get(user=i)
+            role.append(editor.role)
+            salary.append(editor.salary)
+    editor = zip(editor_info, role, salary)
+
+    template = get_template('admins/download/editorData.html')
+    # data = {'username': editor.username,
+    #         'email': editor.,
+    #         'position': password1,
+    #         'salary': password1,
+    #         'joined_date': joined_date, }
+
+    html = template.render()
+    result = BytesIO()
+    # , link_callback=fetch_resources)
+    pdf = pisa.pisaDocument(
+        BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = result.getvalue()
+    filename = 'EditorData'+'.pdf'
+
+    context = {'editor': editor}
+
+    return render(request, 'admins/download/editorData.html', context)

@@ -35,10 +35,13 @@ urlpatterns = [
 
     path('all-contacts', views.allContact, name='all-contacts'),
 
-
-    path('demo-view', views.demoview, name='demo_view'),
-
+    # Download Data
     path('download-editor', views.downloadEditorData, name='download_editor'),
+    path('download-user', views.downloadUserData, name='download_user'),
+
+
+
+
     # THis is url for the Site Setting
     path('Newsletters', views.emailNewsletter, name='Newsletters'),
 

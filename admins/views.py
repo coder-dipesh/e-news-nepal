@@ -362,7 +362,7 @@ def downloadEditorData(request):
 
     return HttpResponse(pdf, content_type='application/pdf')
 
-    # force download
+    # PDF force download
     # if pdf:
     #     response = HttpResponse(pdf, content_type='application/pdf')
     #     filename = "Editor Data.pdf"
@@ -376,34 +376,17 @@ def downloadEditorData(request):
     # return HttpResponse("Not found")
 
 
-def demoview(request):
+def downloadUserData(request):
     users = User.objects.all()
-    editor_info = users.filter(is_superuser=0, is_staff=1)
-    role = []
-    salary = []
-    for i in users:
-        if not i.is_superuser and i.is_staff:
-            print(i)
-            editor = CustomUser.objects.get(user=i)
-            role.append(editor.role)
-            salary.append(editor.salary)
-    editor = zip(editor_info, role, salary)
+    user_info = users.filter(is_superuser=0, is_staff=0)
 
-    template = get_template('admins/download/editorData.html')
-    # data = {'username': editor.username,
-    #         'email': editor.,
-    #         'position': password1,
-    #         'salary': password1,
-    #         'joined_date': joined_date, }
+    template = get_template('admins/download/userData.html')
+    context = {'user': user_info}
 
-    html = template.render()
+    html = template.render(context)
     result = BytesIO()
-    # , link_callback=fetch_resources)
     pdf = pisa.pisaDocument(
         BytesIO(html.encode("ISO-8859-1")), result)
     pdf = result.getvalue()
-    filename = 'EditorData'+'.pdf'
 
-    context = {'editor': editor}
-
-    return render(request, 'admins/download/editorData.html', context)
+    return HttpResponse(pdf, content_type='application/pdf')

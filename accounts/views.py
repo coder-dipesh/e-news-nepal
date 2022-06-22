@@ -119,13 +119,15 @@ def signOut(request):
 
 
 def home(request):
+    news = Paginator(NewsModel.objects.filter(status='P'), 5)
+    page = request.GET.get('page')
+    news = news.get_page(page)
     if request.method == 'POST':
         email = request.POST.get('email')
         if email:
             news_model = Newsletter()
             news_model.email = email
             news_model.save()
-    news = NewsModel.objects.filter(status='P')
     context = {
         "news": news,
         'activate_home': 'current', }

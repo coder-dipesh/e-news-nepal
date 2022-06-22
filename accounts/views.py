@@ -270,7 +270,7 @@ def resetPasswordSuccess(request):
 def search(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        newssearch = NewsModel.objects.filter(title__contains=searched)
+        newssearch = NewsModel.objects.filter(title__icontains=searched)
         return render(request, 'accounts/home.html', {'searched': searched, 'newssearch': newssearch})
     else:
         return render(request, 'accounts/home.html')

@@ -42,8 +42,8 @@
               <tr>
                 <th>ID</th>
                 <th>email</th>
-                <th>Actions</th>
-                <th>Select All</th>
+                <th>Subscribe Date</th>
+                <th>Subscribe Date</th>
               </tr>
             </thead>
             <tbody>
@@ -51,18 +51,16 @@
               <tr>
                 <td>{{ c.id}}</td>
                 <td>{{ c.email }}</td>
-                <td class="text-center">
-                  <div class="btn btn-sm btn-danger" data-bs-toggle="tooltip" title="Delete Category Information!">
+                <td>{{ c.timestamp }}</td>
+                <td class="d-flex justify-content-center ">
+                  <div class="btn btn-sm btn-warning " data-bs-toggle="tooltip" title="Update Category Information!">
                     <a
-                      href="{% url 'delete_category' c.id %}"
-                      onclick="return confirm('Are you sure to delete this category?')"
+                      href="{% url 'update_category' c.id %}"
                       style="text-decoration: none; color: beige"
-                      <i class="fas fa-trash"></i>
-                      </a
+                      ><i class="fas fa-envelope"></i></a
                     >
                   </div>
                 </td>
-                <td>a</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -71,8 +69,8 @@
               <tr>
                 <th>ID</th>
                 <th>email</th>
-                <th>Actions</th>
-                <th>Select All</th>
+                <th>Subscribe Date</th>
+                <th>Subscribe Date</th>
               </tr>
             </tfoot>
           </table>

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
+
 # Create your models here.
 
 editor_role = (("Senior Editor", "Senior Editor"),
@@ -51,6 +53,7 @@ class Site(models.Model):
 
 class Newsletter(models.Model):
     email = models.CharField(max_length=200, blank=True)
+    timestamp = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = "Newsletter"

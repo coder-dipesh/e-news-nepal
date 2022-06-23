@@ -43,7 +43,7 @@
                 <th>ID</th>
                 <th>email</th>
                 <th>Subscribe Date</th>
-                <th>Subscribe Date</th>
+                <!-- <th>Subscribe Date</th> -->
               </tr>
             </thead>
             <tbody>
@@ -52,14 +52,14 @@
                 <td>{{ c.id}}</td>
                 <td>{{ c.email }}</td>
                 <td>{{ c.timestamp }}</td>
-                <td class="d-flex justify-content-center ">
+                <!-- <td class="d-flex justify-content-center ">
                   <div class="btn btn-sm btn-warning " data-bs-toggle="tooltip" title="Update Category Information!">
                     <a
                       href="{% url 'update_category' c.id %}"
                       style="text-decoration: none; color: beige"
                       ><i class="fas fa-envelope"></i></a
                     >
-                  </div>
+                  </div> -->
                 </td>
               </tr>
               {% endfor %}
@@ -70,7 +70,7 @@
                 <th>ID</th>
                 <th>email</th>
                 <th>Subscribe Date</th>
-                <th>Subscribe Date</th>
+                <!-- <th>Subscribe Date</th> -->
               </tr>
             </tfoot>
           </table>

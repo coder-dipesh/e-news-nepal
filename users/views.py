@@ -6,11 +6,19 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from accounts.forms import ProfileForm
 from accounts.auth import user_only
+from admins.models import Newsletter
 
 
 @user_only
 def report_news(request):
     form = ReportNewsForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            news_model = Newsletter()
+            news_model.email = email
+            news_model.save()
+
     if request.method == "POST":
         if form.is_valid():
             title = request.POST['title']
@@ -35,12 +43,25 @@ def report_news(request):
 
 
 def about_us(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            news_model = Newsletter()
+            news_model.email = email
+            news_model.save()
     context = {
         'activate_about_us': 'current', }
     return render(request, 'users/aboutus.html', context)
 
 
 def contact_us(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            news_model = Newsletter()
+            news_model.email = email
+            news_model.save()
+
     if request.method == "POST":
         name = request.POST['name']
         email = request.POST['email']
@@ -56,6 +77,13 @@ def contact_us(request):
 
 @user_only
 def account(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            news_model = Newsletter()
+            news_model.email = email
+            news_model.save()
+            
     profile = request.user.profile  # Getting currently logged in user data
     user = User.objects.get(username=profile)
     print(user)

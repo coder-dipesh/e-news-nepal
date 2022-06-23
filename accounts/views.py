@@ -139,6 +139,12 @@ def viewnews(request, news_id):
     news = NewsModel.objects.get(id=news_id)
     commentForm = CommentForm(request.POST)
     comments = Comment.objects.filter(post=news).order_by('-id')
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            news_model = Newsletter()
+            news_model.email = email
+            news_model.save()
 
     if request.method == 'POST':
         commentForm = CommentForm(request.POST)

@@ -1,4 +1,4 @@
-{% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% load social_share %}  {% block title %}
+{% extends "user_layout.html" %}  {% load static %} {% load bootstrap %} {% load social_share %}  {% block title %}
 
 <title>{{ news.title }} | e-News User</title>
 
@@ -28,6 +28,7 @@
 
             <br />
             <div class="social_align">
+              
               <a target="_blank" href="{{news.user.profile.facebook}}" class="social_links"
                 ><i class="fa fa-facebook"></i
               ></a>
@@ -92,13 +93,16 @@
                 <i class="fa fa-share" ></i> Share
             </button>
               <div class="dropdown-content" style="background-color: #6563ff; padding-top:20px;">
-                
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}/">
                   <i class="fa fa-facebook" aria-hidden="true"></i> 
                 </a>
-                <a href="https://twitter.com/home?status={{ request.build_absolute_uri }}/">
+                <a href="https://twitter.com/intent/tweet?text={{ request.build_absolute_uri }}" target="blank" >
                   <i class="fa fa-twitter" aria-hidden="true"></i> 
                 </a>
+                <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}" target="blank" >
+                  <i class="fa fa-telegram" aria-hidden="true"></i> 
+                </a>
+                <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}/" target="blank"> <i class="fa fa-reddit" aria-hidden="true"></i> </a>
               </div>
           
             </div>

@@ -229,7 +229,7 @@
                 class="group"
                 novalidate="true"
                 method="post"
-                action="{% url 'home' %}"
+                action="{{ request.build_absolute_uri }}"
               >
                 {% csrf_token %}
                 <fieldset>
@@ -249,17 +249,17 @@
                       background-color: #1CC88A;
                       border: none;
                       color: white;
-                      border-radius: 6px;
+                      border-radius: 10px;
                       text-align: center;
                       text-decoration: none;
                       display: inline-block;
                       font-size: 16px;
-                      width: 6em;
+                      width: 8em;
                       line-height: 40px;
                       transition:0.3s;
                     "
                   >
-                    Subscribe to News-Letter
+                    Subscribe
                   </button>
                   <label for="mc-email" class="subscribe-message"></label>
                 </fieldset>

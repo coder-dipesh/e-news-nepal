@@ -300,20 +300,19 @@ def getNews(request):
 @login_required
 @admin_only
 def SiteSettingss(request):
-    sitee = Site.objects.get(pk=1)
+    site = Site.objects.get(pk=1)
     if request.method == 'POST':
-        sitee = SiteSetting(request.POST, request.FILES, instance=sitee)
+        site = SiteSetting(request.POST, request.FILES, instance=site)
 
-        if sitee.is_valid():
-            sitee.save()
-            setee = Site.objects.get(pk=1)
+        if site.is_valid():
+            site.save()
             messages.add_message(request, messages.SUCCESS,
-                                 'Category Updated Successfully')
-            return render(request, 'admins/site/sitesetting.html', {"sitee": setee})
+                                 'Sitesetting Updated Successfully')
+            return render(request, 'admins/site/sitesetting.html', {"site": site})
         else:
             messages.add_message(request, messages.ERROR,
                                  'Unable to update site settings')
-    return render(request, 'admins/site/sitesetting.html', {"sitee": sitee})
+    return render(request, 'admins/site/sitesetting.html', {"site": site})
 
 
 @login_required

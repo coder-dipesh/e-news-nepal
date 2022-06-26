@@ -142,57 +142,63 @@ class CategoryForm(ModelForm):
         })
 
 
+# # This is the custom site setting and about us page form
+# class SiteSetting(ModelForm):
+#     class Meta:
+#         model = Site
+#         fields = ['title', 'metaDesc', 'metaKey', 'logo', 'favicon', 'aboutimg', 'abouttitle','aboutdesc']
+
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.fields['title'].widget.attrs.update({
+#             'required': '',
+#             'name': 'title',
+#             'id': 'title',
+#             'class': 'form-control validate',
+#         })
+#         self.fields['metaDesc'].widget.attrs.update({
+#             'required': '',
+#             'name': 'metaDesc',
+#             'id': 'title',
+#             'class': 'form-control validate',
+#         })
+#         self.fields['metaKey'].widget.attrs.update({
+#             'required': '',
+#             'name': 'metaKey',
+#             'id': 'title',
+#             'class': 'form-control validate',
+#         })
+#         self.fields['logo'].widget.attrs.update({
+#             'name': 'logo',
+#             'id': 'image',
+#             'class': 'form-control form-control-user',
+#         })
+#         self.fields['favicon'].widget.attrs.update({
+#             'name': 'favicon',
+#             'id': 'image',
+#             'class': 'form-control form-control-user',
+#         })
+#         self.fields['aboutimg'].widget.attrs.update({
+#             'name': 'aboutimg',
+#             'id': 'image',
+#             'class': 'form-control form-control-user',
+#         })
+#         self.fields['abouttitle'].widget.attrs.update({
+#             'required': '',
+#             'name': 'abouttitle',
+#             'id': 'title',
+#             'class': 'form-control validate',
+#         })
+#         self.fields['aboutdesc'].widget.attrs.update({
+#             'required': '',
+#             'name': 'aboutdesc',
+#             'id': 'description',
+#             'class': 'form-control validate',
+#         })
+        
 # This is the custom site setting and about us page form
-class SiteSetting(ModelForm):
+class SiteSetting(forms.ModelForm):
     class Meta:
         model = Site
-        fields = ['title', 'metaDesc', 'metaKey', 'logo', 'favicon', 'aboutimg', 'abouttitle','aboutdesc']
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['title'].widget.attrs.update({
-            'required': '',
-            'name': 'title',
-            'id': 'title',
-            'class': 'form-control validate',
-        })
-        self.fields['metaDesc'].widget.attrs.update({
-            'required': '',
-            'name': 'metaDesc',
-            'id': 'title',
-            'class': 'form-control validate',
-        })
-        self.fields['metaKey'].widget.attrs.update({
-            'required': '',
-            'name': 'metaKey',
-            'id': 'title',
-            'class': 'form-control validate',
-        })
-        self.fields['logo'].widget.attrs.update({
-            'name': 'logo',
-            'id': 'image',
-            'class': 'form-control form-control-user',
-        })
-        self.fields['favicon'].widget.attrs.update({
-            'name': 'favicon',
-            'id': 'image',
-            'class': 'form-control form-control-user',
-        })
-        self.fields['aboutimg'].widget.attrs.update({
-            'name': 'aboutimg',
-            'id': 'image',
-            'class': 'form-control form-control-user',
-        })
-        self.fields['abouttitle'].widget.attrs.update({
-            'required': '',
-            'name': 'abouttitle',
-            'id': 'title',
-            'class': 'form-control validate',
-        })
-        self.fields['aboutdesc'].widget.attrs.update({
-            'required': '',
-            'name': 'aboutdesc',
-            'id': 'description',
-            'class': 'form-control validate',
-        })
+        fields = "__all__"
         

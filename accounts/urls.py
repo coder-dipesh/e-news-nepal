@@ -27,5 +27,6 @@ urlpatterns = [
     path('new-password/<token>/', views.resetPassword, name='new-password'),
     path('reset-password-success', views.resetPasswordSuccess, name='reset-password-success'),
     path('search', views.search, name="search"),
+  
 
 ]

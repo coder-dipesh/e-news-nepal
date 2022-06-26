@@ -64,7 +64,9 @@
                   <hr /> 
                   {% include "message.html" %}
                 </div>
-                <form method="POST" enctype="multipart/form-data">
+                <form method="post"
+                  action="{{ request.build_absolute_uri }}"
+                  enctype="multipart/form-data">
                   {% csrf_token %}
 
                   <!-- django -->
@@ -73,8 +75,7 @@
                     <input
                       id="name"
                       name="title"
-                      placeholder="Title"
-                      value="{{sitee.title}}"
+                      placeholder="{{site.title}}"
                       type="text"
                       class="form-control validate"
                     />
@@ -84,8 +85,7 @@
                     <input
                       id="name"
                       name="metaDesc"
-                      placeholder="Meta Description"
-                      value="{{sitee.metaDesc}}"
+                      placeholder="{{site.metaDesc}}"
                       type="text"
                       class="form-control validate"
                     />
@@ -95,34 +95,29 @@
                     <input
                       id="name"
                       name="metaKey"
-                      placeholder="Meta Keywords"
-                      value="{{sitee.metaKey}}"
+                      placeholder="{{site.metaKey}}"
                       type="text"
                       class="form-control validate"
                     />
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Fav icon</label>
-                    <input class="form-control" type="file" id="formFileMultiple" />
-                    <img src="{{sitee.favicon.url}}" alt="" width="50" height="50" />
+                    <input class="form-control" type="file" id="formFileMultiple" placeholder={{site.favicon}}/>
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Logo</label>
-                    <input class="form-control" type="file" id="formFileMultiple" />
-                    <img src="{{sitee.logo.url}}" alt="" width="50" height="50" />
+                    <input class="form-control" type="file" id="formFileMultiple" placeholder={{site.logo}}/>
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">About Image</label>
-                    <input class="form-control" type="file" id="formFileMultiple" />
-                    <img src="{{sitee.aboutimg.url}}" alt="" width="50" height="50" />
+                    <input class="form-control" type="file" id="formFileMultiple" placeholder={{site.aboutimg}}/>
                   </div>
                   <div class="form-group mb-3">
                     <label for="">About US Title<span class="text-danger">*</span> </label>
                     <input
                       id="name"
                       name="abouttitle"
-                      placeholder="About us Title"
-                      value="{{sitee.abouttitle}}"
+                      placeholder="{{site.abouttitle}}"
                       type="text"
                       class="form-control validate"
                     />
@@ -139,7 +134,7 @@
                       required=""
                       spellcheck="false"
                     >
-{{sitee.aboutdesc}}
+{{site.aboutdesc}}
                     </textarea>
                   </div>
 

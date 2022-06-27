@@ -325,8 +325,8 @@ def allContact(request):
     return render(request, 'admins/contactUs.html', context)
 
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def emailNewsletter(request):
     newsletter = Newsletter.objects.all()
 
@@ -337,8 +337,8 @@ def emailNewsletter(request):
 # Download Editor User and All News Data
 
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def downloadEditorData(request):
     users = User.objects.all()
     editor_info = users.filter(is_superuser=0, is_staff=1)
@@ -377,8 +377,8 @@ def downloadEditorData(request):
     # return HttpResponse("Not found")
 
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def downloadUserData(request):
     users = User.objects.all()
     user_info = users.filter(is_superuser=0, is_staff=0)
@@ -395,8 +395,8 @@ def downloadUserData(request):
     return HttpResponse(pdf, content_type='application/pdf')
 
 
-@login_required
-@admin_only
+# @login_required
+# @admin_only
 def downloadAllNewsData(request):
     news = NewsModel.objects.all()
     news_info = news.filter(status="P")

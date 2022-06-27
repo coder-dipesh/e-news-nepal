@@ -1,6 +1,6 @@
-{% extends "user_layout.html" %}  {% load static %} {% load bootstrap %} {% load social_share %}  {% block title %}
+{% extends "user_layout.html" %} {% load static %} {% load bootstrap %} {% load social_share %} {% block title %}
 
-<title>{{ news.title }} | e-News User</title>
+<title>{{ news.title }} | e-News Nepal</title>
 
 {% endblock title %} {% block content %}
 <link rel="stylesheet" href="{% static 'css/lcs.css' %}" />
@@ -28,7 +28,6 @@
 
             <br />
             <div class="social_align">
-              
               <a target="_blank" href="{{news.user.profile.facebook}}" class="social_links"
                 ><i class="fa fa-facebook"></i
               ></a>
@@ -44,9 +43,7 @@
           <img class="pull-right" style="height: 300px !important" src="{{ news.image.url }}" alt="" />
 
           <h5>{{ news.content|safe }}</h5>
-          
-          
-          
+
           <div style="display: flex">
             <form action="{% url 'like_news' %}" method="POST">
               {% csrf_token %} {% if request.user.is_authenticated %} {% if is_liked %}
@@ -67,7 +64,6 @@
                   <i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like
                 </button>
               </div>
-              
 
               {% endif %} {% else %}
               <div class="like-content">
@@ -85,30 +81,25 @@
               {% endif %}
 
               <span style="color: #6563ff; margin-left: 1rem"> {{ total_likes }} Like{{ total_likes|pluralize }}</span>
-              
-              
             </form>
-            <div class="like-content dropdown" style="padding-left: 20px;">
-              <button class="btn-secondary" >
-                <i class="fa fa-share" ></i> Share
-            </button>
-              <div class="dropdown-content" style="background-color: #6563ff; padding-top:20px;">
+            <div class="like-content dropdown" style="padding-left: 20px">
+              <button class="btn-secondary"><i class="fa fa-share"></i> Share</button>
+              <div class="dropdown-content" style="background-color: #6563ff; padding-top: 20px">
                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}/">
-                  <i class="fa fa-facebook" aria-hidden="true"></i> 
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
-                <a href="https://twitter.com/intent/tweet?text={{ request.build_absolute_uri }}" target="blank" >
-                  <i class="fa fa-twitter" aria-hidden="true"></i> 
+                <a href="https://twitter.com/intent/tweet?text={{ request.build_absolute_uri }}" target="blank">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
-                <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}" target="blank" >
-                  <i class="fa fa-telegram" aria-hidden="true"></i> 
+                <a href="https://t.me/share/url?url={{ request.build_absolute_uri }}" target="blank">
+                  <i class="fa fa-telegram" aria-hidden="true"></i>
                 </a>
-                <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}/" target="blank"> <i class="fa fa-reddit" aria-hidden="true"></i> </a>
+                <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}/" target="blank">
+                  <i class="fa fa-reddit" aria-hidden="true"></i>
+                </a>
               </div>
-          
             </div>
-            <div class="">
-              
-            </div>
+            <div class=""></div>
 
             {% comment %}
             <div class="like-content">

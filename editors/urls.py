@@ -1,9 +1,9 @@
 from django.urls import include, path
 from editors import views
 
+
 urlpatterns = [
     path('', views.editorDashboard, name='editor'),
-
     path('profile', views.editorProfile, name='profile'),
 
 
@@ -22,10 +22,7 @@ urlpatterns = [
          views.update_request_news, name='update_request_news'),
 
     # Editor Change Password
-    path('change-password', views.changePassword, name='change_password')
-
-
+    path('change-password', views.changePassword, name='change_password'),
+    path('download-editor', views.downloadEditorData, name='download_editor'),
+    path('download-allnews', views.downloadAllNewsData, name='download_allnews'),
 ]
-
-
-

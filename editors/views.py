@@ -1,17 +1,22 @@
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
 from accounts.auth import editor_only
 from accounts.forms import ProfileForm
+from admins.models import CustomUser
 
 from editors.forms import NewsForm, RequestNewsUpdateForm
 from editors.models import NewsModel
-
+from io import BytesIO
 
 @login_required
 @editor_only
@@ -113,7 +118,49 @@ def deleteNews(request, news_id):
                          'News deleted successfully!')
     return redirect('/editors/my-news')
 
+@login_required
+@editor_only
+def downloadEditorData(request):
+    users = User.objects.all()
+    editor_info = users.filter(is_superuser=0, is_staff=1)
+    role = []
+    salary = []
+    for i in users:
+        if not i.is_superuser and i.is_staff:
+            print(i)
+            editor = CustomUser.objects.get(user=i)
+            role.append(editor.role)
+            salary.append(editor.salary)
+    editor = zip(editor_info, role, salary)
 
+    template = get_template('editors/download/editorData.html')
+    context = {'editor': editor}
+
+    html = template.render(context)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(
+        BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = result.getvalue()
+
+    return HttpResponse(pdf, content_type='application/pdf')
+
+
+@login_required
+@editor_only
+def downloadAllNewsData(request):
+    news = NewsModel.objects.all()
+    news_info = news.filter(status="P")
+
+    template = get_template('editors/download/allNewsData.html')
+    context = {'news': news_info}
+
+    html = template.render(context)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(
+        BytesIO(html.encode("cp1252")), result)
+    pdf = result.getvalue()
+
+    return HttpResponse(pdf, content_type='application/pdf')
 @login_required
 @editor_only
 def myNews(request):

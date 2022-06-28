@@ -34,14 +34,14 @@ class Category(models.Model):
 
 
 class Site(models.Model):
-    title = models.CharField(max_length=100, null=True)
-    metaDesc = models.CharField(max_length=100, null=True)
-    metaKey = models.CharField(max_length=100, null=True)
-    logo = models.FileField(upload_to='news/', null=True)
-    favicon = models.FileField(upload_to='news/', null=True)
-    aboutimg = models.FileField(upload_to='news/', null=True)
-    abouttitle = models.CharField(max_length=100, null=True)
-    aboutdesc = models.TextField(max_length=1000, null=True)
+    title = models.CharField(max_length=100, null=True, blank=True)
+    metaDesc = models.CharField(max_length=100, null=True, blank=True)
+    metaKey = models.CharField(max_length=100, null=True, blank=True)
+    logo = models.FileField(upload_to='news/', null=True, blank=True)
+    favicon = models.FileField(upload_to='news/', null=True, blank=True)
+    aboutimg = models.FileField(upload_to='news/', null=True, blank=True)
+    abouttitle = models.CharField(max_length=100, null=True, blank=True)
+    aboutdesc = models.TextField(max_length=1000, null=True, blank=True)
 
     class Meta:
         db_table = "Sitesetting"

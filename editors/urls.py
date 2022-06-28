@@ -6,6 +6,7 @@ urlpatterns = [
 
     path('profile', views.editorProfile, name='profile'),
 
+
     # NEWS CRUD
     path('my-news', views.myNews, name='my-news'),
     path('add-news', views.addNews, name='add-news'),
@@ -20,5 +21,11 @@ urlpatterns = [
     path('update_request_news/<int:news_id>',
          views.update_request_news, name='update_request_news'),
 
+    # Editor Change Password
+    path('change-password', views.changePassword, name='change_password')
+
 
 ]
+
+
+

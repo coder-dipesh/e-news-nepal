@@ -1,7 +1,9 @@
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
+from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
 from accounts.auth import editor_only
@@ -175,3 +177,28 @@ def update_request_news(request, news_id):
                }
 
     return render(request, 'editors/news/requestNewsUpdateForm.html', context)
+
+
+#  Change Password
+
+
+@login_required
+@editor_only
+def changePassword(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.add_message(request, messages.SUCCESS,
+                                 "Password changed successfully")
+            return redirect('/editors/change-password')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                 "Please check the fields")
+            return render(request, 'editors/changePassword/changePassword.html', {'user_password_change_form': form})
+    context = {
+        'user_password_change_form': PasswordChangeForm(request.user),
+
+    }
+    return render(request, 'editors/changePassword/changePassword.html', context)

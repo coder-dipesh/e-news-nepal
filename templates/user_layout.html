@@ -4,10 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="{% static 'preloader/preloader.css' %}" />
-    <script src="{% static 'preloader/preloader.js' %}" defer></script>
-    <!--- basic page needs
-   ================================================== -->
+    <!--- basic page needs================================================== -->
     {% block title %} {{ section.title }} {% endblock title%}
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -19,8 +16,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
 
-    <!-- ========
-      ===========Font Awesome=============== -->
+    <!-- ===================Font Awesome=============== -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"
@@ -104,14 +100,9 @@
                   class="img-profile"
                   src="/media/{{request.user.profile.profile_pic}}"
                 />
-
-            
               </div>
             </li>
 
-            {% comment %}
-            <button>Open Modal</button>
-            {% endcomment %}
 
             <div id="id01" class="modal">
               <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Logout"
@@ -154,9 +145,7 @@
                 <div class="search-box">
                   <input type="" placeholder="Search..." name="searched" required/>
 {#                        <a href="{% url 'search' %}"> <i class='bx bx-search' type="submit"></i></a>#}
-
                  <input type="submit" value="Search" />
-
                 </div>
               </form>
             </li>
@@ -170,7 +159,6 @@
       </div>
     </header>
     <!-- end header -->
-    <div class="preloader"></div>
     {% block content %} {% endblock content %}
 
     <!-- footer
@@ -207,7 +195,6 @@
 
           <div class="col-two tab-1-3 mob-1-2 social-links">
             <h4>Social</h4>
-
             <ul>
               <li><a href="#">Twitter</a></li>
               <li><a href="#">Facebook</a></li>
@@ -292,9 +279,6 @@
       <!-- end footer-bottom -->
     </footer>
 
-    <div id="preloader">
-      <div id="loader"></div>
-    </div>
 
     <!-- Java Script
 ================================================== -->

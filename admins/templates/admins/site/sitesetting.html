@@ -72,70 +72,36 @@
                   <!-- django -->
                   <div class="form-group mb-6">
                     <label for="">Title<span class="text-danger">*</span> </label>
-                    <input
-                      id="name"
-                      name="title"
-                      placeholder="{{site.title}}"
-                      type="text"
-                      class="form-control validate"
-                    />
+                    {{site.title}}
                   </div>
                   <div class="form-group mb-6">
                     <label for="">Meta Description for SEO<span class="text-danger">*</span> </label>
-                    <input
-                      id="name"
-                      name="metaDesc"
-                      placeholder="{{site.metaDesc}}"
-                      type="text"
-                      class="form-control validate"
-                    />
-                  </div>
+                    {{site.metaDesc}}   
                   <div class="form-group mb-6">
                     <label for="">Meta Keywords for SEO<span class="text-danger">*</span> </label>
-                    <input
-                      id="name"
-                      name="metaKey"
-                      placeholder="{{site.metaKey}}"
-                      type="text"
-                      class="form-control validate"
-                    />
+                    {{site.metaKey}}  
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Fav icon</label>
-                    <input class="form-control" type="file" id="formFileMultiple" placeholder={{site.favicon}}/>
+                    <input class="form-control" type="file" id="formFileMultiple" />
+                    
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">Logo</label>
-                    <input class="form-control" type="file" id="formFileMultiple" placeholder={{site.logo}}/>
+                    <input class="form-control" type="file" id="formFileMultiple"/>
                   </div>
                   <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">About Image</label>
-                    <input class="form-control" type="file" id="formFileMultiple" placeholder={{site.aboutimg}}/>
+                    <input class="form-control" type="file" id="formFileMultiple"/>
                   </div>
                   <div class="form-group mb-3">
                     <label for="">About US Title<span class="text-danger">*</span> </label>
-                    <input
-                      id="name"
-                      name="abouttitle"
-                      placeholder="{{site.abouttitle}}"
-                      type="text"
-                      class="form-control validate"
-                    />
+                    {{site.abouttitle}}  
                   </div>
 
                   <div class="form-group mb-3">
                     <label for="">About Us Description</label>
-                    <textarea
-                      id="summernote"
-                      class="form-control validate"
-                      rows="8"
-                      name="aboutdesc"
-                      placeholder="Write some text..."
-                      required=""
-                      spellcheck="false"
-                    >
-{{site.aboutdesc}}
-                    </textarea>
+                    {{site.aboutdesc}}
                   </div>
 
                   <!-- django -->

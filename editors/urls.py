@@ -20,5 +20,8 @@ urlpatterns = [
     path('update_request_news/<int:news_id>',
          views.update_request_news, name='update_request_news'),
 
+    path('download-editor', views.downloadEditorData, name='download_editor'),
+    path('download-allnews', views.downloadAllNewsData, name='download_allnews'),
+
 
 ]

@@ -42,8 +42,8 @@
                 </div>
               </td>
               <td>
-                <a href="{{ news.image.url }}" target="_blank">
-                  <img class="img-profile" height="40" width="40" src="{{ news.image.url }}" />
+                <a href="{% static 'media/' %}{{ news.image  }}" target="_blank">
+                  <img class="img-profile" height="40" width="40" src="{% static 'media/' %}{{ news.image  }}" />
                 </a>
               </td>
 

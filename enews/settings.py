@@ -28,11 +28,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="unsafe-secret-key")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get("DEBUG")) == "1"  # 1== True
+
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-if not DEBUG:
-    ALLOWED_HOSTS += [os.environ.get("ALLOWED_HOSTS")]
 
 
 # Application definition
@@ -58,11 +57,6 @@ INSTALLED_APPS = [
     'tinymce',
     'bootstrapform',
     'social_django',
-
-    # Deployment
-    'whitenoise.runserver_nostatic',
-
-
 
 
 ]
@@ -160,13 +154,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+BASE_DIR = Path(__file__).resolve().parent.parent
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

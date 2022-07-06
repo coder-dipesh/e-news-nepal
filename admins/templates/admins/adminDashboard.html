@@ -157,12 +157,11 @@
                   class="img-profile rounded-circle"
                   height="40"
                   width="40"
-                  src="{% static 'media/' %}{{ user.profile.profile_pic  }}"
+                  src=" {% static 'media/' %}{{ user.profile.profile_pic  }}"
                 />
               </td>
               <td>
-                {% if user.is_staff == True %} {% if user.is_superuser == False %} Editor {% endif %} {% else %} User
-                {%endif %}
+                {% if user.is_staff == True %} {% if user.is_superuser == False %} Editor {% endif %} {% else %} User {% endif %}
               </td>
 
               <td>{{ user.date_joined }}</td>

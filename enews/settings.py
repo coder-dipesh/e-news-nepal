@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="unsafe-secret-key")
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://localhost']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://localhost', 'https://www.enewsnepal.me']
 
 # Application definition
 

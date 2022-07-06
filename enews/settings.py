@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="unsafe-secret-key")
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
+CSRF_TRUSTED_ORIGINS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -57,7 +57,6 @@ INSTALLED_APPS = [
     'tinymce',
     'bootstrapform',
     'social_django',
-
 
 ]
 

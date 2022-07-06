@@ -301,11 +301,9 @@ def getNews(request):
 @admin_only
 def SiteSettingss(request):
     site = Site.objects.get(pk=1)
-    
-
+    site = SiteSetting(request.POST, request.FILES, instance=site)
     if request.method == 'POST':
         print(site.errors)
-        site = SiteSetting(request.POST, request.FILES, instance=site)
         if site.is_valid():
             site.save()
             messages.add_message(request, messages.SUCCESS,
@@ -314,7 +312,7 @@ def SiteSettingss(request):
         else:
             messages.add_message(request, messages.ERROR,
                                  'Unable to update site settings')
-            
+
     return render(request, 'admins/site/sitesetting.html', {"site": site})
 
 

@@ -49,7 +49,7 @@
               <div class="">
                 <center>
                   <img
-                    src="/media/{{request.user.profile.profile_pic}}"
+                    src="{% static 'media/' %}{{ request.user.profile.profile_pic  }}"
                     width="60%"
                     class="card-img-top profile-image"
                   />

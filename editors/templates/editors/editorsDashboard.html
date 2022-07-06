@@ -24,7 +24,7 @@
         &nbsp; Download
       </a>
       <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-        <div class="dropdown-header">Download CSV</div>
+        <div class="dropdown-header">Download PDF</div>
         <a class="dropdown-item" href="/editors/download-editor">My Data</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="/editors/download-allnews#">News</a>
@@ -131,13 +131,12 @@
                     </div>
                   </td>
                   <td>
-                    <a href="{{news.image.url}}" target="_blank">
-                      <img class="img-profile" height="40" width="40" src="{{news.image.url}}" />
+                    <a href="{% static 'media/' %}{{ news.image  }}" target="_blank">
+                      <img class="img-profile" height="40" width="40" src="{% static 'media/' %}{{ news.image  }}" />
                     </a>
                   </td>
                   <td>
-                    {% if news.user.username == None %} {{news.name}} {% else %} 
-                    {{ news.user.username }} {% endif %}
+                    {% if news.user.username == None %} {{news.name}} {% else %} {{ news.user.username }} {% endif %}
                   </td>
                   <td>{{ news.created_at }}</td>
                 </tr>

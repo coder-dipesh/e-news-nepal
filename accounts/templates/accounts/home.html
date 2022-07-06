@@ -23,7 +23,7 @@
       <article class="brick entry center format-standard animate-this">
         <div class="entry-thumb">
           <a href="{% url 'viewnews' news.id %}" class="thumb-link">
-            <img src="{{ news.image.url }}" alt="building" />
+            <img src="{% static 'media/' %}{{ news.image  }}" alt="building" />
           </a>
         </div>
 
@@ -75,7 +75,7 @@
                   <div
                     class="post-background"
                     style="
-                                                            background-image: url({{ d.image.url }});
+                      background-image: url({% static 'media/' %}{{ d.image  }});
                                                             "
                   ></div>
 
@@ -107,7 +107,7 @@
       <article class="brick entry format-standard animate-this">
         <div class="entry-thumb">
           <a href="{% url 'viewnews' c.id %}" class="thumb-link">
-            <img src="{{ c.image.url }}" alt="building" />
+            <img src="{% static 'media/' %}{{ c.image  }}" alt="building" />
           </a>
         </div>
 

@@ -282,3 +282,7 @@ def search(request):
         return render(request, 'accounts/home.html')
 
 
+def handler404(request, exception):
+    return render(request, 'accounts/404/404.html')
+
+

@@ -1,0 +1,83 @@
+{% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+<title>All News Subscribe | e-News Admin</title>
+
+{% endblock title %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'Newsletters'%}" class="text-primary"
+            >All Email of NewsLetter</a
+          >
+        </li>
+      </ol>
+    </nav>
+  </div>
+                <div>{% include "message.html" %}</div>
+
+  <!-- Editor Information Table -->
+  <div class="container-fluid">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+          Email NewsLetter Information
+        </h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTable"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>email</th>
+                <th>Subscribe Date</th>
+                <!-- <th>Subscribe Date</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in newsletter %}
+              <tr>
+                <td>{{ c.id}}</td>
+                <td>{{ c.email }}</td>
+                <td>{{ c.timestamp }}</td>
+                <!-- <td class="d-flex justify-content-center ">
+                  <div class="btn btn-sm btn-warning " data-bs-toggle="tooltip" title="Update Category Information!">
+                    <a
+                      href="{% url 'update_category' c.id %}"
+                      style="text-decoration: none; color: beige"
+                      ><i class="fas fa-envelope"></i></a
+                    >
+                  </div> -->
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <th>ID</th>
+                <th>email</th>
+                <th>Subscribe Date</th>
+                <!-- <th>Subscribe Date</th> -->
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

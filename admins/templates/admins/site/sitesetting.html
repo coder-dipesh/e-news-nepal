@@ -1,0 +1,126 @@
+{% extends 'admin_layout.html' %} {% load static%} {% load bootstrap %} {% block title %}
+
+<title>Site Setting | e-News Admin</title>
+
+{% endblock title%}
+
+<!-- Body content goes here -->
+{% block content %}
+
+<style>
+  .user .form-control-user {
+    border-radius: 0.35rem !important;
+  }
+  .card {
+    width: max-content !important;
+  }
+  .my-5 {
+    margin-top: 0 !important;
+  }
+  #role {
+    padding: 10px 0 10px 10px !important;
+    height: 50px !important;
+  }
+</style>
+
+<div class="container-fluid py-2">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-1">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'siteSetting'%}" class="text-primary">Site Setting</a>
+        </li>
+      </ol>
+    </nav>
+    <!-- Back To Editor Information  -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'admins'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-backward fa-sm text-white-100"></i>
+        &nbsp; Back
+      </a>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="container">
+      <div class="align-items-center">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+          <div class="row tm-edit-product-row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div>
+                <div class="col-md-12">
+                  <h3 class="title text-gray-900 mb-8">Update Site Setting</h3>
+
+                  <hr /> 
+                  {% include "message.html" %}
+                </div>
+                <form method="post"
+                  action="{{ request.build_absolute_uri }}"
+                  enctype="multipart/form-data">
+                  {% csrf_token %}
+
+                  <!-- django -->
+                  <div class="form-group mb-6">
+                    <label for="">Title<span class="text-danger">*</span> </label>
+                    {{site.title}}
+                  </div>
+                  <div class="form-group mb-6">
+                    <label for="">Meta Description for SEO<span class="text-danger">*</span> </label>
+                    {{site.metaDesc}}   
+                  <div class="form-group mb-6">
+                    <label for="">Meta Keywords for SEO<span class="text-danger">*</span> </label>
+                    {{site.metaKey}}  
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Fav icon</label>
+                    <input class="form-control" type="file" id="formFileMultiple" />
+                    
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Logo</label>
+                    <input class="form-control" type="file" id="formFileMultiple"/>
+                  </div>
+                  <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">About Image</label>
+                    <input class="form-control" type="file" id="formFileMultiple"/>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="">About US Title<span class="text-danger">*</span> </label>
+                    {{site.abouttitle}}  
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label for="">About Us Description</label>
+                    {{site.aboutdesc}}
+                  </div>
+
+                  <!-- django -->
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block text-uppercase mt-4 mb-4"
+                    style="height: 50px !important"
+                  >
+                    Update Sitesetting
+                  </button>
+                  <p>After clicking the "Update siteSetting" button category will be added.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,140 @@
+{% extends 'admin_layout.html' %} {% load static%} {% load bootstrap %} {% block title %}
+
+<title>Editor Sign Up | e-News Admin</title>
+
+{% endblock title%}
+
+<!-- Body content goes here -->
+{% block content %}
+
+<style>
+  .user .form-control-user {
+    border-radius: 0.35rem !important;
+  }
+  .card {
+    width: max-content !important;
+  }
+  .my-5 {
+    margin-top: 0 !important;
+  }
+  #role {
+    padding: 10px 0 10px 10px !important;
+    height: 50px !important;
+  }
+
+  .form-group {
+    position: relative;
+  }
+
+  .form-group input {
+    padding-left: 3rem !important;
+  }
+
+  .form-group span {
+    position: absolute;
+    top: 15px;
+    padding-left: 15px;
+    color: #4e73df;
+    opacity: 0.8;
+    font-size: 12px;
+  }
+</style>
+
+<div class="container-fluid py-2">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-1">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-editors'%}" class="text-primary">All Editors</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'editor-sign-up'%}" class="text-primary">Editor Sign Up</a>
+        </li>
+      </ol>
+    </nav>
+    <!-- Back To Editor Information  -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'all-editors'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-backward fa-sm text-white-100"></i>
+        &nbsp; Back
+      </a>
+    </div>
+  </div>
+
+  <div style="width: 50%">{% include "message.html" %}</div>
+  <div class="card o-hidden border-0 shadow-lg my-5 mx-4">
+    <div class="card-body p-0">
+      <div class="col-lg-12">
+        <div class="p-5">
+          <div class="text-center">
+            <h3 class="title text-gray-900 mb-4">Editor Sign Up</h3>
+          </div>
+
+          <form method="POST" class="user">
+            {% csrf_token %}
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+
+                {{form.first_name}}
+              </div>
+              <div class="col-sm-6">
+                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+
+                {{form.last_name}}
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <div class="col-sm-12 mb-3 mb-sm-0">
+                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                {{form.username}}
+              </div>
+            </div>
+            <div class="form-group">
+              <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+              {{form.email}}
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12 mb-3 mb-sm-0">{{cform.role}}</div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-12 mb-3 mb-sm-0">
+                <span><i class="fa fa-dollar-sign" aria-hidden="true"></i></span>
+                {{cform.salary}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                {{form.password1}}
+              </div>
+              <div class="col-sm-6">
+                <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                {{form.password2}}
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block text-uppercase mt-4" style="height: 50px !important">
+              Sign Up
+            </button>
+          </form>
+
+          <hr />
+          <p>*After clicking the signup you will agree to terms & condition.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

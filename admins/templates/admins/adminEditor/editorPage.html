@@ -1,0 +1,112 @@
+{% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+<title>All Editors | e-News Admin</title>
+
+{% endblock title %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-editors'%}" class="text-primary">All Editors</a>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Register Editor Information -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'editor-sign-up'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-user-plus fa-sm text-white-100"></i>
+        &nbsp; Register Editor
+      </a>
+    </div>
+  </div>
+  {% include "message.html" %}
+
+  <!-- Editor Information Table -->
+  <div class="container-fluid">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Editors Information</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr class="text-center">
+                <th>Username</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Joined Date</th>
+                <th>Operations</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i,j,k in editor %}
+
+              <tr>
+                <td>{{i.username}}</td>
+                <td>{{i.email}}</td>
+                <td>{{j}}</td>
+                <td>{{k}}</td>
+                <td>{{i.date_joined}}</td>
+                <td class="text-center">
+                  <button class="btn btn-sm btn-danger" data-bs-toggle="tooltip" title="Remove Editor!">
+                    <a
+                      href="/admins/remove-editor/{{i.id}}"
+                      onclick="return confirm('Are you sure to remove this editor?')"
+                      style="color: white !important; text-decoration: none"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </button>
+                  <button class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="Send Mail to Editor!">
+                    <a href="mailto:{{i.email}}" style="color: white !important; text-decoration: none">
+                      <i class="fas fa-paper-plane"></i>
+                    </a>
+                  </button>
+                  <button class="btn btn-sm btn-warning" data-bs-toggle="tooltip" title="Update Editor Information!">
+                    <a href="/admins/update-editor/{{i.id}}" style="color: white !important; text-decoration: none">
+                      <i class="fas fa-user-edit"></i>
+                    </a>
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+
+            <tfoot>
+              <tr class="text-center">
+                <th>Username</th>
+                <th>Email</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Joined Date</th>
+                <th>Operations</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const tooltipList = [...tooltipTriggerList].map((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
+</script>
+
+{% endblock content %}

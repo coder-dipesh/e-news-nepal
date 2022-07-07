@@ -28,12 +28,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="unsafe-secret-key")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get("DEBUG")) =="1" # 1== True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
-if not DEBUG:
-    ALLOWED_HOSTS += [os.environ.get("ALLOWED_HOSTS")]
+DEBUG = False
 
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://localhost']
 
 # Application definition
 
@@ -45,25 +44,26 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    
-    #Custom Apps
+    'django_social_share',
+
+    # Custom Apps
     'admins',
     'accounts',
     'editors',
     'users',
-    
-    # External Imports
-    'bootstrapform',
-    
-    'social_django',
-    
-    
-]
 
+    # External Imports
+    'ckeditor',
+    'tinymce',
+    'bootstrapform',
+    'social_django',
+
+]
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -110,11 +110,11 @@ DATABASES = {
 
 
 AUTHENTICATION_BACKENDS = [
-    
+
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.google.GoogleOAuth2',
-    ]
+]
 
 
 # Password validation
@@ -141,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 
@@ -152,19 +152,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/')]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+STATIC_ROOT = BASE_DIR / 'static'
+BASE_DIR = Path(__file__).resolve().parent.parent
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
-MEDIA_URL = 'images/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images/uploads')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 
-
 LOGIN_URL = '/sign-in'
-LOGIN_REDIRECT_URL = '/user'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_URL = 'logout'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -180,7 +181,6 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 
-
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY")
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get(
+    "SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET")

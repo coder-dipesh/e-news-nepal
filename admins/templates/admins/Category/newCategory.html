@@ -1,0 +1,131 @@
+{% extends 'admin_layout.html' %} {% load static%} {% load bootstrap %} {% block title %}
+
+<title>New Category | e-News Admin</title>
+
+{% endblock title%}
+
+<!-- Body content goes here -->
+{% block content %}
+
+<style>
+  .user .form-control-user {
+    border-radius: 0.35rem !important;
+  }
+  .card {
+    width: max-content !important;
+  }
+  .my-5 {
+    margin-top: 0 !important;
+  }
+  #role {
+    padding: 10px 0 10px 10px !important;
+    height: 50px !important;
+  }
+</style>
+
+<div class="container-fluid py-2">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-1">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-category'%}" class="text-primary">All Category </a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'new-category'%}" class="text-primary">Add New Category</a>
+        </li>
+      </ol>
+    </nav>
+    <!-- Back To Editor Information  -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'all-category'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-backward fa-sm text-white-100"></i>
+        &nbsp; Back
+      </a>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="container">
+      <div class="align-items-center">
+        <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+          <div class="row tm-edit-product-row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+              <div>
+                <div class="col-md-12">
+                  <h3 class="title text-gray-900 mb-8">Add New Category</h3>
+
+                  <hr />
+                  {% include "message.html" %}
+                </div>
+                <form method="POST">
+                  {% csrf_token %}
+
+                  <!-- django -->
+                  <div class="form-group mb-6">
+                    <label for="">Title<span class="text-danger">*</span> </label>
+                    <input
+                      id="name"
+                      name="title"
+                      placeholder="Title"
+                      value=""
+                      type="text"
+                      class="form-control validate"
+                    />
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label for="">Category Name<span class="text-danger">*</span> </label>
+                    <input
+                      id="name"
+                      name="categoryName"
+                      placeholder="categoryname"
+                      value=""
+                      type="text"
+                      class="form-control validate"
+                    />
+                  </div>
+
+                  <div class="form-group mb-3">
+                    <label for="">Category Description</label>
+                    <textarea
+                      id="summernote"
+                      class="form-control validate"
+                      rows="8"
+                      name="description"
+                      placeholder="Write some text..."
+                      required=""
+                      spellcheck="false"
+                    >
+                    </textarea>
+                  </div>
+
+                  <!-- django -->
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block text-uppercase mt-4 mb-4"
+                    style="height: 50px !important"
+                  >
+                    Add Category
+                  </button>
+                  <p>After clicking the "Add Category" button category will be added.</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

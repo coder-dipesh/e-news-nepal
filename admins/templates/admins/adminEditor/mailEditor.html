@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <title>Login Credentials</title>
+    <style>
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+
+      body {
+        position: relative;
+        margin: 0 auto;
+        color: #001028;
+        background: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-family: Arial;
+      }
+
+      header {
+        padding: 10px 0;
+        margin-bottom: 30px;
+      }
+
+      #logo {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      #logo img {
+        width: 90px;
+      }
+
+      h1 {
+        color: #5d6975;
+        font-size: 2.4em;
+        line-height: 1.4em;
+        font-weight: normal;
+        text-align: center;
+        margin: 0 0 20px 0;
+      }
+
+      #project {
+        float: left;
+      }
+
+      #project span {
+        color: #5d6975;
+        text-align: right;
+        width: 52px;
+        margin-right: 10px;
+        display: inline-block;
+        font-size: 14px;
+      }
+
+      #company {
+        float: right;
+        text-align: right;
+      }
+
+      #project div,
+      #company div {
+        white-space: nowrap;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 20px;
+      }
+
+      table th,
+      table td {
+        text-align: center;
+      }
+
+      table th {
+        color: #5d6975;
+        border-bottom: 1px solid #c1ced9;
+        white-space: nowrap;
+        font-weight: normal;
+      }
+
+      table .service,
+      table .desc {
+        text-align: left;
+      }
+
+      table td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      table tr {
+        border-bottom: 1px solid #c1ced9;
+      }
+
+      table td.service,
+      table td.desc {
+        vertical-align: top;
+      }
+
+      table td.unit,
+      table td.qty,
+      table td.total {
+        font-size: 1.2em;
+      }
+
+      table td.grand {
+        border-top: 1px solid #5d6975;
+      }
+
+      #notices .notice {
+        color: #5d6975;
+        font-size: 1.2em;
+      }
+
+      footer {
+        color: #5d6975;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid #c1ced9;
+        padding: 8px 0;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="clearfix">
+      <div id="logo" style="display: flex; justify-content: center; align-items: center">
+        {#<img src="static/firstapp/images/logo.png" class="brand-logo" width="60" height="60" />#}
+        <!--not working-->
+        {#<img src="static/logo.png" class="brand-logo" height="200px" />#}
+        <!--not working-->
+        <img
+          src="A:\College\SEM IV\Enterprise\Project\e-news-nepal\static\images\icon.png"
+          class="brand-logo"
+          width="100"
+          height="100"
+        />
+        <h1 class="brand-name">e-News Nepal</h1>
+      </div>
+      <h1>EDITORS LOGIN INFORMATION</h1>
+      <hr />
+      <div id="company" class="clearfix">
+        <div>e-News Nepal</div>
+        <div><a href="mailto:help.enews@gmail.com">help.enews@gmail.com</a></div>
+        <div><a href="http://localhost:8000">http://localhost:8000</a></div>
+      </div>
+
+      <div id="project">
+        <div><span>USERNAME:</span> {{username}}</div>
+        <div><span>EMAIL:</span> <a href="mailto:{{email}}">{{email}}</a></div>
+        <div><span>PASSWORD:</span> {{password}}</div>
+        <div><span>JOINED DATE:</span> {{joined_date}}</div>
+      </div>
+      <br />
+      <br />
+    </header>
+    <p style="text-align: right; font-size: 12px">*Please change your password after login!</p>
+    <br />
+    <br />
+    <hr />
+
+    <p style="text-align: center; font-size: 13px">© 2022 e-News Nepal. All Rights Reserved</p>
+    <p style="text-align: center; font-size: 13px">With Love by <a href="http://localhost:8000"> e-News Nepal</a></p>
+  </body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <title>All Users Data</title>
+    <!-- Setting Site Icon Globally -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'images/icon.png' %}"
+    />
+    <style>
+      .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      a {
+        text-decoration: underline;
+      }
+
+      body {
+        position: relative;
+        margin: 0 auto;
+        color: #001028;
+        background: #ffffff;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-family: Arial;
+      }
+
+      header {
+        padding: 10px 0;
+        margin-bottom: 30px;
+      }
+
+      #logo {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      #logo img {
+        width: 90px;
+      }
+
+      h1 {
+        color: #5d6975;
+        font-size: 2.4em;
+        line-height: 1.4em;
+        font-weight: normal;
+        text-align: center;
+        margin: 0 0 20px 0;
+      }
+
+      #project {
+        float: left;
+      }
+
+      #project span {
+        color: #5d6975;
+        text-align: right;
+        width: 52px;
+        margin-right: 10px;
+        display: inline-block;
+        font-size: 14px;
+      }
+
+      #company {
+        float: right;
+        text-align: right;
+      }
+
+      #project div,
+      #company div {
+        white-space: nowrap;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin-bottom: 20px;
+      }
+
+      table th,
+      table td {
+        text-align: center;
+      }
+
+      table th {
+        color: #5d6975;
+        border-bottom: 1px solid #c1ced9;
+        white-space: nowrap;
+        font-weight: normal;
+      }
+
+      table .service,
+      table .desc {
+        text-align: left;
+      }
+
+      table td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      table tr {
+        border-bottom: 1px solid #c1ced9;
+      }
+
+      table td.service,
+      table td.desc {
+        vertical-align: top;
+      }
+
+      table td.unit,
+      table td.qty,
+      table td.total {
+        font-size: 1.2em;
+      }
+
+      table td.grand {
+        border-top: 1px solid #5d6975;
+      }
+
+      #notices .notice {
+        color: #5d6975;
+        font-size: 1.2em;
+      }
+
+      footer {
+        color: #5d6975;
+        width: 100%;
+        height: 30px;
+        position: absolute;
+        bottom: 0;
+        border-top: 1px solid #c1ced9;
+        padding: 8px 0;
+        text-align: center;
+      }
+      .content-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        min-width: 400px;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .content-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      .content-table th,
+      .content-table td {
+        padding: 12px 15px;
+      }
+
+      .content-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .content-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+
+      .content-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
+
+      .content-table tbody tr.active-row {
+        font-weight: bold;
+        color: #009879;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="clearfix">
+      <div id="logo" style="display: flex; justify-content: center; align-items: center">
+        {#<img src="static/firstapp/images/logo.png" class="brand-logo" width="60" height="60" />#}
+        <!--not working-->
+        {#<img src="static/logo.png" class="brand-logo" height="200px" />#}
+        <!--not working-->
+        <img
+          src="A:\College\SEM IV\Enterprise\Project\e-news-nepal\static\images\icon.png"
+          class="brand-logo"
+          width="100"
+          height="100"
+        />
+        <h1 class="brand-name">e-News Nepal</h1>
+      </div>
+      <h1>ALL USERS INFORMATION</h1>
+      <hr />
+      <div id="company" class="clearfix">
+        <div>e-News Nepal</div>
+        <div><a href="mailto:help.enews@gmail.com">help.enews@gmail.com</a></div>
+        <div><a href="http://localhost:8000">http://localhost:8000</a></div>
+      </div>
+
+        <table class="content-table">
+          <thead>
+            <tr >
+              <th style="color: #ffffff; font-weight: bold; font-size: 1.2rem">Username</th>
+              <th style="color: #ffffff; font-weight: bold; font-size: 1.2rem">Email</th>
+              <th style="color: #ffffff; font-weight: bold; font-size: 1.2rem">Role</th>
+              <th style="color: #ffffff; font-weight: bold; font-size: 1.2rem">Joined Date</th>
+
+            </tr>
+          </thead>
+          <tbody>
+          {% for i in user %}
+            <tr>
+              <td>{{i.username}}</td>
+              <td>{{i.email}}</td>
+              <td>User</td>
+              <td>{{i.date_joined|date}}</td>
+            </tr>
+           {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <br />
+    </header>
+    <p style="text-align: right; font-size: 12px">*Please do not misuse this data!</p>
+    <br />
+    <hr />
+
+    <p style="text-align: center; font-size: 13px">© 2022 e-News Nepal. All Rights Reserved</p>
+    <p style="text-align: center; font-size: 13px">With Love by <a href="http://localhost:8000"> e-News Nepal</a></p>
+  </body>
+</html>

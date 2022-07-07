@@ -1,0 +1,91 @@
+{% extends "admin_layout.html" %} {% load static %} {% load bootstrap %} {% block title %}
+
+<title>All News | e-News Admin</title>
+
+{% endblock title %} {% block content %}
+
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <nav aria-label="breadcrumb" class="mt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'admins'%}" class="text-primary">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <a href="{% url 'all-news'%}" class="text-primary">All News</a>
+        </li>
+      </ol>
+    </nav>
+    <!-- Back To Editor Information  -->
+    <div class="no-arrow d-sm-inline-block">
+      <a
+        class="btn btn-sm bg-enews text-white"
+        href="{% url 'admins'%}"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-backward fa-sm text-white-100"></i>
+        &nbsp; Back
+      </a>
+    </div>
+  </div>
+
+  <!-- All News Information Table -->
+  <div class="container-fluid">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All News Information</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category Name</th>
+                <th>Content</th>
+                <th>Image</th>
+                <th>Uploaded By</th>
+                <th>Uploaded Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for c in news %}
+              <tr>
+                <td>{{ c.title}}</td>
+                <td>{{ c.category.categoryName }}</td>
+                <td>
+                  <div class="post">
+                    <p class="content">{{ c.content|safe|striptags }}</p>
+                    <button onclick="readMore(this)">View More</button>
+                  </div>
+                </td>
+                <td>
+                  <img class="img-profile" height="40" width="40" src="{{c.image.url}}" />
+                </td>
+                <td>{% if c.user.username == None %} {{c.name}} {% else %} {{ c.user.username }} {% endif %}</td>
+                <td>{{ c.created_at }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <th>Title</th>
+                <th>Category Name</th>
+                <th>Content</th>
+                <th>Image</th>
+                <th>Uploaded By</th>
+                <th>Uploaded Date</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

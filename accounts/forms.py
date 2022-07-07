@@ -87,18 +87,17 @@ class CreateUserForm(UserCreationForm):
         fields = ['first_name', 'last_name', 'username',
                   'email', 'password1', 'password2']
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if User.objects.filter(email=email).exists():
-            raise forms.ValidationError("Email already exists")
+    # def clean_email(self):
+    #     email = self.cleaned_data['email']
+    #     if User.objects.filter(email=email).exists():
+    #         raise forms.ValidationError("Email already exists")
 
-        if not re.search(EMAIL_REGEX, email):
-            print("Invalid Email ")
-            raise forms.ValidationError("Invalid Email Address")
+    #     if not re.search(EMAIL_REGEX, email):
+    #         print("Invalid Email ")
+    #         raise forms.ValidationError("Invalid Email Address")
 
-        return email
+    #     return email
 
-        return email
 
 
 class ProfileForm(ModelForm):

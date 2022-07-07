@@ -67,7 +67,8 @@ def contact_us(request):
         email = request.POST['email']
         contact = request.POST['contact']
         message = request.POST['message']
-        ins = contactinfo(name=name, email=email, contact=contact, message=message)
+        ins = contactinfo(name=name, email=email,
+                          contact=contact, message=message)
         ins.save()
     context = {
         'activate_contact_us': 'current', }
@@ -83,7 +84,7 @@ def account(request):
             news_model = Newsletter()
             news_model.email = email
             news_model.save()
-            
+
     profile = request.user.profile  # Getting currently logged in user data
     user = User.objects.get(username=profile)
     print(user)

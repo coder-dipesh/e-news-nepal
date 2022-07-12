@@ -5,7 +5,7 @@
 {% endblock title %} {% block content %}
 
 <section id="content-wrap" class="site-page">
-    {% include "message.html"%}
+  {% include "message.html"%}
 
   <div class="container row float-container">
     <section class="">
@@ -107,7 +107,7 @@
             >
           </div>
 
-          <div class="form-field text-center tinymce-editor">{{ form.media }} {{ form.content }}</div>
+          <div class="form-field text-center">{{ form.media }} {{ form.content }}</div>
 
           <div class="form-field text-center">
             <input

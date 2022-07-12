@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from editors.utils import *
 from admins.models import Category
-from ckeditor.fields import RichTextField
 from tinymce import models as tinymce_models
 
 

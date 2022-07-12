@@ -10,8 +10,6 @@ urlpatterns = [
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('tinymce/', include('tinymce.urls')),
 
-
-
     # Custom App urls
     path('', include('accounts.urls')),
     path('admins/', include('admins.urls')),

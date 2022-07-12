@@ -35,6 +35,8 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1',
                         'http://localhost', 'https://www.enewsnepal.me']
 
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://localhost']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,7 +60,6 @@ INSTALLED_APPS = [
     'tinymce',
     'bootstrapform',
     'social_django',
-
 
 ]
 

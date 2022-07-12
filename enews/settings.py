@@ -32,7 +32,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="unsafe-secret-key")
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1', 'http://localhost', 'https://www.enewsnepal.me']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1',
+                        'http://localhost', 'https://www.enewsnepal.me']
 
 # Application definition
 
@@ -160,6 +161,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 
+
+WHITENOISE_AUTOREFRESH = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
